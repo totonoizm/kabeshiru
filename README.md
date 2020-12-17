@@ -30,8 +30,7 @@
 ## 設計書
 
 ### 機能一覧
-
-https://docs.google.com/spreadsheets/d/11c-3oiSjkGZnU5FRC_Zv4oIA_uMa5Geq6-eNhcV56os/edit#gid=0
+https://docs.google.com/spreadsheets/d/11c-3oiSjkGZnU5FRC_Zv4oIA_uMa5Geq6-eNhcV56os/edit?usp=sharing
 
 ## 開発環境
 
