@@ -1,24 +1,46 @@
-# README
+# 壁シル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+クライミングジム検索、レビューシェアサービス。
 
-* Ruby version
+### サイトテーマ
 
-* System dependencies
+初めて行くジムがどのくらいの難易度なのか、どんな雰囲気なのかわかりにくい！
+だったら先に調べて快適楽しいボルダリングライフをサポートします。
+また、レビューだけではなく、そのジムでどれだけ登ったかなど、自分のトレーニング記録オンラインで管理、シェアできます。
 
-* Configuration
+### テーマを選んだ理由
 
-* Database creation
+行きたいジムが出てきてもどのくらいの難易度なのか、雰囲気はどんな感じなのかわかりにくく行くのを躊躇うことがあった。
+ジム毎にユーザーのコメントを残せるようにしてレビューを集め、どんな雰囲気なのか実際の声がわかるサービスを作りたい。
+また、そのジムでどれだけ登ったかなど、自分のトレーニング記録も残してオンラインで管理、シェアできるサービス。
 
-* Database initialization
+### ターゲットユーザ
 
-* How to run the test suite
+ジムクライマー。ボルダリングに興味のある人。
+ボルダリングを始めたい初心者から遠征もするような愛好者まで
 
-* Services (job queues, cache servers, search engines, etc.)
+### 主な利用シーン
 
-* Deployment instructions
+旅先や近場の行ってみたいジムを探す時に
+ジムの雰囲気、難易度をひと目で知りたい時に。
+そのジムで登った回数や感想、登ったコースなど、自分のトレーニング記録を残し、見返せる備忘録としても。
 
-* ...
+## 設計書
+
+### 機能一覧
+
+https://docs.google.com/spreadsheets/d/11c-3oiSjkGZnU5FRC_Zv4oIA_uMa5Geq6-eNhcV56os/edit#gid=0
+
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材
+
+- GoogleAPI
