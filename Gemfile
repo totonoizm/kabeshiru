@@ -70,5 +70,5 @@ gem 'dotenv-rails'
 
 # 画像投稿用gem
 gem "refile", require: "refile/rails", github: 'manfe/refile'
-# 画像加工用（サイズ調整など）gem
+# 画像加工用（サイズ調整など）
 gem "refile-mini_magick"
