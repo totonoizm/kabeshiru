@@ -8,7 +8,7 @@
         <%= f.label :name %>
         <%= f.text_field :name, autofocus: true, autocomplete: 'ユーザー名' %>
         <%= f.label :introduction %>
-        <%= f.text_field :introduction, autofocus: true, autocomplete: '自己紹介' %>
+        <%= f.text_area :introduction, autofocus: true, autocomplete: '自己紹介' %>
         <%= f.submit "登録", class:"btn btn-primary" %>
     <% end %>
 </div>
