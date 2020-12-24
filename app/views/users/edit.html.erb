@@ -1,0 +1,14 @@
+プロフィール編集画面
+<div>
+    <%= form_with model:@user, local:true do |f| %>
+    <!--image プレビュー　-->
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+        <%= f.label :image %>
+        <%= f.attachment_field :profile_image %>
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, autocomplete: 'ユーザー名' %>
+        <%= f.label :introduction %>
+        <%= f.text_field :introduction, autofocus: true, autocomplete: '自己紹介' %>
+        <%= f.submit "登録", class:"btn btn-primary" %>
+    <% end %>
+</div>
