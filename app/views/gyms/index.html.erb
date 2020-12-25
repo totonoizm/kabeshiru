@@ -1,7 +1,7 @@
 ジム一覧
 
 <% @gyms.each do |gym| %>
-    <%= attachment_image_tag gym, :gym_image, size:"100x100", fallback: "gym_default.jpg" %>
+    <%= link_to attachment_image_tag(gym, :gym_image, size:"100x100", fallback: "gym_default.jpg"),gym_path(gym.id) %>
     <%= gym.name %>
     <%= gym.tel %>
     <%= gym.state %>
