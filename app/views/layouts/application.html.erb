@@ -15,8 +15,14 @@
   </head>
   <body>
     <header>
-      <nav class="navbar fixed-top navbar-dark bg-primary">
+      <nav class="navbar fixed-top navbar-light" style="background-color:#bdb76b">
           <a class="navbar-brand" href="#!">Kabeshiru ロゴ</a>
+    <% if user_signed_in? %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <!--検証用<%= link_to 'ジム一覧', gyms_path %>-->
+    <% else %>
+      <%= link_to ' login', new_user_session_path, class: 'glyphicon glyphicon-log-in sign_in' %>
+    <% end %>
         <form class="form-inline">
           <input class="form-control mr-sm-2" type="text" placeholder="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
@@ -24,14 +30,10 @@
       </nav>
     </header>
     
-    <h1>ログイン画面</h1>
-    <% if user_signed_in? %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to ' login', new_user_session_path, class: 'glyphicon glyphicon-log-in sign_in' %>
-    <% end %>
-
+    <main class="container">
     <%= yield %>
+      
+    </main>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
