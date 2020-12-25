@@ -1,7 +1,7 @@
 class GymsController < ApplicationController
 
     def index
-        @gyms = Gym.all
+        @gyms = Gym.page(params[:page]).reverse_order
     end
     
     def new
