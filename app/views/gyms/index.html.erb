@@ -1,1 +1,12 @@
-each
+ジム一覧
+
+<% @gyms.each do |gym| %>
+    <%= attachment_image_tag gym, :gym_image, size:"100x100", fallback: "gym_default.jpg" %>
+    <%= gym.name %>
+    <%= gym.tel %>
+    <%= gym.state %>
+    <%= gym.address %>
+    <%= gym.open_time %>
+    <%= gym.price %>
+    <%= gym.holiday %>
+<% end %>

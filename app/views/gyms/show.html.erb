@@ -1,10 +1,15 @@
-ユーザー詳細
+ジム詳細
 <div>
-    <% if @user.id == current_user.id %>
-        <%= link_to "プロフィール編集", edit_user_path(@user) %>
-    <% end %>
-    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
-    <%= @user.name %>
-    <%= @user.gym_id %>
-    <%= @user.introduction %>
+    <%= attachment_image_tag @gym, :gym_image, size:"500x500", fallback: "default_user.jpg" %>
+    <%= @gym.name %>
+    <%= @gym.introduction %>
+    <%= @gym.tel %>
+    <%= @gym.state %>
+    <%= @gym.address %>
+    <%= @gym.postcode %>
+    <%= @gym.url %>
+    <%= @gym.open_time %>
+    <%= @gym.price %>
+    <%= @gym.holiday %>
+    <%= @gym.access %>
 </div>
