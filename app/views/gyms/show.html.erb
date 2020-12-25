@@ -1,6 +1,7 @@
 ジム詳細
 <div>
-    <%= attachment_image_tag @gym, :gym_image, size:"500x500", fallback: "default_user.jpg" %>
+    <%= link_to "ジム情報編集", edit_gym_path(@gym) %>
+    <%= attachment_image_tag @gym, :gym_image, size:"500x500", fallback: "gym_default.jpg" %>
     <%= @gym.name %>
     <%= @gym.introduction %>
     <%= @gym.tel %>

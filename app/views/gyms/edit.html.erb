@@ -2,7 +2,7 @@
 <div>
     <%= form_with model:@gym, local:true do |f| %>
     <!--image プレビュー　-->
-        <%= attachment_image_tag @gym, :profile_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+        <%= attachment_image_tag @gym, :gym_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "gym_default.jpg" %>
         <%= f.label :image %>
         <%= f.attachment_field :gym_image %>
         <%= f.label :name %>
@@ -21,23 +21,6 @@
         <%= f.text_area :url, autofocus: true, autocomplete: '' %>
         <%= f.label :open_time %>
         <%= f.text_area :price, autofocus: true, autocomplete: '' %>
-        <%= f.label :price %>
-        <%= f.text_area :, autofocus: true, autocomplete: '' %>
-        <%= f.label : %>
-        <%= f.text_area :, autofocus: true, autocomplete: '' %>
-        <%= f.label : %>
-        <%= f.text_area :, autofocus: true, autocomplete: '' %>
-        <%= f.label : %>
-        <%= f.text_area :, autofocus: true, autocomplete: '' %>
-        <%= f.label : %>
-        <%= f.text_area :, autofocus: true, autocomplete: '' %>
-        <%= f.label : %>
-        <%= f.text_area :, autofocus: true, autocomplete: '' %>
-        <%= f.label : %>
-        <%= f.text_area :, autofocus: true, autocomplete: '' %>
-        <%= f.label : %>
-        <%= f.text_area :, autofocus: true, autocomplete: '' %>
-        <%= f.label : %>
         <%= f.submit "登録", class:"btn btn-primary" %>
     <% end %>
 </div>
