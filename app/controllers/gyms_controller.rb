@@ -9,7 +9,7 @@ class GymsController < ApplicationController
     end
     
     def create
-        @gym = Gym.new(Gym_params)
+        @gym = Gym.new(gym_params)
         if @gym.save
             redirect_to gym_path(@gym.id)
         else
@@ -28,7 +28,6 @@ class GymsController < ApplicationController
         else
             render 'edit'
         end
-        
     end
     
     def show
