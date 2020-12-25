@@ -1,5 +1,5 @@
 プロフィール編集画面
-<div>
+<div class="row">
     <%= form_with model:@user, local:true do |f| %>
     <!--image プレビュー　-->
         <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>

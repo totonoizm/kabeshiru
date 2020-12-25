@@ -72,3 +72,5 @@ gem 'dotenv-rails'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 # 画像加工用（サイズ調整など）
 gem "refile-mini_magick"
+# ページャ
+gem 'kaminari','~> 1.2.1'
