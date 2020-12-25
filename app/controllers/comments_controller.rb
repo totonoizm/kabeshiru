@@ -10,6 +10,9 @@ class CommentsController < ApplicationController
     end
     
     def destroy
+        @gym = Gym.find(params[:gym_id])
+        comment = @gym.comments.find(params[:id])
+        comment.destroy
     end
     
     private
