@@ -33,6 +33,8 @@ class GymsController < ApplicationController
     def show
         @gym = Gym.find(params[:id])
         @comment = Comment.new
+        #新着順で表示
+        @comments = @gym.comment.order(created_at: :desc)
     end
     
     def destroy

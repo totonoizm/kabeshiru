@@ -1,0 +1,20 @@
+<!-- コメントフォーム -->
+<div class="row mb-3">
+  <div class="col-lg-8 offset-lg-2">
+    <%= form_with model: comment, url: [board, comment], id: 'new_comment' do |f| %> #jsで使うので、idを付与してあげる。
+      <%= f.label :body %>
+      <%= f.text_area :body, class: 'form-control mb-3', id: 'js-new-comment-body', row: 4,  placeholder: Comment.human_attribute_name(:body) %>
+      <%= f.submit t('defaults.post'), class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <%= form_with model:[gym,comment], local: true do |f| %>
+    <%= f.text_area :comment, size:"90x5", placeholder: "コメントをどうぞ" %>
+</div>
+<div>
+    <%= f.submit "コメントする", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+  <% end %>
+</div>
+    
