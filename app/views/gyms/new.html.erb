@@ -2,7 +2,7 @@
 <div>
     <%= form_with model:@gym, url:gyms_path,local:true do |f| %>
     <!--image プレビュー　-->
-        <%= attachment_image_tag @gym, :gym_image, size:"500x500", fallback: "gym_imagedefault.jpg" %>
+        <%= attachment_image_tag @gym, :gym_image, size:"500x500", fallback: "gym_default.jpg" %>
         <%= f.attachment_field :gym_image %>
         <%= f.label :name %>
         <%= f.text_field :name, autofocus: true, autocomplete: 'ユーザー名' %>
