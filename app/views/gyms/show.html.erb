@@ -20,11 +20,9 @@
     <%= f.submit "コメントする", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
   <% end %>
 </div>
-    
-<div>
-  <a href="comments"><%= @gym.comments.count %></a>件のログ 
-  </div>
-</div>
+<table>
+  <td class="comments_count"><%= @gym.comments.count %>件のログ</td>
+</table>
 <table class="gym_comments">
   <%= render 'comments/index', gym: @gym, user: @user %>
 </table>
