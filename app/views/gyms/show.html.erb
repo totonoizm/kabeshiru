@@ -15,30 +15,16 @@
     <%= @gym.access %>
 </div>
 <div>
-  <a href="#comments"><%= @gym.comments.count %></a>
-    <h2 class="comment-count"><%#= user.comments.count %>回の来店</h2>
-    <!--ユーザーごとのコメント回数を取得したい-->
-  </div>
-</div>
-<div>
-  <% @gym.comments.each do |comment| %>
-    <%= link_to (comment.user) do %>
-      <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
-      <%= comment.user.name %>
-    <% end %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %>
-    <%= comment.comment %>
-    <% if comment.user == current_user %>
-      <%= link_to "削除", gym_comment_path(comment.gym,comment), method: :delete, class: "btn btn-danger pull-right" %>
-    <% end %>
-  <% end %>
-</div>
-<div>
-  <%= form_with model:[@gym,@comment], local: true do |f| %>
+  <%= form_with model:[@gym,@comment] do |f| %>
     <%= f.text_area :comment, size:"90x5", placeholder: "コメントをどうぞ" %>
-</div>
-<div>
     <%= f.submit "コメントする", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
   <% end %>
 </div>
     
+<div>
+  <a href="comments"><%= @gym.comments.count %></a>件のログ 
+  </div>
+</div>
+<table class="gym_comments">
+  <%= render 'comments/index', gym: @gym, user: @user %>
+</table>

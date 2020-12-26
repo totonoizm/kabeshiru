@@ -1,19 +1,18 @@
-<div>
-  <a href="#comments"><%= @gym.comments.count %></a>
-    <h2 class="comment-count"><%#= user.comments.count %>回の来店</h2>
-    <!--ユーザーごとのコメント回数を取得したい-->
-  </div>
-</div>
-<div>
-  <% @gym.comments.each do |comment| %>
-    <%= link_to (comment.user) do %>
-      <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
-      <%= comment.user.name %>
-    <% end %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %>
-    <%= comment.comment %>
+<% gym.comments.each do |comment| %>
+  <tr>
+    <td>
+      <!--ユーザーごとのコメント回数を取得したい-->
+      <%= comment.user.comments.count %>回の来店
+      <%= link_to (comment.user) do %>
+        <%= attachment_image_tag comment.user, :profile_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+        <%= comment.user.name %>
+      <% end %>
+    </td>
+    <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+    <td><%= comment.comment %></td>
     <% if comment.user == current_user %>
-      <%= link_to "削除", gym_comment_path(comment.gym,comment), method: :delete, class: "btn btn-danger pull-right" %>
+      <td><%= link_to "削除", gym_comment_path(comment.gym,comment), class: "btn btn-danger pull-right", data: {confirm: "Are you sure?"}, method: :delete, remote:true %></td>
     <% end %>
+  </tr>
   <% end %>
 </div>
