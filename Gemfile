@@ -67,6 +67,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'dotenv-rails'
 
+gem 'jquery-rails'
+
 
 # 画像投稿用gem
 gem "refile", require: "refile/rails", github: 'manfe/refile'
