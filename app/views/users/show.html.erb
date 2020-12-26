@@ -7,4 +7,15 @@
     <%= @user.name %>
     <%= @user.gym_id %>
     <%= @user.introduction %>
-</div>
+</div>     
+<table>
+    
+    <% @user.comments.each do |comment| %>
+        <tr>
+          <td><%= attachment_image_tag comment.gym, :gym_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "gym_default.jpg" %></td>
+          <td><%= comment.gym.name %></td>
+          <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= comment.comment %></td>
+        </tr>
+    <% end %>
+</table>
