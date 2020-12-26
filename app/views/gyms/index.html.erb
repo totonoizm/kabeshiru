@@ -1,6 +1,16 @@
 ジム一覧
 
-<% @gyms.each do |gym| %>
+<%= search_form_for @search do |f| %>
+    <%= f.text_field :name_cont, placeholder: "何かお探しですか？", class: 'input' %>
+    <%= f.submit class: 'search_button' %>
+<% end %>
+
+
+
+
+
+
+<% @search_gyms.each do |gym| %>
     <%= link_to attachment_image_tag(gym, :gym_image, size:"100x100", fallback: "gym_default.jpg"),gym_path(gym.id) %>
     <%= gym.name %>
     <%= gym.tel %>
