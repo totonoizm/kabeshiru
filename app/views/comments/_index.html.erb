@@ -2,7 +2,7 @@
   <tr>
     <td>
       <!--コメントモデルでメソッドを定義-->
-      <%= comment.users_comment_count %>回目の来店
+      <%= comment.comment_seq %>回目の来店
       <%= link_to (comment.user) do %>
         <%= attachment_image_tag comment.user, :profile_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
         <%= comment.user.name %>

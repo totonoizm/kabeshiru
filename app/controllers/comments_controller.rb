@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
         @comment = Comment.new(comment_params)
         @comment.gym_id = @gym.id
         @comment.user_id = current_user.id
+        @comment.comment_seq = @comment.comment_seq_count
         unless @comment.save
             render 'gyms/show'
         end
