@@ -1,0 +1,11 @@
+<table>
+  <tr>
+    <% if user.id == current_user.id %>
+        <td><%= link_to "プロフィール編集", edit_user_path(user) %></td>
+    <% end %>
+    <td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %> </td>
+    <td><%= user.name %> </td>
+    <td><%= user.gym_id %> </td>
+    <td><%= user.introduction %> </td>
+  </tr> 
+</table>

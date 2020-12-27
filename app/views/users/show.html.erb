@@ -1,13 +1,5 @@
 ユーザー詳細
-<div>
-    <% if @user.id == current_user.id %>
-        <%= link_to "プロフィール編集", edit_user_path(@user) %>
-    <% end %>
-    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
-    <%= @user.name %>
-    <%= @user.gym_id %>
-    <%= @user.introduction %>
-</div>     
+<%= render 'users/info', user: @user %>
 <table>
     <% @user.comments.each do |comment| %>
         <tr>
@@ -15,8 +7,9 @@
             <%= attachment_image_tag comment.gym, :gym_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "gym_default.jpg" %>
             <% end %>
             </td>
+            <td><%= link_to "コメント詳細", comment_path(comment) %></td>
             <td><%= comment.gym.name %></td>
-            <td><%= comment.users_comment_count %>回目の来店</td>
+            <td><%= comment.comment_seq %>回目の来店</td>
             <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
             <td><%= comment.comment %></td>
         </tr>
