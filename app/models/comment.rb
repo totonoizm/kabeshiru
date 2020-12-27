@@ -1,10 +1,23 @@
 class Comment < ApplicationRecord
     belongs_to :user
     belongs_to :gym
+    #validates :comment_seq,uniqueness:{scope: [:user_id, :gym_id]}
+    
+    # #クラスメソッド　一つのジムに対して何個コメントしたかを取得
+    # def users_comment_count
+    #   user.comments.where(gym_id:self.gym_id).count
+    # end
     
     
-    #クラスメソッド　一つのジムに対して何回コメントしたかを取得
-    def users_comment_count
-       user.comments.where(gym_id:self.gym_id).count
+    def comment_seq_count
+        comment_seq = Comment.where(gym_id:self.gym_id,user_id:self.user_id).maximum(:comment_seq)
+        #同Gym,Userにcomment_seqが存在すればcomment_seqの最大値に+1した値が次のコメントのcomment_seqとなる
+        #同Gym,Userにcomment_seqが存在しなければ次のコメントのcomment_seqは初期値の1となる
+        if comment_seq
+            comment_seq = comment_seq + 1
+        else
+            comment_seq = 1
+        end
     end
+    
 end
