@@ -2,6 +2,23 @@ class CommentsController < ApplicationController
     
     def show
         @comment = Comment.find(params[:id])
+        @user = User.find(@comment.user_id)
+        @gym = Gym.find(@comment.gym_id)
+        # @user = User.find(params[:id]) findメソッド、paramsidの意味を学び直す
+        # @gym = Gym.find(params[:id])
+    end
+    
+    def edit
+        @comment = Comment.find(params[:id])
+    end
+    
+    def update
+        @comment = Comment.find(params[:id])
+        if @comment.update!(comment_params)
+            redirect_to comment_path(@comment.id)
+        else
+            render 'edit'
+        end
     end
 
     def create
