@@ -1,4 +1,9 @@
 class CommentsController < ApplicationController
+    
+    def show
+        @comment = Comment.find(params[:id])
+    end
+
     def create
         @gym = Gym.find(params[:gym_id])
         @comment = Comment.new(comment_params)

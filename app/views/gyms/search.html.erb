@@ -1,0 +1,18 @@
+<% if params[:q]['name_or_address_or_state_or_introduction_cont'] == "" %>
+    <%= "検索キーワードがありません" %>
+<% elsif @search_gyms.present? %>
+    <%= "「#{params[:q]['name_or_address_or_state_or_introduction_cont']}」の検索結果: #{@search_gyms.count}件" %>
+    <% @search_gyms.each do |gym| %>
+        <%= link_to attachment_image_tag(gym, :gym_image, size:"100x100", fallback: "gym_default.jpg"),gym_path(gym.id) %>
+        <%= gym.name %>
+        <%= gym.tel %>
+        <%= gym.state %>
+        <%= gym.address %>
+        <%= gym.open_time %>
+        <%= gym.price %>
+        <%= gym.holiday %>
+    <% end %>
+    <%= paginate @search_gyms %>
+<% else %>
+    <%= "検索に一致するジムはありませんでした" %>
+<% end %>
