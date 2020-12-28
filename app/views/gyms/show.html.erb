@@ -13,6 +13,8 @@
     <%= @gym.price %>
     <%= @gym.holiday %>
     <%= @gym.access %>
+    <%= @gym.latitude %>
+    <%= @gym.longitude %>
 </div>
 <div>
   <%= form_with model:[@gym,@comment] do |f| %>
@@ -26,3 +28,61 @@
 <table class="gym_comments">
   <%= render 'comments/index', gym: @gym, user: @user %>
 </table>
+
+
+<script type="text/javascript">
+    function initMap() {
+
+        var test ={lat: <%= @gym.latitude %>, lng: <%= @gym.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: test
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var contentString = '住所：<%= @gym.address %>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position:test,
+            map: map,
+            title: contentString
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?v=AIzaSyCfuIKmDLBD6u1bE6mu0FicJbUZGOWRfDw&callback=initMap">
+</script>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @gym.address %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @gym.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @gym.longitude %>
+</p>
+
+<style type="text/css">
+  #map { height: 400px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+    width: 80%;}
+</style>
+<div id="map"></div>
