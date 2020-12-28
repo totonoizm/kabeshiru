@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     
     def show
         @user = User.find(params[:id])
+        @clip_gyms = @user.clip_gyms
     end
     
     def update
