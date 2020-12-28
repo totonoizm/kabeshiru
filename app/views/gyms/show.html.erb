@@ -26,3 +26,21 @@
 <table class="gym_comments">
   <%= render 'comments/index', gym: @gym, user: @user %>
 </table>
+
+<div id='gym_map'></div>
+
+<style>
+#gym_map{
+  height: 400px;
+}
+</style>
+
+<script>
+function initMap(){
+  let gym_map = new google.maps.Map(document.getElementById('gym_map'), {
+  center: {lat: -34.397, lng: 150.644},
+  zoom: 8
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXjDO6sPjUMINgpN6JRS7ZY0CJluO9Dus&callback=initMap" async defer></script>
