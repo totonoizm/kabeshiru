@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   resources :comments
 
   resources :gyms do
+    resources :comments
+    resource :clips, only: [:create, :destroy]
     collection do
       get :search
     end
-    resources :comments
   end
 end
