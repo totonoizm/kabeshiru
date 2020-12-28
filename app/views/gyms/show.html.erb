@@ -17,6 +17,16 @@
     <%= @gym.longitude %>
 </div>
 <div>
+  <% if user_signed_in? %>
+    <% if @gym.cliped_by?(current_user) %>
+      <p><span>お気に入り解除: </span><%=link_to @gym.clips.count, gym_clips_path(@gym), method: :delete %></p>
+    <% else %>  
+      <p><span>お気に入り登録: </span><%=link_to @gym.clips.count, gym_clips_path(@gym), method: :post %></p>
+    <% end %>
+  <% end %>
+</div>
+    <p><span>お気に入り数: </span><%= @gym.clips.count %></p>
+<div>
   <%= form_with model:[@gym,@comment] do |f| %>
     <%= f.text_area :comment, size:"90x5", placeholder: "コメントをどうぞ" %>
     <%= f.submit "コメントする", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
