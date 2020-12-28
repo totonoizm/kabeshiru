@@ -49,6 +49,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry-byebug'
+  gem 'pry-rails'
 end
 
 group :test do
@@ -71,10 +72,12 @@ gem 'jquery-rails'
 
 
 # 画像投稿用gem
-gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 # 画像加工用（サイズ調整など）
-gem "refile-mini_magick"
+gem 'refile-mini_magick'
 # ページャ
 gem 'kaminari','~> 1.2.1'
 # 検索機能
 gem 'ransack'
+# google map 位置情報取得
+gem 'geocoder'
