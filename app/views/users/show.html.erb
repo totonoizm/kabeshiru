@@ -15,3 +15,14 @@
         </tr>
     <% end %>
 </table>
+<table>
+    <% @clip_gyms.each do |gym| %>
+        <tr>
+            <td><%= link_to attachment_image_tag(gym, :gym_image, size:"100x100", fallback: "gym_default.jpg"),gym_path(gym.id) %></td>
+            <td><%= gym.name %></td>
+            <td><%= gym.open_time %></td>
+            <td><%= gym.address %></td>
+            <td><%= gym.holiday %></td>
+        </tr>
+    <% end %>
+</table>
