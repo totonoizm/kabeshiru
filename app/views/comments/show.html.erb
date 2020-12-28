@@ -7,6 +7,10 @@
     <% if @user.id == current_user.id %>
         <%= link_to "編集", edit_comment_path(@comment) %>
     <% end %>
+        <%= @comment.gym.name %>
+            <td><%= link_to(@comment.gym) do %>
+            <%= attachment_image_tag @comment.gym, :gym_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "gym_default.jpg" %>
+            <% end %>
   <tr>
     <td>
       <!--コメントモデルでメソッドを定義-->
