@@ -27,6 +27,14 @@ class UsersController < ApplicationController
         end
     end
     
+    def withdraw
+        @user = User.find(current_user.id)
+        @user.update(is_deleted: true)
+        reset_session
+        flash[:notice] = "Thank you for the good rating. We hope to see you again."
+　　　　redirect_to root_path
+    end
+    
     private
     #ホームジム変更用にstrongparamsを記載する
     # def gym_params
