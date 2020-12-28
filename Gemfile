@@ -81,3 +81,5 @@ gem 'kaminari','~> 1.2.1'
 gem 'ransack'
 # google map 位置情報取得
 gem 'geocoder'
+# font-awesome
+gem 'font-awesome-sass'
