@@ -27,7 +27,11 @@ class UsersController < ApplicationController
         end
     end
     
-    def withdraw
+    def quit
+        @user = User.find(current_user.id)
+    end
+    
+    def withdraw #退会処理
         @user = User.find(current_user.id)
         @user.update(is_deleted: true)
         reset_session
