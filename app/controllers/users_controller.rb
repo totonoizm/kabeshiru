@@ -36,7 +36,7 @@ class UsersController < ApplicationController
         @user.update(is_deleted: true)
         reset_session
         flash[:notice] = "Thank you for the good rating. We hope to see you again."
-　　　　redirect_to root_path
+        redirect_to new_user_session_path
     end
     
     private
