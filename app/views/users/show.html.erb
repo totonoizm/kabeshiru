@@ -1,7 +1,7 @@
 ユーザー詳細
 <%= render 'users/info', user: @user %>
 <table>
-    <% @user.comments.each do |comment| %>
+    <% @user.comments.reverse_each do |comment| %>
         <tr>
             <td><%= link_to(comment.gym) do %>
             <%= attachment_image_tag comment.gym, :gym_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "gym_default.jpg" %>
@@ -16,7 +16,7 @@
     <% end %>
 </table>
 <table>
-    <% @clip_gyms.each do |gym| %>
+    <% @clip_gyms.reverse_each do |gym| %>
         <tr>
             <td><%= link_to attachment_image_tag(gym, :gym_image, size:"100x100", fallback: "gym_default.jpg"),gym_path(gym.id) %></td>
             <td><%= gym.name %></td>
