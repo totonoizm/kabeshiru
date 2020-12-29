@@ -4,7 +4,7 @@
     <p>退会する場合は、『退会する』をクリックしてください。</p>
   </div>
   <div>
-    <%= link_to '退会しない', show_user_path(@user) %>
+    <%= link_to '退会しない', user_path(@user) %>
     <%= link_to "退会する", withdraw_user_path(@user), method: :patch %>
   </div>
 </div>
