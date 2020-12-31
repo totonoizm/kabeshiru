@@ -16,4 +16,9 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-body { padding-top: 70px; }
+body {
+    padding-top: 70px;
+    background-image: url("bg-image.jpg");
+    background-attachment: fixed;
+}
+  
