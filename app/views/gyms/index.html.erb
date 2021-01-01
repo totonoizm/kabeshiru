@@ -1,6 +1,6 @@
 ジム一覧
 
-<%= search_form_for @search, url: gyms_path do |f| %>
+<%= search_form_for @search, url: search_gyms_path do |f| %>
     <%= f.text_field :name_or_address_or_state_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'input' %>
     <!--検索条件を指定　ジム名、都道府県、住所、キーワード検索として紹介文から特徴で検索できるように-->
     <%= f.submit class: 'search_button' %>
@@ -8,3 +8,14 @@
 
 <!--余裕があればランダムで表示-->
 
+    <% @gyms.each do |gym| %>
+        <%= link_to attachment_image_tag(gym, :gym_image, size:"100x100", fallback: "gym_default.jpg"),gym_path(gym.id) %>
+        <%= gym.name %>
+        <%= gym.tel %>
+        <%= gym.state %>
+        <%= gym.address %>
+        <%= gym.open_time %>
+        <%= gym.price %>
+        <%= gym.holiday %>
+    <% end %>
+    <%= paginate @gyms %>
