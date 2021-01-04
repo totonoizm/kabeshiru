@@ -7,15 +7,20 @@
 <% end %>
 
 <!--余裕があればランダムで表示-->
-
+<div class="card-columns">
     <% @gyms.each do |gym| %>
-        <%= link_to attachment_image_tag(gym, :gym_image, size:"100x100", fallback: "gym_default.jpg"),gym_path(gym.id) %>
-        <%= gym.name %>
-        <%= gym.tel %>
-        <%= gym.state %>
-        <%= gym.address %>
-        <%= gym.open_time %>
-        <%= gym.price %>
-        <%= gym.holiday %>
+    <div class="card">
+    　　<div class="card-body">
+            <h5 class="card-title"><%= gym.name %></h5>
+            <p class="card-state"><%= gym.state %><%= gym.address %></p>
+            <div class="card-image">
+                <%= link_to attachment_image_tag(gym, :gym_image, size:"300x250", fallback: "gym_default.jpg"),gym_path(gym.id) %>
+            </div>
+            <p class="card-text">施設利用料金：<%= gym.price %></p>
+            <p class="card-text">定休日：<%= gym.holiday %></p>
+            <p class="card-text">営業時間：<%= gym.open_time %></p>
+    　　</div>
+    </div>
     <% end %>
-    <%= paginate @gyms %>
+</div>
+<%= paginate @gyms %>
