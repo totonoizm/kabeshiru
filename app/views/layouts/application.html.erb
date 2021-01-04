@@ -18,17 +18,20 @@
       <nav class="navbar fixed-top navbar-light" style="background-color:#bdb76b">
           <a class="navbar-brand" href="#!">Kabeshiru ロゴ</a>
     <% if user_signed_in? %>
+      <%= link_to 'ジム一覧', gyms_path %>
+      <%= link_to user_path(current_user) do %>
+        <%= attachment_image_tag current_user, :profile_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+      <% end %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      <!--検証用<%= link_to 'ジム一覧', gyms_path %>-->
     <% else %>
-      <%= link_to ' login', new_user_session_path, class: 'glyphicon glyphicon-log-in sign_in' %>
+      <%= link_to ' ログイン', new_user_session_path, class: 'glyphicon glyphicon-log-in sign_in' %>
     <% end %>
-        <form class="form-inline">
-            <%= search_form_for @search, url: gyms_path do |f| %>
+        <div class="form-inline">
+            <%= search_form_for @search, url: search_gyms_path do |f| %>
             <%= f.text_field :name_or_address_or_state_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'input' %>
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
           <% end %>
-        </form>
+        </div>
       </nav>
     </header>
     
@@ -37,7 +40,6 @@
       <%= message %>
     <% end %>
     <%= yield %>
-      
     </main>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
