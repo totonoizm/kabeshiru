@@ -32,11 +32,38 @@
   <%= render 'comments/index', gym: @gym, user: @user %>
 </table>
 
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @gym.address %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @gym.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @gym.longitude %>
+</p>
+
+<div id="map"></div>
+
+<style type="text/css">
+  #map { height: 400px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+    width: 80%;}
+</style>
 
 <script type="text/javascript">
     function initMap() {
 
         var test ={lat: <%= @gym.latitude %>, lng: <%= @gym.longitude %>};
+        //var test ={lat: 30, lng: 150};
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 15,
             center: test
@@ -61,31 +88,5 @@
     }
 </script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?v=<%#= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
 </script>
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @gym.address %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @gym.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @gym.longitude %>
-</p>
-
-<style type="text/css">
-  #map { height: 400px;
-    margin-left:auto;
-    margin-right:auto;
-    text-align:left;
-    width: 80%;}
-</style>
-<div id="map"></div>
