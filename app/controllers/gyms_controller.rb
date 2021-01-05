@@ -38,7 +38,9 @@ class GymsController < ApplicationController
     end
     
     def destroy
-        
+        @gym = Gym.find(params[:id])
+        @gym.destroy
+        redirect_to gyms_path
     end
     
     

@@ -1,17 +1,36 @@
 プロフィール編集画面
-<div class="row">
-    <%= form_with model:@user, local:true do |f| %>
-    <!--image プレビュー　-->
-        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
-        <%= f.label :image %>
-        <%= f.attachment_field :profile_image %>
-        <%= f.label :name %>
-        <%= f.text_field :name, autofocus: true, autocomplete: 'ユーザー名' %>
-        <%= f.label :introduction %>
-        <%= f.text_area :introduction, autofocus: true, autocomplete: '自己紹介' %>
-        <%= f.submit "登録", class:"btn btn-primary" %>
-    <% end %>
-</div>
-<div>
-    <%= link_to "退会する", quit_user_path %>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="jumbotron">
+                <%= form_with model:@user, local:true do |f| %>
+                  <table>
+                    <tr>                      
+                    <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+                        <%= f.label :image %>
+                        <%= f.attachment_field :profile_image %></td>
+                    </tr>
+                    <tr>
+                    <td><%= f.label :ユーザーネーム %>
+                        <%= f.text_field :name, autofocus: true, autocomplete: 'ユーザー名' %></td>
+                    </tr>
+                    <tr>
+                     <td><%= f.label :プロフィール %>
+                        　<%= f.text_area :introduction, autofocus: true, autocomplete: '例：オーバーハングが大好きです！' %></td>
+                    </tr>
+                    <tr>
+                      <td>ホームジム</td>
+                      <td></td>
+                    </tr>
+                  </table>
+                    <div class="row justify-content-center">
+                            <%= f.submit "登録", class:"btn btn-primary" %>
+                    </div>
+                <% end %>
+                    <div class="row justify-content-center">
+                        <%= link_to "退会はこちら", quit_user_path, class: "nav-link" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

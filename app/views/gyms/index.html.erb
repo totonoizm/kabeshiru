@@ -3,11 +3,12 @@
         <div class="jumbotron jumbotron-search">
             <div class="row justify-content-center">
                 <div class="col-4">
-                <%= search_form_for @search, url: search_gyms_path do |f| %>
-                    <%= f.text_field :name_or_address_or_state_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'input',size:"10x10" %>
-                    <!--検索条件を指定　ジム名、都道府県、住所、キーワード検索として紹介文から特徴で検索できるように-->
-                    <%= f.submit class: 'search_button' %>
-                <% end %>
+                    <div class="form-inline">
+                        <%= search_form_for @search, url: search_gyms_path do |f| %>
+                        <%= f.text_field :name_or_address_or_state_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'input' %>
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+                      <% end %>
+                    </div>
                 </div>
             </div>
         </div>
