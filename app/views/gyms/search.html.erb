@@ -24,6 +24,9 @@
         　　<div class="card-body">
                 <h5 class="card-title"><%= gym.name %></h5>
                 <p class="card-state"><%= gym.state %></p>
+                <div class="clips_btns"> 
+                  <%= render 'clips/clip', gym: gym %>
+                </div>
                 <div class="embed-responsive">
                     <%= link_to attachment_image_tag(gym, :gym_image, size:"400x300", fallback: "gym_default.jpg"),gym_path(gym.id) %>
                 </div>
