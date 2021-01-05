@@ -1,0 +1,91 @@
+ジム詳細
+<div>
+    <%= link_to "ジム情報編集", edit_gym_path(@gym) %>
+    <%= attachment_image_tag @gym, :gym_image, size:"500x500", fallback: "gym_default.jpg" %>
+    <%= @gym.name %>
+    <%= @gym.introduction %>
+    <%= @gym.tel %>
+    <%= @gym.state %>
+    <%= @gym.address %>
+    <%= @gym.postcode %>
+    <%= @gym.url %>
+    <%= @gym.open_time %>
+    <%= @gym.price %>
+    <%= @gym.holiday %>
+    <%= @gym.access %>
+    <%= @gym.latitude %>
+    <%= @gym.longitude %>
+</div>
+<div class="clips_btns"> 
+  <%= render 'clips/clip', gym: @gym %>
+</div>
+<div>
+  <%= form_with model:[@gym,@comment] do |f| %>
+    <%= f.text_area :comment, size:"90x5", placeholder: "コメントをどうぞ" %>
+    <%= f.submit "コメントする", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+  <% end %>
+</div>
+<table>
+  <td class="comments_count"><%= @gym.comments.count %>件のログ</td>
+</table>
+<table class="gym_comments">
+  <%= render 'comments/index', gym: @gym, user: @user %>
+</table>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @gym.address %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @gym.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @gym.longitude %>
+</p>
+
+<div id="map"></div>
+
+<style type="text/css">
+  #map { height: 400px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+    width: 80%;}
+</style>
+
+<script type="text/javascript">
+    function initMap() {
+
+        var test ={lat: <%= @gym.latitude %>, lng: <%= @gym.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: test
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var contentString = '住所：<%= @gym.state %>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position:test,
+            map: map,
+            title: contentString
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+</script>
