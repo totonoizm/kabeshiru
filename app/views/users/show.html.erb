@@ -33,10 +33,10 @@
                         <%= attachment_image_tag comment.gym, :gym_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "gym_default.jpg" %>
                         <% end %>
                         </td>
-                        <td><%= link_to "コメント詳細", comment_path(comment) %></td>
                         <td><%= comment.gym.name %></td>
                         <td><%= comment.comment_seq %>回目の来店</td>
                         <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+                        <td><%= link_to "コメント詳細", comment_path(comment) %></td>
                         <td><%= simple_format(comment.comment) %></td>
                     </tr>
                 <% end %>
