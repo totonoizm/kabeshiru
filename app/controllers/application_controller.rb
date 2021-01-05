@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   
   def gym_search #ransack検索メソッド
     @search = Gym.ransack(params[:q])
-    @search_gyms = @search.result(distinct: true).order(created_at: "DESC").includes(:user).page(params[:page]).per(10) #ジム検索一覧
+    @search_gyms = @search.result(distinct: true).order(created_at: "DESC").includes(:user).page(params[:page]).per(20) #ジム検索一覧
   end
   
   protected

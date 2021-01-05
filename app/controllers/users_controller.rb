@@ -2,10 +2,12 @@ class UsersController < ApplicationController
     
     
     def index
+        @users = User.page(params[:page]).per(20).reverse_order
     end
     
     def show
         @user = User.find(params[:id])
+        @clip_gyms = @user.clip_gyms
     end
     
     def update
@@ -24,6 +26,18 @@ class UsersController < ApplicationController
         else
             redirect_to user_path(current_user.id)
         end
+    end
+    
+    def quit
+        @user = User.find(current_user.id)
+    end
+    
+    def withdraw #退会処理
+        @user = User.find(current_user.id)
+        @user.update(is_deleted: true)
+        reset_session
+        flash[:notice] = "ご利用ありがとうございました"
+        redirect_to new_user_session_path
     end
     
     private

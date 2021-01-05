@@ -1,5 +1,9 @@
 class CommentsController < ApplicationController
     
+    def index
+        @comments = Comment.page(params[:page]).per(20).reverse_order
+    end
+
     def show
         @comment = Comment.find(params[:id])
         @user = User.find(@comment.user_id)

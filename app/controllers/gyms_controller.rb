@@ -1,7 +1,9 @@
 class GymsController < ApplicationController
 
     def index
-        @gyms = Gym.page(params[:page]).reverse_order
+        # @random = Gym.order("RAND()").limit(5)
+        @gyms = Gym.page(params[:page]).per(20).reverse_order
+        #20件表示
     end
     
     def new
@@ -36,7 +38,9 @@ class GymsController < ApplicationController
     end
     
     def destroy
-        
+        @gym = Gym.find(params[:id])
+        @gym.destroy
+        redirect_to gyms_path
     end
     
     
