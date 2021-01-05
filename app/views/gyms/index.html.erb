@@ -1,21 +1,36 @@
-ジム一覧
-
-<%= search_form_for @search, url: search_gyms_path do |f| %>
-    <%= f.text_field :name_or_address_or_state_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'input' %>
-    <!--検索条件を指定　ジム名、都道府県、住所、キーワード検索として紹介文から特徴で検索できるように-->
-    <%= f.submit class: 'search_button' %>
-<% end %>
-
+<div class="row">
+    <div class="col-12">
+        <div class="jumbotron jumbotron-search">
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <div class="form-inline">
+                        <%= search_form_for @search, url: search_gyms_path do |f| %>
+                        <%= f.text_field :name_or_address_or_state_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'input' %>
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+                      <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!--余裕があればランダムで表示-->
-
-    <% @gyms.each do |gym| %>
-        <%= link_to attachment_image_tag(gym, :gym_image, size:"100x100", fallback: "gym_default.jpg"),gym_path(gym.id) %>
-        <%= gym.name %>
-        <%= gym.tel %>
-        <%= gym.state %>
-        <%= gym.address %>
-        <%= gym.open_time %>
-        <%= gym.price %>
-        <%= gym.holiday %>
-    <% end %>
+<div class="jumbotron">
+    <div class="card-columns">
+        <% @gyms.each do |gym| %>
+        <div class="card">
+        　　<div class="card-body">
+                <h5 class="card-title"><%= gym.name %></h5>
+                <p class="card-state"><%= gym.state %></p>
+                <div class="embed-responsive">
+                    <%= link_to attachment_image_tag(gym, :gym_image, size:"400x300", fallback: "gym_default.jpg"),gym_path(gym.id) %>
+                </div>
+                <p class="card-text">施設利用料金：<%= gym.price %></p>
+                <p class="card-text">定休日：<%= gym.holiday %></p>
+                <p class="card-text">営業時間：<%= gym.open_time %></p>
+        　　</div>
+        </div>
+        <% end %>
+    </div>
     <%= paginate @gyms %>
+</div>

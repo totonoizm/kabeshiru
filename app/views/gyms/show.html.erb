@@ -32,38 +32,6 @@
   <%= render 'comments/index', gym: @gym, user: @user %>
 </table>
 
-
-<script type="text/javascript">
-    function initMap() {
-
-        var test ={lat: <%= @gym.latitude %>, lng: <%= @gym.longitude %>};
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: test
-        });
-        var transitLayer = new google.maps.TransitLayer();
-        transitLayer.setMap(map);
-
-        var contentString = '住所：<%= @gym.address %>';
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-
-        var marker = new google.maps.Marker({
-            position:test,
-            map: map,
-            title: contentString
-        });
-
-        marker.addListener('click', function() {
-            infowindow.open(map, marker);
-        });
-    }
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?v=<%#= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
-</script>
-
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -81,6 +49,8 @@
   <%= @gym.longitude %>
 </p>
 
+<div id="map"></div>
+
 <style type="text/css">
   #map { height: 400px;
     margin-left:auto;
@@ -88,4 +58,34 @@
     text-align:left;
     width: 80%;}
 </style>
-<div id="map"></div>
+
+<script type="text/javascript">
+    function initMap() {
+
+        var test ={lat: <%= @gym.latitude %>, lng: <%= @gym.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: test
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var contentString = '住所：<%= @gym.state %>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position:test,
+            map: map,
+            title: contentString
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+</script>
