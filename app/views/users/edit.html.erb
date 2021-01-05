@@ -2,6 +2,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="jumbotron">
+            <div class="row justify-content-center">
                 <%= form_with model:@user, local:true do |f| %>
                   <table>
                     <tr>                      
@@ -11,25 +12,24 @@
                     </tr>
                     <tr>
                     <td><%= f.label :ユーザーネーム %>
-                        <%= f.text_field :name, autofocus: true, autocomplete: 'ユーザー名' %></td>
+                        <%= f.text_field :name, autofocus: true, placeholder: 'ユーザー名', class: "form-control" %></td>
                     </tr>
                     <tr>
-                     <td><%= f.label :プロフィール %>
-                        　<%= f.text_area :introduction, autofocus: true, autocomplete: '例：オーバーハングが大好きです！' %></td>
+                    <td><%= f.label :プロフィール %>
+                        <%= f.text_area :introduction, autofocus: true, placeholder: '例：オーバーハングが大好きです！', class: "form-control rows=3", size: "30x7" %></td>
                     </tr>
                     <tr>
                       <td>ホームジム</td>
                       <td></td>
                     </tr>
                   </table>
-                    <div class="row justify-content-center">
-                            <%= f.submit "登録", class:"btn btn-primary" %>
-                    </div>
+            </div>
+            <div class="row justify-content-center">
+                <%= f.submit "登録", class:"btn btn-primary" %>
                 <% end %>
-                    <div class="row justify-content-center">
-                        <%= link_to "退会はこちら", quit_user_path, class: "nav-link" %>
-                    </div>
-                </div>
+            </div>
+            <div class="row justify-content-center">
+                <%= link_to "退会はこちら", quit_user_path, class: "nav-link" %>
             </div>
         </div>
     </div>
