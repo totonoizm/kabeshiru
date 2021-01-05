@@ -17,7 +17,7 @@
     <%= @gym.longitude %>
 </div>
 <div class="clips_btns"> 
-  <%= render 'clips/clip', gym: @gym %>
+  <%= render partial: 'clips/clip', locals: {gym: @gym} %>
 </div>
 <div>
   <%= form_with model:[@gym,@comment] do |f| %>
