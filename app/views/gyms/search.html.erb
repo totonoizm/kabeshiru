@@ -1,23 +1,41 @@
-<% if params[:q]['name_or_address_or_state_or_introduction_cont'] == "" %>
-    <%= "検索キーワードがありません" %>
-<% elsif @search_gyms.present? %>
-    <%= "「#{params[:q]['name_or_address_or_state_or_introduction_cont']}」の検索結果: #{@search_gyms.count}件" %>
-<div class="card-columns">
-    <% @search_gyms.each do |gym| %>
-    <div class="card">
-    　　<div class="card-body">
-            <h5 class="card-title"><%= gym.name %></h5>
-            <p class="card-state"><%= gym.state %><%= gym.address %></p>
-            <div class="card-image">
-                <%= link_to attachment_image_tag(gym, :gym_image, size:"300x250", fallback: "gym_default.jpg"),gym_path(gym.id) %>
+<div class="row">
+    <div class="col-12">
+        <div class="jumbotron jumbotron-search">
+            <div class="row justify-content-center">
+                <div class="col-4">
+                <%= search_form_for @search, url: search_gyms_path do |f| %>
+                    <%= f.text_field :name_or_address_or_state_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'input',size:"10x10" %>
+                    <!--検索条件を指定　ジム名、都道府県、住所、キーワード検索として紹介文から特徴で検索できるように-->
+                    <%= f.submit class: 'search_button' %>
+                <% end %>
+                <% if params[:q]['name_or_address_or_state_or_introduction_cont'] == "" %>
+                    <div class=""><%= "検索キーワードがありません" %></div>
+                <% elsif @search_gyms.present? %>
+                    <div><%= "「#{params[:q]['name_or_address_or_state_or_introduction_cont']}」の検索結果: #{@search_gyms.count}件" %></div>
+                </div>
             </div>
-            <p class="card-text">施設利用料金：<%= gym.price %></p>
-            <p class="card-text">定休日：<%= gym.holiday %></p>
-            <p class="card-text">営業時間：<%= gym.open_time %></p>
-    　　</div>
+        </div>
     </div>
-    <% end %>
-    <%= paginate @search_gyms %>
+</div>
+<div class="jumbotron">
+    <div class="card-columns">
+    <% @search_gyms.each do |gym| %>
+        <div class="card">
+        　　<div class="card-body">
+                <h5 class="card-title"><%= gym.name %></h5>
+                <p class="card-state"><%= gym.state %></p>
+                <div class="embed-responsive">
+                    <%= link_to attachment_image_tag(gym, :gym_image, size:"400x300", fallback: "gym_default.jpg"),gym_path(gym.id) %>
+                </div>
+                <p class="card-text">施設利用料金：<%= gym.price %></p>
+                <p class="card-text">定休日：<%= gym.holiday %></p>
+                <p class="card-text">営業時間：<%= gym.open_time %></p>
+        　　</div>
+        </div>
+        <% end %>
+    </div>
+</div>
+<%= paginate @search_gyms %>
 <% else %>
     <%= "検索に一致するジムはありませんでした" %>
 <% end %>
