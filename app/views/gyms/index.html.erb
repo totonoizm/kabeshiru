@@ -22,7 +22,7 @@
         　　<div class="card-body">
                 <h5 class="card-title"><%= gym.name %></h5>
                 <p class="card-state"><%= gym.state %></p>
-                <div class="clips_btns"> 
+                <div id="clips_btns_<%= gym.id %>"> 
                   <%= render partial: 'clips/clip', locals: {gym: gym} %>
                 </div>
                 <div class="embed-responsive">

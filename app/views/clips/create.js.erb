@@ -1,1 +1,1 @@
-$('.clips_btns').html("<%= j(render partial: 'clips/clip', locals: {gym: @gym}) %>");
+$('#clips_btns_<%= @gym.id %>').html("<%= j(render partial: 'clips/clip', locals: {gym: @gym}) %>");

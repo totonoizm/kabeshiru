@@ -1,7 +1,9 @@
-ジム詳細
-<div>
-    <%= link_to "ジム情報編集", edit_gym_path(@gym) %>
+<div class="row">
+  <div class="jumbotron">
+
     <%= attachment_image_tag @gym, :gym_image, size:"500x500", fallback: "gym_default.jpg" %>
+    <%= link_to "ジム情報編集", edit_gym_path(@gym) %>
+    <div id="map"></div>
     <%= @gym.name %>
     <%= @gym.introduction %>
     <%= @gym.tel %>
@@ -15,8 +17,10 @@
     <%= @gym.access %>
     <%= @gym.latitude %>
     <%= @gym.longitude %>
+  </div>
 </div>
-<div class="clips_btns"> 
+
+<div id="clips_btns_<%= @gym.id %>"> 
   <%= render partial: 'clips/clip', locals: {gym: @gym} %>
 </div>
 <div>
@@ -49,7 +53,7 @@
   <%= @gym.longitude %>
 </p>
 
-<div id="map"></div>
+
 
 <style type="text/css">
   #map { height: 400px;
