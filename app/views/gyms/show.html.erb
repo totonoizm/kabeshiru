@@ -63,7 +63,6 @@
     function initMap() {
 
         var test ={lat: <%= @gym.latitude %>, lng: <%= @gym.longitude %>};
-        //var test ={lat: 30, lng: 150};
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 15,
             center: test
@@ -71,7 +70,7 @@
         var transitLayer = new google.maps.TransitLayer();
         transitLayer.setMap(map);
 
-        var contentString = '住所：<%= @gym.address %>';
+        var contentString = '住所：<%= @gym.state %>';
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
