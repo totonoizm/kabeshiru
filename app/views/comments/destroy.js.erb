@@ -1,4 +1,4 @@
 $(".comments_count").html("<%= @gym.comments.count %>件のログ");　
-$(".gym_comments").html("<%= j(render 'comments/index', gym: @gym) %>");
+$(".gym_comments").html("<%= j(render 'comments/index', comments: @gym.comments, gym: @gym, user: @user) %>");
 $("#comment_comment").val("");
 <!--idは渡さずに-->

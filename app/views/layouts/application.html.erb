@@ -26,11 +26,12 @@
       <% end %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
+      <%= link_to ' 新規登録', new_user_registration_path, class: 'glyphicon glyphicon-log-in sign_in' %>
       <%= link_to ' ログイン', new_user_session_path, class: 'glyphicon glyphicon-log-in sign_in' %>
     <% end %>
         <div class="form-inline">
             <%= search_form_for @search, url: search_gyms_path do |f| %>
-            <%= f.text_field :name_or_address_or_state_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'input' %>
+            <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'input' %>
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
           <% end %>
         </div>

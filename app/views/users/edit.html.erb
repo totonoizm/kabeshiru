@@ -1,4 +1,3 @@
-プロフィール編集画面
 <div class="row">
     <div class="col-sm-12">
         <div class="jumbotron">
@@ -6,7 +5,7 @@
                 <%= form_with model:@user, local:true do |f| %>
                   <table>
                     <tr>                      
-                    <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+                    <td><%= attachment_image_tag @user, :profile_image, size:"70x70", format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
                         <%= f.label :image %>
                         <%= f.attachment_field :profile_image %></td>
                     </tr>
