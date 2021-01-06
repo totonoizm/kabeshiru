@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
     
     def index
-        @comments = Comment.page(params[:page]).per(20).reverse_order
+        @comments = Comment.page(params[:page]).per(20)
     end
 
     def show

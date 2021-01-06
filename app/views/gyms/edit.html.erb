@@ -1,12 +1,41 @@
-ジム編集画面
-<div>
-    <%= form_with model:@gym, local:true do |f| %>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="jumbotron">
+            <div class="row justify-content-center">
+               <div><%= form_with model:@gym, local:true do |f| %>
+                  <table>
+                      <tr>                      
+                        <th> <%= f.label :ジム画像登録 %></th>
+                        <td><%= attachment_image_tag @gym, :gym_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "gym_default.jpg" %>
+                            <%= f.attachment_field :gym_image %></td>
+                      </tr>
+                      <tr>                      
+                        <th><%= f.label :ジム名 %></th>
+                        <td><%= f.text_field :name, autofocus: true, autocomplete: 'ジム名' %></td>
+                      </tr>
+                      <tr>                      
+                        <td>営業時間</td>
+                        <td><%= simple_format(@gym.open_time) %></td>
+                      </tr>
+                      <tr>                      
+                        <td>利用料金</td>
+                        <td><%= simple_format(@gym.price) %></td>
+                      </tr>
+                      <tr>                      
+                        <td>定休日</td>
+                        <td><%= simple_format(@gym.holiday) %></td>
+                      </tr>
+                      <tr>                      
+                        <td>公式HP</td>
+                        <td><%= simple_format(@gym.url) %></td>
+                      <tr>                      
+                        <td>どんなジム</td>
+                        <td><%= simple_format(@gym.introduction) %></td>
+                      </tr>
+                      </table>
+
     <!--image プレビュー　-->
-        <%= attachment_image_tag @gym, :gym_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "gym_default.jpg" %>
-        <%= f.label :image %>
-        <%= f.attachment_field :gym_image %>
-        <%= f.label :name %>
-        <%= f.text_field :name, autofocus: true, autocomplete: 'ユーザー名' %>
+
         <%= f.label :introduction %>
         <%= f.text_area :introduction, autofocus: true, autocomplete: '電話番号' %>
         <%= f.label :postcode %>
