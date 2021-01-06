@@ -12,10 +12,10 @@
                             <tr>
                                 <td><%= link_to attachment_image_tag(gym, :gym_image, size:"100x100", fallback: "gym_default.jpg"),gym_path(gym.id) %></td>
                                 <td><%= gym.name %></td>
-                                <td><%= gym.open_time %></td>
-                                <td><%= gym.address %></td>
-                                <td><%= gym.price %></td>
-                                <td><%= gym.holiday %></td>
+                                              <div class="comments_count"><%= gym.comments.count %>件のノボ活</div>
+                      <div id="clips_btns_<%= gym.id %>"> 
+              <%= render partial: 'clips/clip', locals: {gym: gym} %>
+            </div>
                                 <td>ノボログ<%= gym.comments.count %>件</td>
                                 <td><i class="fas fa-heart" aria-hidden="true" style="color: red;"><%= gym.clips.count %></i></td>
                             </tr>
@@ -23,7 +23,10 @@
                     </table>
                 </div>
             </div>
-         </div>
+         </div>    
+         <div class="gym_comments">
+            <%= render 'comments/index', comments: @user.comments, gym: @gym, user: @user %>
+        </div>
         <div class="jumbotron" style="background-color:#bdb76b">
             <table> 
                 <% @user.comments.reverse_each do |comment| %>

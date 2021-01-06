@@ -7,7 +7,6 @@
                       <div id="clips_btns_<%= @gym.id %>"> 
               <%= render partial: 'clips/clip', locals: {gym: @gym} %>
             </div>
-
         </div>
       </div>
     </div>
@@ -17,7 +16,7 @@
       <div class="card">
         <div class="card-body">
           <div class="card-text">
-            <div class="embed-responsive"><%= attachment_image_tag @gym, :gym_image, size:"400x300", fallback: "gym_default.jpg" %></div>
+            <div class="embed-responsive"><%= attachment_image_tag @gym, :gym_image, size:"600x400", fallback: "gym_default.jpg" %></div>
             <div id="map"></div>
           </div>
         </div>
@@ -37,11 +36,11 @@
             <table>
             <tr>
               <th>住所</th>
-              <td><%= simple_format(@gym.address) %></td>
+              <td><%= @gym.address %></td>
             </tr>
             <tr>
               <th>電話番号</th>
-              <td><%= simple_format(@gym.tel) %></td>
+              <td><%= @gym.tel %></td>
             </tr>
             <tr>                      
               <th>営業時間</th>
@@ -49,7 +48,7 @@
             </tr>
             <tr>                      
               <th>利用料金</th>
-              <td><%= simple_format(@gym.price) %></td>
+              <td><%= @gym.price %></td>
             </tr>
             <tr>                      
               <th>定休日</th>
@@ -57,7 +56,7 @@
             </tr>
             <tr>                      
               <th>公式HP</th>
-              <td><%= simple_format(@gym.url) %></td>
+              <td><%= @gym.url %></td>
             <tr>                      
               <th>ジム紹介</th>
               <td><%= simple_format(@gym.introduction) %></td>
