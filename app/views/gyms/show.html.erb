@@ -69,7 +69,7 @@
         </div>
       </div>
     <div class="gym_comments">
-      <%= render 'comments/index', gym: @gym, user: @user %>
+      <%= render 'comments/index', comments: @gym.comments, gym: @gym, user: @user %>
     </div>
   </div>
 </div>
