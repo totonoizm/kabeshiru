@@ -15,11 +15,15 @@
                       </tr>
                       <tr>                      
                         <th><%= f.label :postcode, "郵便番号" %></th>
-                        <td><%= f.text_field :address,  class: "form-control", autofocus: true, autocomplete: '' %></td>
+                        <td><%= f.text_field :postcode,  class: "form-control", autofocus: true, autocomplete: '' %></td>
                       </tr>
                       <tr>                      
                         <th><%= f.label :address, "住所" %></th>
                         <td><%= f.text_area :address,  class: "form-control", autofocus: true, autocomplete: '' %></td>
+                      </tr>
+                      <tr>                      
+                        <th><%= f.label :tel, "電話番号" %></th>
+                        <td><%= f.text_field :tel,  class: "form-control", autofocus: true, autocomplete: '' %></td>
                       </tr>
                       <tr>                      
                         <th><%= f.label :open_time, "営業時間" %></th>
@@ -31,11 +35,11 @@
                       </tr>
                       <tr>                      
                         <th><%= f.label :holiday, "定休日" %></th>
-                        <td><<%= f.text_area :holiday,  class: "form-control", autofocus: true, autocomplete: '' %></td>
+                        <td><%= f.text_area :holiday,  class: "form-control", autofocus: true, autocomplete: '' %></td>
                       </tr>
                       <tr>                      
                         <th><%= f.label :access, " アクセス方法" %></th>
-                        <td><<%= f.text_area :access,  class: "form-control", autofocus: true, autocomplete: '' %></td>
+                        <td><%= f.text_area :access,  class: "form-control", autofocus: true, autocomplete: '' %></td>
                       </tr>
                       <tr>                      
                         <th><%= f.label :url, "URL" %></th>

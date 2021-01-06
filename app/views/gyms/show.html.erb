@@ -1,14 +1,23 @@
-<div class="row">
+<div class="row">    
+  <div class="col-sm-12">
+    <div class="jumbotron">
+        <div class="row justify-content-center">
+          <h1><%= @gym.name %></h1>
+              <div class="comments_count"><%= @gym.comments.count %>件のノボ活</div>
+                      <div id="clips_btns_<%= @gym.id %>"> 
+              <%= render partial: 'clips/clip', locals: {gym: @gym} %>
+            </div>
+
+        </div>
+      </div>
+    </div>
+</div>
+<div class="row"> 
     <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title"></h5>
           <div class="card-text">
             <div class="embed-responsive"><%= attachment_image_tag @gym, :gym_image, size:"400x300", fallback: "gym_default.jpg" %></div>
-            <div id="clips_btns_<%= @gym.id %>"> 
-              <%= render partial: 'clips/clip', locals: {gym: @gym} %>
-            </div>
-              <div class="comments_count"><%= @gym.comments.count %>件のノボ活</div>
             <div id="map"></div>
           </div>
         </div>
@@ -17,10 +26,10 @@
     <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Gym info</h5>
+          <h3 class="card-title">Gym info</h3>
           <div class="card-text">
             <div class="text-sm-right">
-                <%= link_to  edit_gym_path, class: 'btn btn-sm' do %>
+                <%= link_to edit_gym_path, class: 'btn btn-sm' do %>
               <i class="fa fa-tools"></i>
               <span>情報修正</span>
               <% end %>
@@ -50,7 +59,7 @@
               <th>公式HP</th>
               <td><%= simple_format(@gym.url) %></td>
             <tr>                      
-              <th>どんなジム</th>
+              <th>ジム紹介</th>
               <td><%= simple_format(@gym.introduction) %></td>
             </tr>
             </table>
