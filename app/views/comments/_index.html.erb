@@ -1,5 +1,5 @@
 <% gym.comments.reverse_each do |comment| %>
-<div class="card" style="width: 50rem;">
+<div class="card">
   <div class="card-body">
     <div class="card-title">
       <%= link_to (comment.user) do %>
@@ -11,7 +11,7 @@
     </div>
     <div class="card-text"><%= simple_format(comment.comment) %></div>
     <% if comment.user == current_user %>
-      <div><%= link_to "削除", gym_comment_path(comment.gym,comment), class: "btn btn-danger pull-right", data: {confirm: "Are you sure?"}, method: :delete, remote:true %></div>
+      <div class="text-sm-right"><%= link_to "削除", gym_comment_path(comment.gym,comment), class: "btn btn-danger", data: {confirm: "Are you sure?"}, method: :delete, remote:true %></div>
     <% end %>
   </div>
 </div>
