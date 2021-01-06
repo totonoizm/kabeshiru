@@ -25,10 +25,10 @@
           <table>
           <tr>                      
             <th>住所</th>
-            <td><%= simple_format(@gym.state) %></td>
+            <td><%= simple_format(@gym.address) %></td>
           </tr>
           <tr>                      
-            <td>電話番号</td>
+            <th>電話番号</th>
             <td><%= simple_format(@gym.tel) %></td>
           </tr>
           <tr>                      
@@ -100,7 +100,7 @@
 
 <script type="text/javascript">
     function initMap() {
-
+        
         var test ={lat: <%= @gym.latitude %>, lng: <%= @gym.longitude %>};
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 15,
@@ -109,7 +109,7 @@
         var transitLayer = new google.maps.TransitLayer();
         transitLayer.setMap(map);
 
-        var contentString = '住所：<%= @gym.state %>';
+        var contentString = '住所：<%= @gym.address %>';
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });

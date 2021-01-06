@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2020_12_28_070759) do
     t.text "introduction"
     t.string "tel"
     t.string "gym_image_id"
-    t.string "state"
     t.string "address"
     t.string "postcode"
     t.string "url"

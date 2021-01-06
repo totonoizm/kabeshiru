@@ -5,7 +5,7 @@
                 <div class="col-4">
                     <div class="form-inline">
                         <%= search_form_for @search, url: search_gyms_path do |f| %>
-                        <%= f.text_field :name_or_address_or_state_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'input' %>
+                        <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'input' %>
                       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
                       <% end %>
                     </div>
@@ -21,7 +21,7 @@
         <div class="card">
         　　<div class="card-body">
                 <h5 class="card-title"><%= gym.name %></h5>
-                <p class="card-state"><%= gym.state %></p>
+                <p class="card-address"><%= gym.address %></p>
                 <div id="clips_btns_<%= gym.id %>"> 
                   <%= render partial: 'clips/clip', locals: {gym: gym} %>
                 </div>
