@@ -1,28 +1,62 @@
 <div class="row">
-  <div class="jumbotron">
-
-    <%= attachment_image_tag @gym, :gym_image, size:"500x500", fallback: "gym_default.jpg" %>
-    <%= link_to "ジム情報編集", edit_gym_path(@gym) %>
-    <div id="map"></div>
-    <%= @gym.name %>
-    <%= @gym.introduction %>
-    <%= @gym.tel %>
-    <%= @gym.state %>
-    <%= @gym.address %>
-    <%= @gym.postcode %>
-    <%= @gym.url %>
-    <%= @gym.open_time %>
-    <%= @gym.price %>
-    <%= @gym.holiday %>
-    <%= @gym.access %>
-    <%= @gym.latitude %>
-    <%= @gym.longitude %>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= @gym.name %></h5>
+        <div class="card-text"> 
+          <div><%= attachment_image_tag @gym, :gym_image, size:"400x300", fallback: "gym_default.jpg" %></div>
+          <div id="clips_btns_<%= @gym.id %>"> 
+            <%= render partial: 'clips/clip', locals: {gym: @gym} %>
+          </div>
+          <div>地図</div>
+          <div id="map"></div>
+          <%= link_to "ジム情報編集", edit_gym_path(@gym) %></div>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Gym info</h5>
+        <div class="card-text">
+          <table>
+          <tr>                      
+            <td>住所</td>
+            <td><%= simple_format(@gym.state) %></td>
+          </tr>
+          <tr>                      
+            <td>電話番号</td>
+            <td><%= simple_format(@gym.tel) %></td>
+          </tr>
+          <tr>                      
+            <td>営業時間</td>
+            <td><%= simple_format(@gym.open_time) %></td>
+          </tr>
+          <tr>                      
+            <td>利用料金</td>
+            <td><%= simple_format(@gym.price) %></td>
+          </tr>
+          <tr>                      
+            <td>定休日</td>
+            <td><%= simple_format(@gym.holiday) %></td>
+          </tr>
+          <tr>                      
+            <td>公式HP</td>
+            <td><%= simple_format(@gym.url) %></td>
+          <tr>                      
+            <td>どんなジム</td>
+            <td><%= simple_format(@gym.introduction) %></td>
+          </tr>
+          </table>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
   </div>
 </div>
-
-<div id="clips_btns_<%= @gym.id %>"> 
-  <%= render partial: 'clips/clip', locals: {gym: @gym} %>
-</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="jumbotron">
 <div>
   <%= form_with model:[@gym,@comment] do |f| %>
     <%= f.text_area :comment, size:"90x5", placeholder: "コメントをどうぞ" %>

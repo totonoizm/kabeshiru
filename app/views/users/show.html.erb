@@ -17,7 +17,7 @@
                                 <td><%= gym.price %></td>
                                 <td><%= gym.holiday %></td>
                                 <td>ノボログ<%= gym.comments.count %>件</td>
-                                <td><i class="fa fa-star" aria-hidden="true" style="color: orange;"><%= gym.clips.count %></i></td>
+                                <td><i class="fas fa-heart" aria-hidden="true" style="color: red;"><%= gym.clips.count %></i></td>
                             </tr>
                         <% end %>
                     </table>
@@ -25,7 +25,6 @@
             </div>
          </div>
         <div class="jumbotron" style="background-color:#bdb76b">
-            <h4>ノボ活</h4>
             <table> 
                 <% @user.comments.reverse_each do |comment| %>
                     <tr>

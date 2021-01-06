@@ -1,3 +1,4 @@
+プロフィール編集画面
 <div class="row">
     <div class="col-sm-12">
         <div class="jumbotron">
@@ -5,7 +6,7 @@
                 <%= form_with model:@user, local:true do |f| %>
                   <table>
                     <tr>                      
-                    <td><%= attachment_image_tag @user, :profile_image, size: "70x70", format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+                    <td><%= attachment_image_tag @user, :profile_image, size:"70x70", format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
                         <%= f.label :image %>
                         <%= f.attachment_field :profile_image %></td>
                     </tr>
@@ -22,14 +23,13 @@
                       <td></td>
                     </tr>
                   </table>
-                <div class="row justify-content-center">
-                    <%= f.submit "編集確定", class:"btn btn-primary" %>
-                    <% end %>
-                </div>
+            </div>
+            <div class="row justify-content-center">
+                <%= f.submit "登録", class:"btn btn-primary" %>
+                <% end %>
             </div>
             <div class="row justify-content-center">
                 <%= link_to "退会はこちら", quit_user_path, class: "nav-link" %>
-            </div>
             </div>
         </div>
     </div>
