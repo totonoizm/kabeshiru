@@ -10,42 +10,41 @@
                             <%= f.attachment_field :gym_image %></td>
                       </tr>
                       <tr>                      
-                        <th><%= f.label :ジム名 %></th>
-                        <td><%= f.text_field :name, autofocus: true, autocomplete: 'ジム名' %></td>
+                        <th><%= f.label :name, "ジム名" %></th>
+                        <td><%= f.text_field :name, class: "form-control", autofocus: true, autocomplete: 'ジム名' %></td>
                       </tr>
                       <tr>                      
-                        <td>営業時間</td>
-                        <td><%= simple_format(@gym.open_time) %></td>
+                        <th><%= f.label :postcode, "郵便番号" %></th>
+                        <td><%= f.text_field :address,  class: "form-control", autofocus: true, autocomplete: '' %></td>
                       </tr>
                       <tr>                      
-                        <td>利用料金</td>
-                        <td><%= simple_format(@gym.price) %></td>
+                        <th><%= f.label :address, "住所" %></th>
+                        <td><%= f.text_area :address,  class: "form-control", autofocus: true, autocomplete: '' %></td>
                       </tr>
                       <tr>                      
-                        <td>定休日</td>
-                        <td><%= simple_format(@gym.holiday) %></td>
+                        <th><%= f.label :open_time, "営業時間" %></th>
+                        <td><%= f.text_area :open_time,  class: "form-control", autofocus: true, autocomplete: '' %></td>
                       </tr>
                       <tr>                      
-                        <td>公式HP</td>
-                        <td><%= simple_format(@gym.url) %></td>
+                        <th><%= f.label :price, "利用料金" %></th>
+                        <td><%= f.text_area :price,  class: "form-control", autofocus: true, autocomplete: '' %></td>
+                      </tr>
                       <tr>                      
-                        <td>どんなジム</td>
-                        <td><%= simple_format(@gym.introduction) %></td>
+                        <th><%= f.label :holiday, "定休日" %></th>
+                        <td><<%= f.text_area :holiday,  class: "form-control", autofocus: true, autocomplete: '' %></td>
+                      </tr>
+                      <tr>                      
+                        <th><%= f.label :access, " アクセス方法" %></th>
+                        <td><<%= f.text_area :access,  class: "form-control", autofocus: true, autocomplete: '' %></td>
+                      </tr>
+                      <tr>                      
+                        <th><%= f.label :url, "URL" %></th>
+                        <td><%= f.text_field :url,  class: "form-control", autofocus: true, autocomplete: '' %></td>
+                      <tr>                      
+                        <th><%= f.label :introduction, "ジム紹介" %></th>
+                        <td><%= f.text_area :introduction,  class: "form-control", autofocus: true, autocomplete: '' %></td>
                       </tr>
                       </table>
-
-    <!--image プレビュー　-->
-
-        <%= f.label :introduction %>
-        <%= f.text_area :introduction, autofocus: true, autocomplete: '電話番号' %>
-        <%= f.label :postcode %>
-        <%= f.text_area :postcode, autofocus: true, autocomplete: '郵便番号' %>
-        <%= f.label :address %>
-        <%= f.text_area :address, autofocus: true, autocomplete: '' %>
-        <%= f.label :url %>
-        <%= f.text_area :url, autofocus: true, autocomplete: '' %>
-        <%= f.label :open_time %>
-        <%= f.text_area :price, autofocus: true, autocomplete: '' %>
         <%= f.submit "登録", class:"btn btn-primary" %>
     <% end %>
 </div>

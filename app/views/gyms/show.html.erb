@@ -1,56 +1,60 @@
 <div class="row">
-  <div class="col-sm-4">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><%= @gym.name %></h5>
-        <div class="card-text">
-          <div class="embed-responsive"><%= attachment_image_tag @gym, :gym_image, size:"400x300", fallback: "gym_default.jpg" %></div>
-          <div id="clips_btns_<%= @gym.id %>"> 
-            <%= render partial: 'clips/clip', locals: {gym: @gym} %>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <div class="card-text">
+            <div class="embed-responsive"><%= attachment_image_tag @gym, :gym_image, size:"400x300", fallback: "gym_default.jpg" %></div>
+            <div id="clips_btns_<%= @gym.id %>"> 
+              <%= render partial: 'clips/clip', locals: {gym: @gym} %>
+            </div>
+              <div class="comments_count"><%= @gym.comments.count %>件のノボ活</div>
+            <div id="map"></div>
           </div>
-          <table>
-            <td class="comments_count"><%= @gym.comments.count %>件のノボ活</td>
-          </table>
-          <div>地図</div>
-          <div id="map"></div>
-          <%= link_to "ジム情報編集", edit_gym_path(@gym), class: "btn btn-primary" %></div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-sm-8">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Gym info</h5>
-        <div class="card-text">
-          <table>
-          <tr>                      
-            <th>住所</th>
-            <td><%= simple_format(@gym.address) %></td>
-          </tr>
-          <tr>                      
-            <th>電話番号</th>
-            <td><%= simple_format(@gym.tel) %></td>
-          </tr>
-          <tr>                      
-            <td>営業時間</td>
-            <td><%= simple_format(@gym.open_time) %></td>
-          </tr>
-          <tr>                      
-            <td>利用料金</td>
-            <td><%= simple_format(@gym.price) %></td>
-          </tr>
-          <tr>                      
-            <td>定休日</td>
-            <td><%= simple_format(@gym.holiday) %></td>
-          </tr>
-          <tr>                      
-            <td>公式HP</td>
-            <td><%= simple_format(@gym.url) %></td>
-          <tr>                      
-            <td>どんなジム</td>
-            <td><%= simple_format(@gym.introduction) %></td>
-          </tr>
-          </table>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Gym info</h5>
+          <div class="card-text">
+            <div class="text-sm-right">
+                <%= link_to  edit_gym_path, class: 'btn btn-sm' do %>
+              <i class="fa fa-tools"></i>
+              <span>情報修正</span>
+              <% end %>
+            </div>
+            <table>
+            <tr>
+              <th>住所</th>
+              <td><%= simple_format(@gym.address) %></td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td><%= simple_format(@gym.tel) %></td>
+            </tr>
+            <tr>                      
+              <th>営業時間</th>
+              <td><%= simple_format(@gym.open_time) %></td>
+            </tr>
+            <tr>                      
+              <th>利用料金</th>
+              <td><%= simple_format(@gym.price) %></td>
+            </tr>
+            <tr>                      
+              <th>定休日</th>
+              <td><%= simple_format(@gym.holiday) %></td>
+            </tr>
+            <tr>                      
+              <th>公式HP</th>
+              <td><%= simple_format(@gym.url) %></td>
+            <tr>                      
+              <th>どんなジム</th>
+              <td><%= simple_format(@gym.introduction) %></td>
+            </tr>
+            </table>
+        </div>
       </div>
     </div>
   </div>
@@ -92,10 +96,7 @@
 
 <style type="text/css">
   #map { height: 400px;
-    margin-left:auto;
-    margin-right:auto;
-    text-align:left;
-    width: 80%;}
+    width: 100%;}
 </style>
 
 <script type="text/javascript">
