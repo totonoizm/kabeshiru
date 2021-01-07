@@ -16,8 +16,14 @@
       <input id="trigger1" class="grad-trigger" type="checkbox">
         <label class="grad-btn" for="trigger1"></label>
         <div class="grad-item"><%= simple_format(comment.comment) %></div>
-    <% if comment.user == current_user %>
-      <div class="text-sm-right"><%= link_to "削除", gym_comment_path(comment.gym,comment), class: "btn btn-danger", data: {confirm: "Are you sure?"}, method: :delete, remote:true %></div>
+    <% if request.path.include?('gym') %>
+      <% if comment.user == current_user %>
+        <div class="text-sm-right"><%= link_to "削除", gym_comment_path(comment.gym,comment), class: "btn btn-danger", data: {confirm: "Are you sure?"}, method: :delete, remote:true %></div>
+      <% end %>
+    <% else %>
+      <% if comment.user == current_user %>
+        <div class="text-sm-right"><%= link_to "削除", user_comment_path(comment.user,comment), class: "btn btn-danger", data: {confirm: "Are you sure?"}, method: :delete, remote:true %></div>
+      <% end %>
     <% end %>
   </div></div>
     </div>
