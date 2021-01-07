@@ -48,9 +48,6 @@ class CommentsController < ApplicationController
             comment.destroy
             @comments = @user.comments
         end
-        
-        
-
     end
     
     private
