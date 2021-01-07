@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="jumbotron">
+        <div class="jumbotron">    
             <div class="row justify-content-center">
-                <%= form_with model:@user, local:true do |f| %>
+                <div><%= form_with model:@user, local:true do |f| %>
                   <table>
                     <tr>                      
                     <td><%= attachment_image_tag @user, :profile_image, size:"70x70", format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
@@ -10,12 +10,12 @@
                         <%= f.attachment_field :profile_image %></td>
                     </tr>
                     <tr>
-                    <td><%= f.label :ユーザーネーム %>
+                    <td><%= f.label :name, "ユーザーネーム" %>
                         <%= f.text_field :name, autofocus: true, placeholder: 'ユーザー名', class: "form-control" %></td>
                     </tr>
                     <tr>
-                    <td><%= f.label :プロフィール %>
-                        <%= f.text_area :introduction, autofocus: true, placeholder: '例：オーバーハングが大好きです！', class: "form-control rows=3", size: "30x7" %></td>
+                    <td><%= f.label :introduction, "プロフィール" %>
+                        <%= f.text_area :introduction, autofocus: true, placeholder: '例：オーバーハングが大好きです！', class: "form-control", size: "30x7" %></td>
                     </tr>
                     <tr>
                       <td>ホームジム</td>
@@ -23,10 +23,12 @@
                     </tr>
                   </table>
             </div>
+        </div>
             <div class="row justify-content-center">
                 <%= f.submit "登録", class:"btn btn-primary" %>
                 <% end %>
             </div>
+        
             <div class="row justify-content-center">
                 <%= link_to "退会はこちら", quit_user_path, class: "nav-link" %>
             </div>

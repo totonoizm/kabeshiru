@@ -3,8 +3,8 @@
     <div class="jumbotron">
         <div class="row justify-content-center">
           <h1><%= @gym.name %></h1>
-              <div class="comments_count"><%= @gym.comments.count %>件のノボ活</div>
-                      <div id="clips_btns_<%= @gym.id %>"> 
+              <div id="comments_count"><%= @gym.comments.count %>件のノボ活</div>
+                <div id="clips_btns_<%= @gym.id %>"> 
               <%= render partial: 'clips/clip', locals: {gym: @gym} %>
             </div>
         </div>
@@ -71,7 +71,7 @@
   <div class="col-sm-12">
     <div class="card">
       <div class="card-body">
-      <h5 class="card-title"><%= @gym.name %>のノボ活</h5>
+      <h5 class="card-title"><%= @gym.name %>のノボログ</h5>
       <div class="card-text"> 
         <div class="form_group"> 
           <%= form_with model:[@gym,@comment] do |f| %>
@@ -80,7 +80,7 @@
           <% end %>
         </div>
       </div>
-    <div class="gym_comments">
+    <div id="gym_comments">
       <%= render 'comments/index', comments: @gym.comments, gym: @gym, user: @user %>
     </div>
   </div>

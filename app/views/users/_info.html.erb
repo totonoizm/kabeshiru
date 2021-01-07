@@ -16,7 +16,7 @@
                     </tr>
                     <tr>
                       <% if user.id == current_user.id %>
-                          <td><%= link_to "プロフィール編集", edit_user_path(user) %></td>
+                          <td><%= link_to "プロフィール編集", edit_user_path(user), data: {"turbolinks" => false} %></td>
                       <% end %>
                     </tr> 
                   </table>

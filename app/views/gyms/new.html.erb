@@ -1,55 +1,69 @@
 <div class="row">
-    <div class="col-sm-12">
-        <div class="jumbotron">
-            <div class="row justify-content-center">
-                新規登録画面
-               <div><%= form_with model:@gym, url:gyms_path,local:true do |f| %>
-                  <table>
-                      <tr>                      
-                        <th> <%= f.label :ジム画像登録 %></th>
-                        <td><%= attachment_image_tag @gym, :gym_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "gym_default.jpg" %>
-                            <%= f.attachment_field :gym_image %></td>
-                      </tr>
-                      <tr>                      
-                        <th><%= f.label :name, "ジム名" %></th>
-                        <td><%= f.text_field :name, class: "form-control", autofocus: true, autocomplete: 'ジム名' %></td>
-                      </tr>
-                      <tr>                      
-                        <th><%= f.label :postcode, "郵便番号" %></th>
-                        <td><%= f.text_field :postcode,  class: "form-control", autofocus: true, autocomplete: '' %></td>
-                      </tr>
-                      <tr>                      
-                        <th><%= f.label :address, "住所" %></th>
-                        <td><%= f.text_area :address,  class: "form-control", autofocus: true, autocomplete: '' %></td>
-                      </tr>
-                      <tr>                      
-                        <th><%= f.label :tel, "電話番号" %></th>
-                        <td><%= f.text_field :tel,  class: "form-control", autofocus: true, autocomplete: '' %></td>
-                      </tr>
-                      <tr>                      
-                        <th><%= f.label :open_time, "営業時間" %></th>
-                        <td><%= f.text_area :open_time,  class: "form-control", autofocus: true, autocomplete: '' %></td>
-                      </tr>
-                      <tr>                      
-                        <th><%= f.label :price, "利用料金" %></th>
-                        <td><%= f.text_area :price,  class: "form-control", autofocus: true, autocomplete: '' %></td>
-                      </tr>
-                      <tr>                      
-                        <th><%= f.label :holiday, "定休日" %></th>
-                        <td><%= f.text_area :holiday,  class: "form-control", autofocus: true, autocomplete: '' %></td>
-                      </tr>
-                      <tr>                      
-                        <th><%= f.label :access, " アクセス方法" %></th>
-                        <td><%= f.text_area :access,  class: "form-control", autofocus: true, autocomplete: '' %></td>
-                      </tr>
-                      <tr>                      
-                        <th><%= f.label :url, "URL" %></th>
-                        <td><%= f.text_field :url,  class: "form-control", autofocus: true, autocomplete: '' %></td>
-                      <tr>                      
-                        <th><%= f.label :introduction, "ジム紹介" %></th>
-                        <td><%= f.text_area :introduction,  class: "form-control", autofocus: true, autocomplete: '' %></td>
-                      </tr>
-                      </table>
-        <%= f.submit "登録", class:"btn btn-primary" %>
-    <% end %>
+  <div class="col-sm-12">
+    <div class="jumbotron">
+      <h1 class="display-4">施設情報登録</h1>
+      <hr class="my-4">
+      <p>ボルダリングジム登録の協力をお願いします。</p>
+      <p>入力項目が多数あるので、不明な箇所は未入力のままでも登録できます。</p>
+      <p>一度ジムを登録した後は壁シルのユーザーなら誰でも情報を編集することができます。</p>
+      <p>既に同じジムが登録されている場合は後から登録したページは削除されますのでご注意ください。</p>
+    </div>
+  </div>
+</div>
+<div class="jumbotron">
+  <h3 class>ジム情報</h3>
+  <div class="row justify-content-center">
+   <div><%= form_with model:@gym, url:gyms_path,local:true do |f| %>
+      <table>
+        <tr>                      
+          <th> <%= f.label :image, "ジム画像" %></th>
+          <td><%= attachment_image_tag @gym, :gym_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "gym_default.jpg" %>
+              <%= f.attachment_field :gym_image %></td>
+        </tr>
+        <tr>                      
+          <th><%= f.label :name, "ジム名" %></th>
+          <td><%= f.text_field :name, class: "form-control", placeholder:"例：B-PUMP TOKYO" %></td>
+        </tr>
+        <tr>                      
+          <th><%= f.label :postcode, "郵便番号" %></th>
+          <td><%= f.text_field :postcode,  class: "form-control", placeholder:"例：100-0008"  %></td>
+        </tr>
+        <tr>                      
+          <th><%= f.label :address, "住所" %></th>
+          <td><%= f.text_area :address,  class: "form-control", placeholder:"ジム名"  %></td>
+        </tr>
+        <tr>                      
+          <th><%= f.label :tel, "電話番号" %></th>
+          <td><%= f.text_field :tel,  class: "form-control", placeholder:"ジム名"  %></td>
+        </tr>
+        <tr>                      
+          <th><%= f.label :open_time, "営業時間" %></th>
+          <td><%= f.text_area :open_time,  class: "form-control", placeholder:"ジム名"  %></td>
+        </tr>
+        <tr>                      
+          <th><%= f.label :price, "利用料金" %></th>
+          <td><%= f.text_area :price,  class: "form-control", placeholder:"ジム名"  %></td>
+        </tr>
+        <tr>                      
+          <th><%= f.label :holiday, "定休日" %></th>
+          <td><%= f.text_area :holiday,  class: "form-control", placeholder:"ジム名"  %></td>
+        </tr>
+        <tr>                      
+          <th><%= f.label :access, " アクセス方法" %></th>
+          <td><%= f.text_area :access,  class: "form-control", placeholder:"ジム名"  %></td>
+        </tr>
+        <tr>                      
+          <th><%= f.label :url, "URL" %></th>
+          <td><%= f.text_field :url,  class: "form-control", placeholder:"ジム名"  %></td>
+        <tr>                      
+          <th><%= f.label :introduction, "ジム紹介" %></th>
+          <td><%= f.text_area :introduction,  class: "form-control", placeholder:"ジム名"  %></td>
+        </tr>
+      </table>
+      <div class="row justify-content-center">
+          <%= f.submit "登録を完了する", class:"btn btn-primary" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
 </div>
