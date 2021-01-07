@@ -12,9 +12,9 @@
         <span>ユーザー情報修正</span>
         <% end %>
       <% end %>
-      <table>
+      <table class="text-left">
           <th>プロフィール</th>
-          <td><%= simple_format(user.introduction) %> </td>
+          <td><%= safe_join(user.introduction.split("\n"),tag(:br)) %></td>
         </tr>
       </table>
     </div>
