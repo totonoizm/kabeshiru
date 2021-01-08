@@ -27,9 +27,9 @@
                 <p class="card-address"><%= gym.address %></p>
                 <div id="clips_btns_<%= gym.id %>"> 
                   <%= render partial: 'clips/clip', locals: {gym: gym} %>
-                </div>
                 <div class="embed-responsive">
                     <%= link_to attachment_image_tag(gym, :gym_image, size:"400x300", fallback: "gym_default.jpg"),gym_path(gym.id) %>
+                </div>
                 </div>
                 <p class="card-text">施設利用料金：<%= gym.price %></p>
                 <p class="card-text">定休日：<%= gym.holiday %></p>

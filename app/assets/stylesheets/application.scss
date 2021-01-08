@@ -17,7 +17,6 @@
 @import 'font-awesome';
 
 body {
-    font-family: 'Roboto', sans-serif;
     padding-top: 70px;
     background-image: image-url("bg-image.jpg");
     background-attachment: fixed;
@@ -28,9 +27,6 @@ body {
 }
 .gym_comments{
     margin-top: 40px;
-}
-body{
-
 }
 
 footer{
@@ -43,14 +39,17 @@ footer{
     font-weight:700;
     font-size:30px;
 }
-
+.nav-item{
+    letter-spacing: 3px;
+    text-decoration:none;
+    font-size:17px;
+}
 .address span , .menu span{
    color: #FFF; 
    font-weight: bold; 
    border-bottom: 1px solid #c7c7c7; 
    padding:10px 0px;
    display: block;
-   text-transform: uppercase;
    font-size: 16px;
    letter-spacing: 3px;
 }
@@ -69,26 +68,10 @@ footer{
 
 .address li a:hover , .menu li a:hover{
     color: #da3e44;
-    -webkit-transition: all 1s ease-in-out;
-    -moz-transition: all 1s ease-in-out;
-    -o-transition: all 1s ease-in-out;
-    transition: all 1s ease-in-out;
 }
 
 .address .fa{
     color: #da3e44;
     margin-right: 10px;
     font-size:18px;
-}
-.open-1{
-    right : -100%;
-}
-.open-1.active{
-    right : 0px;
-}
-
-.move-1.on.btn{
-    position: fixed;
-    right: 25px;
-    top: 10px;
 }
