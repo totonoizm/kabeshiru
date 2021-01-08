@@ -14,7 +14,11 @@
       <% end %>
       <table class="text-left">
           <th>プロフィール</th>
-          <td><%= safe_join(user.introduction.split("\n"),tag(:br)) %></td>
+          <% if @user.introduction.nil? %>
+            <td><%= user.introduction %></td>
+          <% else %>
+            <td><%= safe_join(user.introduction.split("\n"),tag(:br)) %></td>
+          <% end %>
         </tr>
       </table>
     </div>
