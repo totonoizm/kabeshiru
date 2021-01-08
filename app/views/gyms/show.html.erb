@@ -3,7 +3,7 @@
     <div class="jumbotron">
         <div class="row justify-content-center">
           <h1><%= @gym.name %></h1>
-              <div id="comments_count"><%= @gym.comments.count %>件のノボ活</div>
+              <div id="comments_count"><%= @gym.comments.count %>件のノボログ</div>
                 <div id="clips_btns_<%= @gym.id %>"> 
               <%= render partial: 'clips/clip', locals: {gym: @gym} %>
             </div>
