@@ -37,9 +37,20 @@ class CommentsController < ApplicationController
     end
     
     def destroy
-        @gym = Gym.find(params[:gym_id])
-        comment = @gym.comments.find(params[:id])
-        comment.destroy
+        if params[:gym_id].present?
+            @gym = Gym.find(params[:gym_id])
+            comment = @gym.comments.find(params[:id])
+            comment.destroy
+            @comments  = @gym.comments
+        else
+            @user = User.find(params[:user_id])
+            comment = @user.comments.find(params[:id])
+            comment.destroy
+            @comments = @user.comments
+        end
+        
+        
+
     end
     
     private

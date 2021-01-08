@@ -1,3 +1,3 @@
-$(".comments_count").html("<%= @gym.comments.count %>件のノボ活");
-$(".gym_comments").html("<%= j(render 'comments/index', comments: @gym.comments, gym: @gym, user: @user) %>");
+$("#comments_count").html("<%= @gym.comments.count %>件のノボログ");　
+$("#gym_comments").html("<%= j(render partial: 'comments/index', locals: {comments: @gym.comments, gym: @gym, user: @user}) %>");
 $("#comment_comment").val("");

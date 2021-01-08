@@ -28,3 +28,50 @@ body {
 .gym_comments{
     margin-top: 40px;
 }
+
+footer{
+     background-color: #33383c;
+     padding:30px 0px;
+}	       
+
+.logo{
+    color:#FFF;
+    font-weight:700;
+    font-size:30px;
+}
+.nav-item{
+    letter-spacing: 3px;
+    text-decoration:none;
+    font-size:17px;
+}
+.address span , .menu span{
+   color: #FFF; 
+   font-weight: bold; 
+   border-bottom: 1px solid #c7c7c7; 
+   padding:10px 0px;
+   display: block;
+   font-size: 16px;
+   letter-spacing: 3px;
+}
+ 
+.address li a , .menu li a{
+    color:#FFF;
+    letter-spacing: 3px;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.address li, .menu li{
+    margin:20px 0px;
+    list-style: none;
+}
+
+.address li a:hover , .menu li a:hover{
+    color: #da3e44;
+}
+
+.address .fa{
+    color: #da3e44;
+    margin-right: 10px;
+    font-size:18px;
+}

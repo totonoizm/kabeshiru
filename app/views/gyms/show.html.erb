@@ -3,11 +3,10 @@
     <div class="jumbotron">
         <div class="row justify-content-center">
           <h1><%= @gym.name %></h1>
-              <div class="comments_count"><%= @gym.comments.count %>件のノボ活</div>
-                      <div id="clips_btns_<%= @gym.id %>"> 
+              <div id="comments_count"><%= @gym.comments.count %>件のノボ活</div>
+                <div id="clips_btns_<%= @gym.id %>"> 
               <%= render partial: 'clips/clip', locals: {gym: @gym} %>
             </div>
-
         </div>
       </div>
     </div>
@@ -17,7 +16,7 @@
       <div class="card">
         <div class="card-body">
           <div class="card-text">
-            <div class="embed-responsive"><%= attachment_image_tag @gym, :gym_image, size:"400x300", fallback: "gym_default.jpg" %></div>
+            <div class="embed-responsive"><%= attachment_image_tag @gym, :gym_image, size:"600x400", fallback: "gym_default.jpg" %></div>
             <div id="map"></div>
           </div>
         </div>
@@ -34,14 +33,14 @@
               <span>情報修正</span>
               <% end %>
             </div>
-            <table>
+            <table class="text-left">
             <tr>
               <th>住所</th>
-              <td><%= simple_format(@gym.address) %></td>
+              <td><%= @gym.address %></td>
             </tr>
             <tr>
               <th>電話番号</th>
-              <td><%= simple_format(@gym.tel) %></td>
+              <td><%= @gym.tel %></td>
             </tr>
             <tr>                      
               <th>営業時間</th>
@@ -49,7 +48,7 @@
             </tr>
             <tr>                      
               <th>利用料金</th>
-              <td><%= simple_format(@gym.price) %></td>
+              <td><%= @gym.price %></td>
             </tr>
             <tr>                      
               <th>定休日</th>
@@ -57,7 +56,7 @@
             </tr>
             <tr>                      
               <th>公式HP</th>
-              <td><%= simple_format(@gym.url) %></td>
+              <td><%= @gym.url %></td>
             <tr>                      
               <th>ジム紹介</th>
               <td><%= simple_format(@gym.introduction) %></td>
@@ -72,7 +71,7 @@
   <div class="col-sm-12">
     <div class="card">
       <div class="card-body">
-      <h5 class="card-title"><%= @gym.name %>のノボ活</h5>
+      <h5 class="card-title"><%= @gym.name %>のノボログ</h5>
       <div class="card-text"> 
         <div class="form_group"> 
           <%= form_with model:[@gym,@comment] do |f| %>
@@ -81,27 +80,11 @@
           <% end %>
         </div>
       </div>
-    <div class="gym_comments">
+    <div id="gym_comments">
       <%= render 'comments/index', comments: @gym.comments, gym: @gym, user: @user %>
     </div>
   </div>
 </div>
-    <p>test用
-      <strong>Address:</strong>
-      <%= @gym.address %>
-    </p>
-    
-    <p>
-      <strong>Latitude:</strong>
-  <%= @gym.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @gym.longitude %>
-</p>
-
-
 
 <style type="text/css">
   #map { height: 400px;

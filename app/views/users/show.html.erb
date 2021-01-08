@@ -1,45 +1,33 @@
-<%= render 'users/info', user: @user %>
+<div>
+    <%= render 'users/info', user: @user %>
+</div>
 <div class="row">
-    <div class="card-deck">
+    <div class="col-sm-4">
         <div class="card">
             <div class="card-body">
-              　<div class="card-title">
-                    <h5>行きたいジム</h5>
+          　     <div class="card-title">
+                <h5>行きたいジム</h5>
                 </div>
                 <div class="card-text">
-                    <table> 
+                    <table>
                         <% @clip_gyms.reverse_each do |gym| %>
                             <tr>
                                 <td><%= link_to attachment_image_tag(gym, :gym_image, size:"100x100", fallback: "gym_default.jpg"),gym_path(gym.id) %></td>
                                 <td><%= gym.name %></td>
-                                <td><%= gym.open_time %></td>
-                                <td><%= gym.address %></td>
-                                <td><%= gym.price %></td>
-                                <td><%= gym.holiday %></td>
-                                <td>ノボログ<%= gym.comments.count %>件</td>
-                                <td><i class="fas fa-heart" aria-hidden="true" style="color: red;"><%= gym.clips.count %></i></td>
+                                <td id="comments_count"><%= gym.comments.count %>件のノボログ</td>
+                                <td id="clips_btns_<%= gym.id %>"> 
+                                <%= render partial: 'clips/clip', locals: {gym: gym} %>
+                                </td>
                             </tr>
                         <% end %>
                     </table>
                 </div>
             </div>
-         </div>
-        <div class="jumbotron" style="background-color:#bdb76b">
-            <table> 
-                <% @user.comments.reverse_each do |comment| %>
-                    <tr>
-                        <td><%= link_to(comment.gym) do %>
-                        <%= attachment_image_tag comment.gym, :gym_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "gym_default.jpg" %>
-                        <% end %>
-                        </td>
-                        <td><%= comment.gym.name %></td>
-                        <td><%= comment.comment_seq %>回目の来店</td>
-                        <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-                        <td><%= link_to "コメント詳細", comment_path(comment) %></td>
-                        <td><%= simple_format(comment.comment) %></td>
-                    </tr>
-                <% end %>
-            </table>
+        </div>
+    </div>
+    <div class="col-sm-8">
+         <div id="gym_comments">
+            <%= render partial: 'comments/index', locals: {comments: @user.comments, gym: @gym, user: @user} %>
         </div>
     </div>
 </div>
