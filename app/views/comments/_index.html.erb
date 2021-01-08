@@ -14,6 +14,7 @@
     </div>
     <div class="card-text"><%= simple_format(comment.comment) %></div>
       <% if comment.user == current_user %>
+        <%# 削除ボタンを押したときに現在のページ情報をparamsに乗せる。(もしくは、Controllerで削除する際に遷移元URLを取得してそこからPage番号を取得) %>
         <% if request.path.include?('gym') %>
             <div class="text-sm-right"><%= link_to "削除", gym_comment_path(comment.gym,comment), class: "btn btn-danger", data: {confirm: "Are you sure?"}, method: :delete, remote:true %></div>
         <% elsif request.path.include?('user') %>
