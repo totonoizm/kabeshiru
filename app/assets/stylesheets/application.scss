@@ -17,6 +17,7 @@
 @import 'font-awesome';
 
 body {
+    font-family: 'Roboto', sans-serif;
     padding-top: 70px;
     background-image: image-url("bg-image.jpg");
     background-attachment: fixed;
@@ -28,37 +29,66 @@ body {
 .gym_comments{
     margin-top: 40px;
 }
-.grad-btn {
-  /*.grad-btnのCSSは表示/非表示の動作には関係ないので、ご自由にどうぞ。*/
+body{
+
 }
-.grad-btn::before {
-  content: "続きを読む"
+
+footer{
+     background-color: #33383c;
+     padding:30px 0px;
+}	       
+
+.logo{
+    color:#FFF;
+    font-weight:700;
+    font-size:30px;
 }
-.grad-item {
-  position: relative;
-  overflow: hidden;
-  height: 80px; /*隠した状態の高さ*/
+
+.address span , .menu span{
+   color: #FFF; 
+   font-weight: bold; 
+   border-bottom: 1px solid #c7c7c7; 
+   padding:10px 0px;
+   display: block;
+   text-transform: uppercase;
+   font-size: 16px;
+   letter-spacing: 3px;
 }
-.grad-item::before {
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 40px; /*グラデーションで隠す高さ*/
-  background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.9) 50%, #fff 100%);
-  background: linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.9) 50%, #fff 100%);
-  content: "";
+ 
+.address li a , .menu li a{
+    color:#FFF;
+    letter-spacing: 3px;
+    text-decoration:none;
+    font-size:14px;
 }
-.grad-trigger {
-  display: none; /*チェックボックスは常に非表示*/
+
+.address li, .menu li{
+    margin:20px 0px;
+    list-style: none;
 }
-.grad-trigger:checked ~ .grad-btn::before {
-  content: "閉じる" /*チェックされていたら、文言を変更する*/
+
+.address li a:hover , .menu li a:hover{
+    color: #da3e44;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
 }
-.grad-trigger:checked ~ .grad-item {
-  height: auto; /*チェックされていたら、高さを戻す*/
+
+.address .fa{
+    color: #da3e44;
+    margin-right: 10px;
+    font-size:18px;
 }
-.grad-trigger:checked ~ .grad-item::before {
-  display: none; /*チェックされていたら、grad-itemのbeforeを非表示にする*/
+.open-1{
+    right : -100%;
+}
+.open-1.active{
+    right : 0px;
+}
+
+.move-1.on.btn{
+    position: fixed;
+    right: 25px;
+    top: 10px;
 }
