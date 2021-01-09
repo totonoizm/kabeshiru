@@ -35,6 +35,7 @@ class GymsController < ApplicationController
     def show
         @gym = Gym.find(params[:id])
         @comment = Comment.new
+        @comments = @gym.comments.page(params[:page])
     end
     
     def destroy
