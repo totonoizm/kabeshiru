@@ -46,11 +46,8 @@ class CommentsController < ApplicationController
             @user = User.find(params[:user_id])
             comment = @user.comments.find(params[:id])
             comment.destroy
-            @comments = @user.comments
+            @comments = @user.comments.page(params[:page]).per(10)
         end
-        
-        
-
     end
     
     private
