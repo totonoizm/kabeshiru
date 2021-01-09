@@ -28,5 +28,5 @@
         </div>
       </div>
   <% end %>
-  <%= paginate comments %>
+  <%= paginate comments, params: { controller: 'users', action: 'show' } %>
 </div>
