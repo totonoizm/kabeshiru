@@ -75,6 +75,9 @@
       <div class="card-text"> 
         <div class="form_group"> 
           <%= form_with model:[@gym,@comment] do |f| %>
+          <%= f.label :image, "登った課題の写真を投稿してみよう" %></th>
+          <%= attachment_image_tag @comment, :comment_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "gym_default.jpg" %>
+          <%= f.attachment_field :comment_image %></td>
           <%= f.text_area :comment, size:"95x5", class: "form-control", placeholder: "登った本数、課題について、書き込んでみましょう" %>
           <%= f.submit "ノボッタ！", class: "btn btn-primary btn-lg btn-block" %>
           <% end %>

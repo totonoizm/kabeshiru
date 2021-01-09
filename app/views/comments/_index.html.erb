@@ -12,7 +12,10 @@
       <a><%= comment.comment_seq %>回目の訪問</a><!--コメントモデルでメソッドを定義-->
       <a><%= comment.created_at.strftime('%Y/%m/%d') %></a>
     </div>
+    <div class="card-text"><%= attachment_image_tag comment, :comment_image, :fill, 100, 100, format: 'jpeg' %>
+</div>
     <div class="card-text"><%= simple_format(comment.comment) %></div>
+    <div class="text-sm-right"><%= link_to "続きを読む", comment_path(comment) %></div>
       <% if comment.user == current_user %>
         <% if request.path.include?('gym') %>
             <div class="text-sm-right"><%= link_to "削除", gym_comment_path(comment.gym,comment), class: "btn btn-danger", data: {confirm: "Are you sure?"}, method: :delete, remote:true %></div>
