@@ -2,7 +2,7 @@ class GymsController < ApplicationController
 
     def index
         # @random = Gym.order("RAND()").limit(5)
-        @gyms = Gym.page(params[:page]).per(20).reverse_order
+        @gyms = Gym.page(params[:page]).per(9).reverse_order
         #20件表示
     end
     
@@ -35,7 +35,7 @@ class GymsController < ApplicationController
     def show
         @gym = Gym.find(params[:id])
         @comment = Comment.new
-        @comments = @gym.comments.page(params[:page])
+        @comments = @gym.comments.order(created_at: :desc).page(params[:page])
     end
     
     def destroy
