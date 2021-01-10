@@ -1,0 +1,155 @@
+<div class="row">    
+  <div class="col-sm-12">
+    <div class="jumbotron">
+        <div class="row justify-content-center">
+          <h1><%= @gym.name %></h1>
+              <div id="comments_count"><%= @gym.comments.count %>件のノボログ</div>
+                <div id="clips_btns_<%= @gym.id %>"> 
+              <%= render partial: 'clips/clip', locals: {gym: @gym} %>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="row"> 
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-text">
+            <div class="embed-responsive"><%= attachment_image_tag @gym, :gym_image, size:"600x400", fallback: "gym_default.jpg" %></div>
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Gym info</h3>
+          <div class="card-text">
+            <div class="text-sm-right">
+                <%= link_to edit_gym_path, class: 'btn btn-sm' do %>
+              <i class="fa fa-tools"></i>
+              <span>情報修正</span>
+              <% end %>
+            </div>
+            <table class="text-left">
+            <tr>
+              <th>住所</th>
+              <td><%= @gym.address %></td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td><%= @gym.tel %></td>
+            </tr>
+            <tr>                      
+              <th>営業時間</th>
+              <td><%= simple_format(@gym.open_time) %></td>
+            </tr>
+            <tr>                      
+              <th>利用料金</th>
+              <td><%= @gym.price %></td>
+            </tr>
+            <tr>                      
+              <th>定休日</th>
+              <td><%= simple_format(@gym.holiday) %></td>
+            </tr>
+            <tr>                      
+              <th>公式HP</th>
+              <td><%= @gym.url %></td>
+            <tr>                      
+              <th>ジム紹介</th>
+              <td><%= simple_format(@gym.introduction) %></td>
+            </tr>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="jumbotron">gazou!
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <% @gym.comments.first(1).each do |comment| %>
+            <%= attachment_image_tag comment, :comment_image, :fill, 100, 100, format: 'jpeg' %>
+          <% end %>
+        </div> 
+        <div class="carousel-item">
+          <% @gym.comments.drop(1).each do |comment| %>
+            <%= attachment_image_tag comment, :comment_image, :fill, 100, 100, format: 'jpeg' %>
+          <% end %>
+        </div> 
+      </div>
+      <div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </a>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+      <h5 class="card-title"><%= @gym.name %>のノボログ</h5>
+      <div class="card-text"> 
+        <div class="form_group"> 
+          <%= form_with model:[@gym,@comment] do |f| %>
+          <%= f.label :image, "登った課題の写真を投稿してみよう" %></th>
+          <%= attachment_image_tag @comment, :comment_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "gym_default.jpg" %>
+          <%= f.attachment_field :comment_image %></td>
+          <%= f.text_area :comment, size:"95x5", class: "form-control", placeholder: "登った本数、課題について、書き込んでみましょう" %>
+          <%= f.submit "ノボッタ！", class: "btn btn-primary btn-lg btn-block" %>
+          <% end %>
+        </div>
+      </div>
+    <div id="gym_comments">
+      <%= render 'comments/index', comments: @gym.comments, gym: @gym, user: @user %>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  #map { height: 400px;
+    width: 100%;}
+</style>
+
+<script type="text/javascript">
+    function initMap() {
+        
+        var test ={lat: <%= @gym.latitude %>, lng: <%= @gym.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: test
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var contentString = '住所：<%= @gym.address %>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position:test,
+            map: map,
+            title: contentString
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+</script>

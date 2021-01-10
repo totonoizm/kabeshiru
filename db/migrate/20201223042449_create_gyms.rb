@@ -6,7 +6,6 @@ class CreateGyms < ActiveRecord::Migration[5.2]
       t.text :introduction
       t.string :tel
       t.string :gym_image_id
-      t.string :state
       t.string :address
       t.string :postcode
       t.string :url
