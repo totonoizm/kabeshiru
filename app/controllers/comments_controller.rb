@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
     
     def index
-        @comments = Comment.page(params[:page]).per(20)
+        @comments = Comment.order(created_at: :desc).page(params[:page]).per(5)
     end
 
     def show
@@ -26,11 +26,17 @@ class CommentsController < ApplicationController
     end
 
     def create
+        puts "-----"
+        puts params
+
+        puts "-----"
+
         @gym = Gym.find(params[:gym_id])
         @comment = Comment.new(comment_params)
         @comment.gym_id = @gym.id
         @comment.user_id = current_user.id
         @comment.comment_seq = @comment.comment_seq_count
+        @comments = @gym.comments.order(created_at: :desc).page(params[:page])
         unless @comment.save
             render 'gyms/show'
         end
@@ -41,20 +47,17 @@ class CommentsController < ApplicationController
             @gym = Gym.find(params[:gym_id])
             comment = @gym.comments.find(params[:id])
             comment.destroy
-            @comments  = @gym.comments
+            @comments  = @gym.comments.order(created_at: :desc).page(params[:page])
         else
             @user = User.find(params[:user_id])
             comment = @user.comments.find(params[:id])
             comment.destroy
-            @comments = @user.comments
+            @comments = @user.comments.order(created_at: :desc).page(params[:page])
         end
-        
-        
-
     end
     
     private
     def comment_params
-        params.require(:comment).permit(:comment)
+        params.require(:comment).permit(:comment, :comment_image)
     end
 end

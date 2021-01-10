@@ -1,8 +1,9 @@
 class Comment < ApplicationRecord
     belongs_to :user
     belongs_to :gym
-    #validates :comment_seq,uniqueness:{scope: [:user_id, :gym_id]}
+    validates :comment_seq,uniqueness:{scope: [:user_id, :gym_id]}
     
+    attachment :comment_image
     # #クラスメソッド　一つのジムに対して何個コメントしたかを取得
     # def users_comment_count
     #   user.comments.where(gym_id:self.gym_id).count

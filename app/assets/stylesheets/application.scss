@@ -17,7 +17,7 @@
 @import 'font-awesome';
 
 body {
-    padding-top: 70px;
+    padding-top: 150px;
     background-image: image-url("bg-image.jpg");
     background-attachment: fixed;
 }
@@ -29,9 +29,14 @@ body {
     margin-top: 40px;
 }
 
+.card-title{
+    font-weight:700;
+}
+
 footer{
-     background-color: #33383c;
-     padding:30px 0px;
+    margin-top: 100px;
+    background-color: #33383c;
+    padding:30px 0px;
 }	       
 
 .logo{

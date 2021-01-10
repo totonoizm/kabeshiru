@@ -7,10 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
     <title>壁シル</title>
   </head>
   <body>
@@ -24,10 +22,10 @@
         <div class="collapse navbar-collapse" id="responsiveMenu">
             <ul class="navbar-nav ml-left">
                 <li class="nav-item">
-                  <%= link_to 'ジム一覧', gyms_path, class: "nav-link" %>
+                  <%= link_to 'Gyms', gyms_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'みんなのノボ活', comments_path, class: "nav-link" %></a> 
+                  <%= link_to 'Nobolog', comments_path, class: "nav-link" %></a> 
                 </li>
              <% if user_signed_in? %>
                 <li class="nav-item">
@@ -53,8 +51,8 @@
               <ul class="navbar-nav ml-auto">
                 <li class="form-inline">
                     <%= search_form_for @search, url: search_gyms_path do |f| %>
-                    <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'input' %>
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+                    <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'form-control' %>
+                  <button class="btn btn-success my-2 my-sm-0" type="submit">検索</button>
                   <% end %>
                 </li>
               </ul>
@@ -76,18 +74,18 @@
       </div>
       <div class="col-md-4 col-sm-6 col-xs-12">
           <ul class="menu">
-               <span>Menu</span>    
+               <span>Menu</span>   
                <li>
-                  <a href="#">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>
-                   <a href="#">Kabeshiruとは？</a>
+                   <a href="">Kabeshiruとは？</a>
                 </li>
                 <li>
-                  <a href="#">Gyms</a>
+                  <%= link_to 'ジム登録', new_gym_path %>
                 </li>
                 <li>
-                   <a href="#">Nobolog</a>
+                   <a><%= link_to 'Nobolog', comments_path %></a>
                 </li>
            </ul>
       </div>

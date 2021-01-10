@@ -27,7 +27,8 @@
     </div>
     <div class="col-sm-8">
          <div id="gym_comments">
-            <%= render partial: 'comments/index', locals: {comments: @user.comments, gym: @gym, user: @user} %>
+            <%= render partial: 'comments/index', locals: {comments: @comments, gym: @gym, user: @user} %>
         </div>
+        <%= paginate @comments %>
     </div>
 </div>
