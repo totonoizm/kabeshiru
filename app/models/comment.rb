@@ -2,6 +2,7 @@ class Comment < ApplicationRecord
     belongs_to :user
     belongs_to :gym
     validates :comment_seq,uniqueness:{scope: [:user_id, :gym_id]}
+    validates :comment, presence: true, length: {maximum: 1000 }
     
     attachment :comment_image
     # #クラスメソッド　一つのジムに対して何個コメントしたかを取得
