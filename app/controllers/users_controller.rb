@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-    
+       before_action :authenticate_user!
+       before_action :admin_user, only: [:destroy, :index]
+
+
     def index
         @users = User.page(params[:page]).per(20).reverse_order
     end
@@ -40,12 +43,20 @@ class UsersController < ApplicationController
         redirect_to new_user_session_path
     end
     
+    def destroy
+        User.find(params[:id]).destroy
+        flash[:notice] = "ユーザー情報を削除しました"
+        redirect_to users_path
+    end
+    
     private
     #ホームジム変更用にstrongparamsを記載する
     # def gym_params
     #end
     
     #ユーザー情報update
+ 
+    
     def user_params
         params.require(:user).permit(:name, :profile_image, :introduction)
     end

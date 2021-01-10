@@ -7,8 +7,7 @@ class Gym < ApplicationRecord
     geocoded_by :address
     after_validation :geocode, if: :address_changed?
     attachment :gym_image
-    attachment :profile_image
-    
+
     def cliped_by?(user) #ジムをブックマークしてあるかどうか
         clips.where(user_id: user.id).exists?
     end

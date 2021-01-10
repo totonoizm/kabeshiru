@@ -1,5 +1,7 @@
 class GymsController < ApplicationController
-
+      before_action :authenticate_user!, only: [:new, :create, :edit, :update, :show]
+      before_action :admin_user, only: :destroy
+    
     def index
         # @random = Gym.order("RAND()").limit(5)
         @gyms = Gym.page(params[:page]).per(9).reverse_order

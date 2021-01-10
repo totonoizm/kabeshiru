@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     @search_gyms = @search.result(distinct: true).order(created_at: "DESC").includes(:user).page(params[:page]).per(20) #ジム検索一覧
   end
   
+  def admin_user
+      redirect_to(root_url) unless  current_user.admin?
+  end
+  
   protected
 
   def configure_permitted_parameters

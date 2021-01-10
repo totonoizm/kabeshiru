@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+    before_action :authenticate_user!
+    before_action :admin_user, only: :destroy
     
     def index
         @comments = Comment.order(created_at: :desc).page(params[:page]).per(5)
