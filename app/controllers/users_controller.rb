@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
     
-    
     def index
         @users = User.page(params[:page]).per(20).reverse_order
     end
@@ -8,6 +7,7 @@ class UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
         @clip_gyms = @user.clip_gyms
+        @comments = @user.comments.page(params[:page])
     end
     
     def update
