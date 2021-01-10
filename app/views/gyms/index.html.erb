@@ -1,36 +1,53 @@
 <div class="row">
     <div class="col-12">
-        <div class="jumbotron jumbotron-search">
+        <div class="jumbotron">
+            <div class="text-center">
+                <h1>KABESHIRU</h1>
+                <p>今日登りたい壁が見つかるボルダリングジム検索サイト</p>
+            </div>
             <div class="row justify-content-center">
-                <div class="col-4">
-                    <div class="form-inline">
-                        <%= search_form_for @search, url: search_gyms_path do |f| %>
-                        <%= f.text_field :name_or_address_or_state_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'input' %>
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
-                      <% end %>
-                    </div>
+                <div class="form-inline">
+                    <%= search_form_for @search, url: search_gyms_path do |f| %>
+                    <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、登ってみたい壁を入力してください...", size: "100x10", class: 'input form-control' %>
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+                  <% end %>
                 </div>
+                <div class="text-center">
+                    <p>お気に入りのジム</p>
+                    <p>今日登りたい壁が見つかるボルダリングジム検索サイト</p>
+                    <p>今日登りたい壁が見つかるボルダリングジム検索サイト</p>
+                </div>
+                <div class="">
+                    <%= link_to 'ジム登録', new_gym_path, class: "nav-link" %>
+                </div>
+            </div>
             </div>
         </div>
     </div>
 </div>
 <!--余裕があればランダムで表示-->
-<div class="jumbotron">
+<div class="col-12">
     <div class="card-columns">
         <% @gyms.each do |gym| %>
-        <div class="card">
-        　　<div class="card-body">
-                <h5 class="card-title"><%= gym.name %></h5>
-                <p class="card-state"><%= gym.state %></p>
-                <div class="embed-responsive">
-                    <%= link_to attachment_image_tag(gym, :gym_image, size:"400x300", fallback: "gym_default.jpg"),gym_path(gym.id) %>
+        <div class="card rounded-3 text-white bg-info ">
+            <div class="embed-responsive">
+                <%= attachment_image_tag gym, :gym_image, size:"400x300", fallback: "gym_default.jpg" %>
+            </div>      
+            <div class="card-body">
+                <div class="card-title"><%= link_to gym_path(gym.id), class: "text-white stretched-link" do %><%= gym.name %></div>
+                 <% end %>
+                <div id="clips_btns_<%= gym.id %>"> 
+                  <%= render partial: 'clips/clip', locals: {gym: gym} %>
                 </div>
-                <p class="card-text">施設利用料金：<%= gym.price %></p>
-                <p class="card-text">定休日：<%= gym.holiday %></p>
-                <p class="card-text">営業時間：<%= gym.open_time %></p>
-        　　</div>
+                <div class="card-text">                
+                    <p>施設利用料金：<%= gym.price %></p>
+                    <p>定休日：<%= gym.holiday %></p>
+                    <p>営業時間：<%= gym.open_time %></p>
+                    <p>ノボログ：<%= gym.comments.count %></p>
+                </div>
+            </div>
         </div>
         <% end %>
     </div>
-    <%= paginate @gyms %>
 </div>
+<%= paginate @gyms %>

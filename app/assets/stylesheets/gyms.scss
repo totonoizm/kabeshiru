@@ -2,11 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @media (min-width: 576px){
-  .jumbotron-search{
-    height: 50vh;
-    min-height: 300px;
-    background-color:#f0f8ff;
-  }
+
   .card-columns {
     -webkit-column-count: 3;
     column-count: 3;
@@ -25,3 +21,4 @@
     object-fit: cover;
   }
 }
+

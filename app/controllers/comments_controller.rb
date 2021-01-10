@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
     
     def index
-        @comments = Comment.page(params[:page]).per(20).reverse_order
+        @comments = Comment.page(params[:page]).per(10)
     end
 
     def show
@@ -37,13 +37,24 @@ class CommentsController < ApplicationController
     end
     
     def destroy
-        @gym = Gym.find(params[:gym_id])
-        comment = @gym.comments.find(params[:id])
-        comment.destroy
+        if params[:gym_id].present?
+            @gym = Gym.find(params[:gym_id])
+            comment = @gym.comments.find(params[:id])
+            comment.destroy
+            @comments  = @gym.comments
+        else
+            @user = User.find(params[:user_id])
+            comment = @user.comments.find(params[:id])
+            comment.destroy
+            @comments = @user.comments
+        end
+        
+        
+
     end
     
     private
     def comment_params
-        params.require(:comment).permit(:comment)
+        params.require(:comment).permit(:comment, :comment_image)
     end
 end

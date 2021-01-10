@@ -7,42 +7,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
     <title>壁シル</title>
   </head>
   <body>
     <header>
-      <nav class="navbar fixed-top navbar-light" style="background-color:#bdb76b">
-          <a class="navbar-brand" href="#!">Kabeshiru ロゴ</a>
-    <% if user_signed_in? %>
-      <%= link_to 'ジム一覧', gyms_path %>
-      <%= link_to 'ジム登録', new_gym_path %>
-      <%= link_to 'みんなのノボ活', comments_path %>
-      <%= link_to user_path(current_user) do %>
-        <%= attachment_image_tag current_user, :profile_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
-      <% end %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to ' ログイン', new_user_session_path, class: 'glyphicon glyphicon-log-in sign_in' %>
-    <% end %>
-        <div class="form-inline">
-            <%= search_form_for @search, url: search_gyms_path do |f| %>
-            <%= f.text_field :name_or_address_or_state_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'input' %>
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
-          <% end %>
+      <nav class="navbar fixed-top navbar-light navbar-expand-md" style="background-color:#bdb76b">
+        <div class="container">
+        <a class="navbar-brand" href="/"><span class="logo">KABESHIRU</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#responsiveMenu" aria-controls="responsiveMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="responsiveMenu">
+            <ul class="navbar-nav ml-left">
+                <li class="nav-item">
+                  <%= link_to 'Gyms', gyms_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'Nobolog', comments_path, class: "nav-link" %></a> 
+                </li>
+             <% if user_signed_in? %>
+                <li class="nav-item">
+                    <%= link_to 'ジム登録', new_gym_path, class: "nav-link" %></a> 
+                </li>
+                <li class="nav-item">
+                    <%= link_to "LOGOUT", destroy_user_session_path, method: :delete, class: "nav-link" %></a> 
+                </li>
+                <li class="nav-item">
+                    <%= link_to user_path(current_user), class: "nav-link" do %>
+                    <%= attachment_image_tag current_user, :profile_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+                    <% end %></a> 
+                </li>
+              <% else %>
+                <li class="nav-item">
+                    <%= link_to ' 新規登録', new_user_registration_path, class: "nav-link" %></a> 
+                </li>
+                <li class="nav-item">
+                    <%= link_to ' ログイン', new_user_session_path, class: "nav-link" %></a>
+              <% end %>
+                </li>
+              </ul>
+              <ul class="navbar-nav ml-auto">
+                <li class="form-inline">
+                    <%= search_form_for @search, url: search_gyms_path do |f| %>
+                    <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'form-control' %>
+                  <button class="btn btn-success my-2 my-sm-0" type="submit">検索</button>
+                  <% end %>
+                </li>
+              </ul>
         </div>
-      </nav>
-    </header>
-    
+        </div>
+    </nav>
+  </header>
     <main class="container">
     <% flash.each do |message_type, message| %>
       <%= message %>
     <% end %>
     <%= yield %>
     </main>
+<footer>
+ <div class="container">
+   <div class="row">
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <span class="logo">KABESHIRU</span>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-12">
+          <ul class="menu">
+               <span>Menu</span>   
+               <li>
+                  <a href="/">Home</a>
+                </li>
+                <li>
+                   <a href="">Kabeshiruとは？</a>
+                </li>
+                <li>
+                  <%= link_to 'ジム登録', new_gym_path %>
+                </li>
+                <li>
+                   <a><%= link_to 'Nobolog', comments_path %></a>
+                </li>
+           </ul>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <ul class="address">
+              <span>Contact</span>       
+              <li>
+                 <i class="fa fa-phone" aria-hidden="true"></i> <a href="#">Phone</a>
+              </li>
+              <li>
+                 <i class="fa fa-map-marker" aria-hidden="true"></i> <a href="#">Adress</a>
+              </li> 
+              <li>
+                 <i class="fa fa-envelope" aria-hidden="true"></i> <a href="#">Email</a>
+              </li> 
+         </ul>
+     </div>
+ </div> 
+</div>
+</footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
