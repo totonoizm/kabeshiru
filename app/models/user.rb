@@ -10,7 +10,8 @@ class User < ApplicationRecord
   has_many :gyms #ジム登録情報も紐付け　誰が更新、追加したかわかるように。退会しても消えないようにオプションは無し
   has_many :clip_gyms, through: :clips, source: :gym #ユーザーがブックマークしたジムを定義
 
-    validates :name, presence: true, length: {in: 1..30 },uniqueness: true
+  validates :name, presence: true, length: {in: 1..30 },uniqueness: true, format:{ without: NGWORD_REGEX}
+  validates :introduction, format:{ without: NGWORD_REGEX}, length:{maximum:140}
     def active_for_authentication?
         super && (self.is_deleted === false)
     end

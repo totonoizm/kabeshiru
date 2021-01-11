@@ -87,3 +87,5 @@ gem 'ransack'
 gem 'geocoder'
 # font-awesome
 gem 'font-awesome-sass'
+# エラーメッセージ日本語
+gem 'rails-i18n'
