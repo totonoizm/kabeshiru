@@ -6,7 +6,7 @@ class User < ApplicationRecord
          
   has_many :comments, dependent: :destroy
   has_many :clips, dependent: :destroy
-  has_many :gyms # ジム登録情報も紐付け　誰が更新、追加したかわかるように。退会しても消えないようにオプションは無し
+  has_many :gyms # ジム登録情報も紐付け　誰が更新、追加したかわかるように。
   has_many :clip_gyms, through: :clips, source: :gym # ユーザーがブックマークしたジムを定義
        
   NGWORD = %w(クソ野郎 糞野郎).freeze

@@ -43,7 +43,7 @@ class GymsController < ApplicationController
   def destroy
     @gym = Gym.find(params[:id])
     @gym.destroy
-    redirect_to gyms_path, flash: {success:  'ユーザーを削除しました'}
+    redirect_to gyms_path, flash: {success:  'ジム情報を削除しました'}
   end
 
   private

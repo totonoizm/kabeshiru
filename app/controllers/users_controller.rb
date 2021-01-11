@@ -38,13 +38,13 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     @user.update(is_deleted: true)
     reset_session
-    redirect_to new_user_session_path,flash[:notice] = "ご利用ありがとうございました"
+    redirect_to new_user_session_path,flash: {danger: 'またのご利用をお待ちしております'}
 
   end
 
   def destroy
     User.find(params[:id]).destroy
-    redirect_to users_path,flash[:notice] = "ユーザー情報を削除しました"
+    redirect_to users_path,flash: {danger: 'ユーザーを削除しました'}
   end
   private
 
@@ -55,6 +55,6 @@ class UsersController < ApplicationController
   # ユーザー情報update
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, :introduction)
+    params.require(:user).permit(:name, :profile_image, :introduction, :gyms)
   end
 end
