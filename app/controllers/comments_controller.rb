@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     
     def update
         @comment = Comment.find(params[:id])
-        if @comment.update!(comment_params)
+        if @comment.update(comment_params)
             redirect_to comment_path(@comment.id)
         else
             render 'edit'
@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
         @comment.comment_seq = @comment.comment_seq_count
         @comments = @gym.comments.order(created_at: :desc).page(params[:page])
         unless @comment.save
-            render 'gyms/show'
+            render 'error'
         end
     end
     

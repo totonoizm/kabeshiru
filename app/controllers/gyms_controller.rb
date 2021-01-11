@@ -14,7 +14,7 @@ class GymsController < ApplicationController
     
     def create
         @gym = Gym.new(gym_params)
-        if @gym.save!
+        if @gym.save
             redirect_to gym_path(@gym.id)
         else
             render 'new'
