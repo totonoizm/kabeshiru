@@ -50,6 +50,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'rubocop-airbnb'
 end
 
 group :test do
@@ -60,6 +61,7 @@ group :test do
   gem 'chromedriver-helper'
   gem 'rspec-rails'
   gem "factory_bot_rails"
+  gem "faker"
 end
 
 group :production do
@@ -74,16 +76,17 @@ gem 'dotenv-rails'
 
 gem 'jquery-rails'
 
-
 # 画像投稿用gem
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 # 画像加工用（サイズ調整など）
 gem 'refile-mini_magick'
 # ページャ
-gem 'kaminari','~> 1.2.1'
+gem 'kaminari', '~> 1.2.1'
 # 検索機能
 gem 'ransack'
 # google map 位置情報取得
 gem 'geocoder'
 # font-awesome
 gem 'font-awesome-sass'
+# エラーメッセージ日本語
+gem 'rails-i18n'

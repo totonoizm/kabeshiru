@@ -11,6 +11,7 @@
         <div class="jumbotron">    
             <div class="row justify-content-center">
                 <div><%= form_with model:@user, local:true do |f| %>
+                <%= render 'layouts/error_messages', model: f.object %>
                   <table>
                     <tr>                      
                     <td><%= attachment_image_tag @user, :profile_image, size:"70x70", format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
