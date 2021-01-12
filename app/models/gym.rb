@@ -17,7 +17,7 @@ class Gym < ApplicationRecord
   validates :introduction, length: { in: 0..140 }, format: { without: NGWORD_REGEX }
   validates :tel, format: { with: VALID_PHONE_NUMBER_REGEX }, uniqueness: true
   validates :address, uniqueness: true, format: { without: NGWORD_REGEX }
-  validates :url, uniqueness: true, format: { without: NGWORD_REGEX }
+  validates :url, uniqueness: true, format: { without: NGWORD_REGEX }, allow_blank: true
   validates :open_time, length: { maximum: 50 }, format: { without: NGWORD_REGEX }
   validates :price, length: { maximum: 50 }, format: { without: NGWORD_REGEX }
   validates :holiday, length: { maximum: 70 }, format: { without: NGWORD_REGEX }

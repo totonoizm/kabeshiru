@@ -17,8 +17,8 @@ class User < ApplicationRecord
   attachment :profile_image
 
   validates :name, presence: true, length: { in: 1..30 }, uniqueness: true, format: { without: NGWORD_REGEX }
-  validates :email, uniqueness: { case_sensitive: false }, presence: true, format: { with: VALID_EMAIL_REGEX }
-  validates :introduction, length: { maximum: 150 }
+  validates :email, uniqueness: { case_sensitive: false }, presence: true
+  validates :introduction, length: { maximum: 150 },format: { without: NGWORD_REGEX }
   def active_for_authentication?
     super && (is_deleted === false)
   end

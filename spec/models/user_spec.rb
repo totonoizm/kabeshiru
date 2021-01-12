@@ -73,6 +73,7 @@ RSpec.describe User, type: :model do
         is_expected.to eq false;
       end
       it "プロフィールにNGWORDが含まれていないこと" do
+        expect(page).not_to have_content'@'
       end
     end
     
@@ -106,4 +107,3 @@ RSpec.describe User, type: :model do
     end
   end
 end
-#アソシエーションのテストは複雑な構成でない限り書かずとも良い
