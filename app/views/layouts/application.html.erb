@@ -28,7 +28,7 @@
                   <%= link_to 'Nobolog', comments_path, class: "nav-link" %> 
                 </li>
                <% if user_signed_in? %>
-                <% if current_user == current_user.admin? %>
+                <% if current_user.admin? %>
                   <li class="nav-item">
                     <%= link_to '全ユーザー一覧', users_path, class: "nav-link" %>
                   </li>
@@ -44,22 +44,22 @@
                       <% end %>
                   </li>
                 <% else %>  
-                <li class="nav-item">
-                    <%= link_to 'ジム登録', new_gym_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to "LOGOUT", destroy_user_session_path, method: :delete, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to user_path(current_user), class: "nav-link" do %>
-                    <%= attachment_image_tag current_user, :profile_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
-                    <% end %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to user_path(current_user), class: "nav-link" do %>
-                    <%= (current_user.name) + "さんのマイページ" %>
-                    <% end %>
-                </li>
+                  <li class="nav-item">
+                      <%= link_to 'ジム登録', new_gym_path, class: "nav-link" %>
+                  </li>
+                  <li class="nav-item">
+                      <%= link_to "LOGOUT", destroy_user_session_path, method: :delete, class: "nav-link" %>
+                  </li>
+                  <li class="nav-item">
+                      <%= link_to user_path(current_user), class: "nav-link" do %>
+                      <%= attachment_image_tag current_user, :profile_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+                      <% end %>
+                  </li>
+                  <li class="nav-item">
+                      <%= link_to user_path(current_user), class: "nav-link" do %>
+                      <%= (current_user.name) + "さんのマイページ" %>
+                      <% end %>
+                  </li>
                 <% end %>
               <% else %>
                 <li class="nav-item">
