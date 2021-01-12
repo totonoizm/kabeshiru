@@ -21,7 +21,7 @@ class Gym < ApplicationRecord
   validates :open_time, length: { maximum: 50 }, format: { without: NGWORD_REGEX }
   validates :price, length: { maximum: 50 }, format: { without: NGWORD_REGEX }
   validates :holiday, length: { maximum: 70 }, format: { without: NGWORD_REGEX }
-  validates :access, uniqueness: true, length: { maximum: 100 }, format: { without: NGWORD_REGEX }
+  validates :access, length: { maximum: 100 }, format: { without: NGWORD_REGEX }
 
   def cliped_by?(user) # ジムをブックマークしてあるかどうか
     clips.where(user_id: user.id).exists?
