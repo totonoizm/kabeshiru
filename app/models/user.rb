@@ -11,11 +11,14 @@ class User < ApplicationRecord
        
   NGWORD = %w(クソ野郎 糞野郎).freeze
   NGWORD_REGEX = %r{#{NGWORD.join('|')}}.freeze
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
 
   attachment :profile_image
 
   validates :name, presence: true, length: { in: 1..30 }, uniqueness: true, format: { without: NGWORD_REGEX }
-  validates :introduction, format: { without: NGWORD_REGEX }, length: { maximum: 140 }
+  validates :email, uniqueness: { case_sensitive: false }, presence: true
+  validates :introduction, length: { maximum: 150 },format: { without: NGWORD_REGEX }
   def active_for_authentication?
     super && (is_deleted === false)
   end
