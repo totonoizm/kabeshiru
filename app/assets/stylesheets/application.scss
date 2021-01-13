@@ -1,5 +1,5 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * THis is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
@@ -32,9 +32,14 @@ body {
     margin-top: 40px;
 }
 
+
 table, th, td,{
     padding-top: 50px;
     width: 20vw;
+}
+
+.card{
+    margin-bottom: 20px;
 }
 .card-title{
     font-weight:700;
