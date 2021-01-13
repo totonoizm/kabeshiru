@@ -14,7 +14,7 @@
   <body>
     <header>
       <nav class="navbar fixed-top navbar-light navbar-expand-md" style="background-color:#bdb76b">
-        <a class="navbar-brand" href="/"><span class="logo">KABESHIRU</span></a>
+        <a class="navbar-brand" href="/"><%= image_tag 'logo.png' %></a>
         <div class="container">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#responsiveMenu" aria-controls="responsiveMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -95,11 +95,8 @@
       <div class="col-md-4 col-sm-6 col-xs-12">
           <ul class="menu">
                <span>Menu</span>   
-               <li>
-                  <a href="/">Home</a>
-                </li>
                 <li>
-                   <a href="">Kabeshiruとは？</a>
+                  <a href="/">Home</a>
                 </li>
                 <li>
                   <%= link_to 'ジム登録', new_gym_path %>
