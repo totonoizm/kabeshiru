@@ -8,9 +8,9 @@
         <div class="row">    
           <div class="col-sm-11 text-right">
               <h3 id="comments_count"><%= @gym.comments.count %>件のノボログ</h3>
-                <div id="clips_btns_<%= @gym.id %>"> 
+                <h3 id="clips_btns_<%= @gym.id %>"> 
               <%= render partial: 'clips/clip', locals: {gym: @gym} %>
-            </div>
+            </h3>
         </div>
       </div>
     </div>
