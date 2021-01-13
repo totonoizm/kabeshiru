@@ -4,65 +4,13 @@
     <div class="jumbotron">
         <div class="row justify-content-center">
           <h1><%= @gym.name %></h1>
-              <div id="comments_count"><%= @gym.comments.count %>件のノボログ</div>
+        </div>
+        <div class="row">    
+          <div class="col-sm-11 text-right">
+              <h3 id="comments_count"><%= @gym.comments.count %>件のノボログ</h3>
                 <div id="clips_btns_<%= @gym.id %>"> 
               <%= render partial: 'clips/clip', locals: {gym: @gym} %>
             </div>
-        </div>
-      </div>
-    </div>
-</div>
-<div class="row"> 
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <div class="card-text text-center">
-            <div class="embed-responsive"><%= attachment_image_tag @gym, :gym_image, size:"400x400", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %></div>
-            <div id="map"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h3 class="card-title">Gym info</h3>
-          <div class="card-text">
-            <div class="text-sm-right">
-                <%= link_to edit_gym_path, class: 'btn btn-sm' do %>
-              <i class="fa fa-tools"></i>
-              <span>情報修正</span>
-              <% end %>
-            </div>
-            <table class="text-left">
-            <tr>
-              <th>住所</th>
-              <td><%= @gym.address %></td>
-            </tr>
-            <tr>
-              <th>電話番号</th>
-              <td><%= @gym.tel %></td>
-            </tr>
-            <tr>                      
-              <th>営業時間</th>
-              <td><%= simple_format(@gym.open_time) %></td>
-            </tr>
-            <tr>                      
-              <th>利用料金</th>
-              <td><%= @gym.price %></td>
-            </tr>
-            <tr>                      
-              <th>定休日</th>
-              <td><%= simple_format(@gym.holiday) %></td>
-            </tr>
-            <tr>                      
-              <th>公式HP</th>
-              <td><%= @gym.url %></td>
-            <tr>                      
-              <th>ジム紹介</th>
-              <td><%= simple_format(@gym.introduction) %></td>
-            </tr>
-            </table>
         </div>
       </div>
     </div>
@@ -97,6 +45,67 @@
     </div>
     </div>
   </div>
+</div>
+
+<div class="row"> 
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-text text-center">
+          <div class="embed-responsive"><%= attachment_image_tag @gym, :gym_image, size:"400x400", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %></div>
+          <div class="row"> 
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Gym info</h3>
+        <div class="card-text">
+          <div class="text-sm-right">
+              <%= link_to edit_gym_path, class: 'btn btn-sm' do %>
+            <i class="fa fa-tools"></i>
+            <span>情報修正</span>
+            <% end %>
+          </div>
+          <div class-"table-responsive-xs">
+          <table class="text-nowrap">
+          <tr>
+            <th>住所</th>
+            <td><%= @gym.address %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= @gym.tel %></td>
+          </tr>
+          <tr>                      
+            <th>営業時間</th>
+            <td><%= simple_format(@gym.open_time) %></td>
+          </tr>
+          <tr>                      
+            <th>利用料金</th>
+            <td><%= @gym.price %></td>
+          </tr>
+          <tr>                      
+            <th>定休日</th>
+            <td><%= simple_format(@gym.holiday) %></td>
+          </tr>
+          <tr>                      
+            <th>公式HP</th>
+            <td><%= @gym.url %></td>
+          <tr>                      
+            <th>ジム紹介</th>
+            <td><%= simple_format(@gym.introduction) %></td>
+          </tr>
+          </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
 <div class="row">
