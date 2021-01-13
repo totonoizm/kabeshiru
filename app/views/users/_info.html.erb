@@ -2,7 +2,9 @@
   <div class="col-sm-12">
     <div class="jumbotron">
       <span class="profile_image">
-        <%= attachment_image_tag user, :profile_image, size:'100x100', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %></h1>
+      <%= link_to user_path(user) do %>
+        <%= attachment_image_tag user, :profile_image, size:'100x100', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+      <% end %>
       </span>
       <span class="display-4"><%= user.name %></span>
       <div class="text-sm-right">
