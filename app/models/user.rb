@@ -16,9 +16,17 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
-  validates :name, presence: true, length: { in: 1..30 }, uniqueness: true, format: { without: NGWORD_REGEX }
+  validates :name, presence: true, length: { in: 0..30 }, uniqueness: true, format: { without: NGWORD_REGEX }
   validates :email, uniqueness: { case_sensitive: false }, presence: true
   validates :introduction, length: { maximum: 150 },format: { without: NGWORD_REGEX }
+  
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+    end
+  end
+  
   def active_for_authentication?
     super && (is_deleted === false)
   end

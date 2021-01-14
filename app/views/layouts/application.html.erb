@@ -16,9 +16,8 @@
   </head>
   <body>
     <header>
-      <nav class="navbar fixed-top navbar-light navbar-expand-md" style="background-color:#83967C">
+      <nav class="navbar fixed-top navbar-light navbar-expand-lg" style="background-color:#83967C">
         <a class="navbar-brand" href="/"><%= image_tag 'logo.png' %></a>
-        <div class="container">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#responsiveMenu" aria-controls="responsiveMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -63,7 +62,7 @@
                   </li>
                   <li class="nav-item">
                       <%= link_to user_path(current_user), class: "nav-link" do %>
-                      <%= (current_user.name) + "さんのマイページ" %>
+                      <%= (current_user.name) %>"さんのマイページ" 
                       <% end %>
                   </li>
                 <% end %>
@@ -85,7 +84,6 @@
                 </li>
               </ul>
           </div>
-        </div>
     </nav>
   </header>
   <main class="container">
