@@ -3,10 +3,10 @@
   <div class="col-sm-12">
     <div class="jumbotron" style="background-color:#EBD9B9">
       <h1 class="display-4">ノボログ詳細</h1>
-      <hr class="my-4"><h1>
-        <%= link_to (@comment.gym) do %>
-          <%= @comment.gym.name %>
-        <% end %></h1>
+      <hr class="my-4">
+      <%= link_to (@comment.gym) do %>
+          <h2 class="gymname"><%= @comment.gym.name %></h2>
+        <% end %>
       <div class="text-sm-right">
       <a><%= @comment.comment_seq %>回目の訪問</a><!--コメントモデルでメソッドを定義-->
       <a><%= @comment.created_at.strftime('%Y/%m/%d') %></a>
