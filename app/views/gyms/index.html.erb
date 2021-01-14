@@ -8,18 +8,19 @@
             <div class="row justify-content-center">
                 <%= search_form_for @search, url: search_gyms_path do |f| %>
                 <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、登ってみたい壁を入力してください...", size: "100x10", class: 'input form-control' %>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+                <button class="btn btn-success btn-lg btn-block" type="submit">検索</button>
                 <% end %>
             </div>
-            <div class="text-center">
-                <p>初めて行くジムがどのくらいの難易度なのか、
-                どんな雰囲気なのかわかりにくい！ そんな時は壁シルを使って先に調べておけば、自分に合ったジムも一目瞭然！楽しく登れます。
-                また、ジムでどれだけ登ったかなど、自分のトレーニング記録をオンラインで管理、シェアできます。</p>
+            <div class="row justify-content-center">
+                <p>初めて行くボルダリングジムが、</p>
+                <p>どんな雰囲気なのかわかりにくい！</p>
+                <p>自分に合ったジムも一目瞭然！楽しく登れます。</p>
+                <p>また、ジムでどれだけ登ったかなど、自分のトレーニング記録をオンラインで管理、シェアできます。</p>
                 <p>快適で、楽しいボルダリングライフをサポートします。</p>
                 <p>お気に入りのジムは今すぐ登録！</p>
             </div>
             <div class="text-center">
-                <%= link_to 'ジム登録', new_gym_path, class: "nav-link" %>
+                <%= link_to 'ジム登録', new_gym_path, class: "btn btn-primary btn-lg" %>
             </div>
         </div>
     </div>

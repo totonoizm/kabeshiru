@@ -11,24 +11,27 @@
       <a><%= @comment.comment_seq %>回目の訪問</a><!--コメントモデルでメソッドを定義-->
       <a><%= @comment.created_at.strftime('%Y/%m/%d') %></a>
       <% if @user.id == current_user.id %>
-        <%= link_to edit_comment_path(@comment), class: 'btn btn-sm' do %>
-        <i class="fa fa-tools"></i>
+        <%= link_to edit_comment_path(@comment), class: 'btn btn-dark' do %>
+        <i class="fa fa-tools fa-sm"></i>
         <span>ノボログ編集</span>
         <% end %>
       <% end %>
       </div>
       <div class="row justify-content-center">
         <table>
-          <tr>                      
+          <tr>
             <td><%= attachment_image_tag @comment, :comment_image, size:"400x300", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %>
           </tr>
-          <tr>                      
+          <tr>
             <td><%= simple_format(@comment.comment) %></td>
           </tr>
         </table>
       </div>
       <div class="row justify-content-center">
         <%= link_to "戻る", user_path(@user), class:"btn btn-primary"%>
+      </div>
+      <div class="row justify-content-center">
+        <%= link_to "このジムの詳細を見る", gym_path(@gym), class:"btn btn-primary"%>
       </div>
     </div>
   </div>

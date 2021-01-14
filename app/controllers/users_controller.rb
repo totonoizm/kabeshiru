@@ -46,6 +46,7 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     redirect_to users_path,flash: {danger: 'ユーザーを削除しました'}
   end
+  
   private
 
   # ホームジム変更用にstrongparamsを記載する

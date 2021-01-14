@@ -4,7 +4,7 @@
             <div class="row justify-content-center">
                 <%= search_form_for @search, url: search_gyms_path do |f| %>
                 <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、登ってみたい壁を入力してください...", size: "100x10", class: 'input form-control' %>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+                <button class="btn btn-success btn-lg btn-block" type="submit">検索</button>
                 <% end %>
             </div>
         <% if params[:q]['name_or_address_or_introduction_cont'] == "" %>
@@ -40,5 +40,5 @@
 </div>
 <%= paginate @search_gyms %>
 <% else %>
-    <%= "検索に一致するジムはありませんでした" %>
+    <%= "検索に一致するジムはありませんでした..." %>
 <% end %>

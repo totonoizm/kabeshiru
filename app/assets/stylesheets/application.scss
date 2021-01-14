@@ -22,6 +22,8 @@ body {
     flex-flow: column;
     padding-top: 150px;
     background-image: image-url("bg-image.jpg");
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
 }
 
@@ -31,7 +33,9 @@ body {
 .gym_comments{
     margin-top: 40px;
 }
-
+a{
+    margin :5px;
+}
 
 table, th, td,{
     padding-top: 50px;
@@ -41,6 +45,7 @@ table, th, td,{
 .card{
     margin-bottom: 20px;
 }
+
 .card-title{
     font-weight:700;
 }
