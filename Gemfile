@@ -90,3 +90,5 @@ gem 'geocoder'
 gem 'font-awesome-sass'
 # エラーメッセージ日本語
 gem 'rails-i18n'
+
+gem 'devise-i18n'

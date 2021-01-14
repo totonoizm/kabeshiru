@@ -1,5 +1,5 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * THis is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
@@ -17,16 +17,33 @@
 @import 'font-awesome';
 
 body {
+    min-height: 100vh !important; 
+    display: flex;
+    flex-flow: column;
     padding-top: 150px;
     background-image: image-url("bg-image.jpg");
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
 }
-  
+
 .row{
     margin-top: 30px;
 }
 .gym_comments{
     margin-top: 40px;
+}
+a{
+    margin :5px;
+}
+
+table, th, td,{
+    padding-top: 50px;
+    width: 20vw;
+}
+
+.card{
+    margin-bottom: 20px;
 }
 
 .card-title{
@@ -34,10 +51,10 @@ body {
 }
 
 footer{
-    margin-top: 100px;
+    margin-top: auto;
     background-color: #33383c;
     padding:30px 0px;
-}	       
+}
 
 .logo{
     color:#FFF;

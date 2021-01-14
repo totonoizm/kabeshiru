@@ -6,25 +6,26 @@
                 <p>今日登りたい壁が見つかるボルダリングジム検索サイト</p>
             </div>
             <div class="row justify-content-center">
-                <div class="form-inline">
-                    <%= search_form_for @search, url: search_gyms_path do |f| %>
-                    <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、登ってみたい壁を入力してください...", size: "100x10", class: 'input form-control' %>
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
-                  <% end %>
-                </div>
-                <div class="text-center">
-                    <p>お気に入りのジム</p>
-                    <p>今日登りたい壁が見つかるボルダリングジム検索サイト</p>
-                    <p>今日登りたい壁が見つかるボルダリングジム検索サイト</p>
-                </div>
-                <div class="">
-                    <%= link_to 'ジム登録', new_gym_path, class: "nav-link" %>
-                </div>
+                <%= search_form_for @search, url: search_gyms_path do |f| %>
+                <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、登ってみたい壁を入力してください...", size: "100x10", class: 'input form-control' %>
+                <button class="btn btn-success btn-lg btn-block" type="submit">検索</button>
+                <% end %>
             </div>
+            <div class="row justify-content-center">
+                <p>初めて行くボルダリングジムが、</p>
+                <p>どんな雰囲気なのかわかりにくい！</p>
+                <p>自分に合ったジムも一目瞭然！楽しく登れます。</p>
+                <p>また、ジムでどれだけ登ったかなど、自分のトレーニング記録をオンラインで管理、シェアできます。</p>
+                <p>快適で、楽しいボルダリングライフをサポートします。</p>
+                <p>お気に入りのジムは今すぐ登録！</p>
+            </div>
+            <div class="text-center">
+                <%= link_to 'ジム登録', new_gym_path, class: "btn btn-primary btn-lg" %>
             </div>
         </div>
     </div>
 </div>
+
 <!--余裕があればランダムで表示-->
 <div class="col-12">
     <div class="card-columns">
