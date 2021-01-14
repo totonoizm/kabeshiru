@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
-      redirect_to comment_path(@comment.id).flash.now[:success] = '編集に成功しました'
+      redirect_to comment_path(@comment.id),flash: {success: '編集に成功しました！'}
     else
       render 'edit'
     end
