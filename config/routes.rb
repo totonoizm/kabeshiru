@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resource :clips, only: [:create, :destroy]
     collection do
       get :search
+      get :about
     end
   end
 end

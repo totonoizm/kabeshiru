@@ -33,13 +33,21 @@ body {
 .gym_comments{
     margin-top: 40px;
 }
-a{
-    margin :5px;
+a, p{
+    letter-spacing: 3px;
+    text-decoration:none;
+    font-family: 'Roboto', sans-serif;
+}
+.title{
+      font-weight:700;
+      font-family: 'Sawarabi Gothic', sans-serif;
+      font-size: 20px;
 }
 
 table, th, td,{
     padding-top: 50px;
     width: 20vw;
+    font-family: 'Roboto', sans-serif;
 }
 
 .card{
@@ -48,11 +56,13 @@ table, th, td,{
 
 .card-title{
     font-weight:700;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 footer{
     margin-top: auto;
-    background-color: #33383c;
+    background-color: #353132;
     padding:30px 0px;
 }
 
@@ -77,24 +87,18 @@ footer{
    letter-spacing: 3px;
 }
  
-.address li a , .menu li a{
+.menu li a{
     color:#FFF;
     letter-spacing: 3px;
     text-decoration:none;
     font-size:14px;
 }
 
-.address li, .menu li{
+.menu li{
     margin:20px 0px;
     list-style: none;
 }
 
-.address li a:hover , .menu li a:hover{
+.menu li a:hover{
     color: #da3e44;
-}
-
-.address .fa{
-    color: #da3e44;
-    margin-right: 10px;
-    font-size:18px;
 }

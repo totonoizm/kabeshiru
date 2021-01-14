@@ -1,6 +1,6 @@
 <div class="row">    
   <div class="col-sm-12">
-    <div class="jumbotron">
+    <div class="jumbotron" style="background-color:#EBD9B9">
         <div class="row justify-content-center">
           <h1><%= @gym.name %></h1>
         </div>
@@ -17,8 +17,8 @@
 </div>
 <div class="row">
   <div class="col-sm-12">
-    <div class="jumbotron">
-    <h4 class="card-title">ユーザー投稿画像</h4>
+    <div class="jumbotron" style="background-color:#EBD9B9">
+    <h4 class="card-title">Photo</h4>
     <hr class="my-4">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
@@ -48,7 +48,7 @@
 
 <div class="row"> 
   <div class="col-sm-6">
-    <div class="card">
+    <div class="card" style="background-color:#EBD9B9">
       <div class="card-body">
         <div class="card-text text-center">
           <div class="embed-responsive"><%= attachment_image_tag @gym, :gym_image, size:"400x400", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %></div>
@@ -60,7 +60,7 @@
     </div>
   </div>
   <div class="col-sm-6">
-    <div class="card">
+    <div class="card" style="background-color:#EBD9B9">
       <div class="card-body">
         <h3 class="card-title">Gym info</h3>
         <div class="card-text">
@@ -106,30 +106,35 @@
   </div>
 </div>
 </div>
-
 <div class="row">
   <div class="col-sm-12">
-    <div class="card">
+    <div class="card" style="background-color:#EBD9B9">
       <div class="card-body">
-      <h5 class="card-title"><%= @gym.name %>のノボログ</h5>
-      <div class="card-text">
-          <div id="comments_error">
-            <%= render 'layouts/error_messages', model: @comment %>
+        <h5 class="card-title"><%= @gym.name %>のノボログ</h5>
+        <div class="card-text">
+            <div id="comments_error">
+              <%= render 'layouts/error_messages', model: @comment %>
+            </div>
+          <div class="form_group"> 
+            <%= form_with model:[@gym,@comment], url: gym_comments_path(gym_id: @gym.id, page: params[:page]) do |f| %>
+            <%= f.label :image, "登った課題の写真を投稿してみましょう" %></th>
+            <%= attachment_image_tag @comment, :comment_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "gym_default.jpg" %>
+            <%= f.attachment_field :comment_image %></td>
+            <%= f.text_area :comment, size:"95x5", class: "form-control", placeholder: "登った本数、課題について、書き込んでみましょう" %>
+            <%= f.submit "ノボッタ！", class: "btn btn-primary btn-lg btn-block" %>
+            <% end %>
           </div>
-        <div class="form_group"> 
-          <%= form_with model:[@gym,@comment], url: gym_comments_path(gym_id: @gym.id, page: params[:page]) do |f| %>
-          <%= f.label :image, "登った課題の写真を投稿してみましょう" %></th>
-          <%= attachment_image_tag @comment, :comment_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "gym_default.jpg" %>
-          <%= f.attachment_field :comment_image %></td>
-          <%= f.text_area :comment, size:"95x5", class: "form-control", placeholder: "登った本数、課題について、書き込んでみましょう" %>
-          <%= f.submit "ノボッタ！", class: "btn btn-primary btn-lg btn-block" %>
-          <% end %>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="gym_comments">
+              <%= render 'comments/index', comments: @comments, gym: @gym, user: @user %>
+            </div>
+            <%= paginate @comments %>
+          </div>
         </div>
       </div>
-    <div id="gym_comments">
-      <%= render 'comments/index', comments: @comments, gym: @gym, user: @user %>
     </div>
-    <%= paginate @comments %>
   </div>
 </div>
 

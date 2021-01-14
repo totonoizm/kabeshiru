@@ -4,10 +4,13 @@ class GymsController < ApplicationController
 
   def index
     # @random = Gym.order("RAND()").limit(5)
-    @gyms = Gym.page(params[:page]).per(9).reverse_order
+    @gyms = Gym.page(params[:page]).per(6).reverse_order
     # 20件表示
   end
-
+  
+  def about
+  end
+  
   def new
     @gym = Gym.new
   end

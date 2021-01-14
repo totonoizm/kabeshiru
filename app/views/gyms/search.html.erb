@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12">
-        <div class="jumbotron">
+        <div class="jumbotron" style="background-color:#EBD9B9">
             <div class="row justify-content-center">
                 <%= search_form_for @search, url: search_gyms_path do |f| %>
                 <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、登ってみたい壁を入力してください...", size: "100x10", class: 'input form-control' %>
@@ -10,18 +10,18 @@
         <% if params[:q]['name_or_address_or_introduction_cont'] == "" %>
             <div class="row justify-content-center"><%= "検索キーワードがありません" %></div>
         <% elsif @search_gyms.present? %>
-            <div><%= "「#{params[:q]['name_or_address_or_introduction_cont']}」の検索結果: #{@search_gyms.count}件" %></div>
+            <div class="row justify-content-center"><%= "「#{params[:q]['name_or_address_or_introduction_cont']}」の検索結果: #{@search_gyms.count}件" %></div>
         </div>
     </div>
 </div>
 <div class="col-12">
     <div class="card-columns">
         <% @search_gyms.each do |gym| %>
-        <div class="card rounded-3 text-white bg-info ">
+        <div class="card rounded text-white">
             <div class="embed-responsive">
                 <%= attachment_image_tag gym, :gym_image, size:"400x300", fallback: "gym_default.jpg" %>
             </div>      
-            <div class="card-body">
+            <div class="card-body" style="background-color:#353132">
                 <div class="card-title"><%= link_to gym_path(gym.id), class: "text-white stretched-link" do %><%= gym.name %></div>
                  <% end %>
                 <div id="clips_btns_<%= gym.id %>"> 
@@ -40,5 +40,14 @@
 </div>
 <%= paginate @search_gyms %>
 <% else %>
-    <%= "検索に一致するジムはありませんでした..." %>
+<div class="row justify-content-center">
+    <p>検索に一致するジムはありませんでした。</p>
+    <p>キーワードを変えて検索してみてください</p>
+</div>
+<div class="row justify-content-center">
+    <a>登ったジムの情報がなければ是非登録をお願いします</a>
+</div>    
+<div class="row justify-content-center">
+    <%= link_to 'ジム登録', new_gym_path, class: "btn btn-primary btn-lg" %>
+</div>
 <% end %>
