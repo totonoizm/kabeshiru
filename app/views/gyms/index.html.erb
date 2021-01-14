@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12">
-        <div class="jumbotron">
+        <div class="jumbotron" style="background-color:#EBD9B9">
             <div class="text-center">
                 <%= image_tag 'logo.png' %>
                 <p>今日登りたい壁が見つかるボルダリングジム検索サイト</p>
@@ -30,11 +30,11 @@
 <div class="col-12">
     <div class="card-columns">
         <% @gyms.each do |gym| %>
-        <div class="card rounded-3 text-white bg-info ">
+        <div class="card rounded text-white">
             <div class="embed-responsive">
                 <%= attachment_image_tag gym, :gym_image, size:"400x300", fallback: "gym_default.jpg" %>
             </div>      
-            <div class="card-body">
+            <div class="card-body" style="background-color:#353132">
                 <div class="card-title"><%= link_to gym_path(gym.id), class: "text-white stretched-link" do %><%= gym.name %></div>
                  <% end %>
                 <div id="clips_btns_<%= gym.id %>"> 
