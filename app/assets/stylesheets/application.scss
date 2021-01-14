@@ -33,10 +33,15 @@ body {
 .gym_comments{
     margin-top: 40px;
 }
-a{
+a, p{
     letter-spacing: 3px;
     text-decoration:none;
     font-family: 'Roboto', sans-serif;
+}
+.title{
+      font-weight:700;
+      font-family: 'Sawarabi Gothic', sans-serif;
+      font-size: 20px;
 }
 
 table, th, td,{

@@ -12,16 +12,15 @@ class Gym < ApplicationRecord
   after_validation :geocode, if: :address_changed?
   attachment :gym_image
 
-  validates :postcode, format: { without: /\A[1-3][0-9]{5}\z/ }
-  validates :name, presence: true, length: { in: 3..30 }, uniqueness: true, format: { without: NGWORD_REGEX }
-  validates :introduction, length: { in: 0..140 }, format: { without: NGWORD_REGEX }
-  validates :tel, format: { with: VALID_PHONE_NUMBER_REGEX }, uniqueness: true
-  validates :address, uniqueness: true, format: { without: NGWORD_REGEX }
+  validates :name, presence: true, length: { in: 2..50 }, uniqueness: true, format: { without: NGWORD_REGEX }
+  validates :introduction, length: { in: 0..500 }, format: { without: NGWORD_REGEX }, allow_blank: true
+  validates :tel, format: { with: VALID_PHONE_NUMBER_REGEX }, uniqueness: true, allow_blank: true
+  validates :address, uniqueness: true, format: { without: NGWORD_REGEX }, allow_blank: true
   validates :url, uniqueness: true, format: { without: NGWORD_REGEX }, allow_blank: true
-  validates :open_time, length: { maximum: 50 }, format: { without: NGWORD_REGEX }
-  validates :price, length: { maximum: 50 }, format: { without: NGWORD_REGEX }
-  validates :holiday, length: { maximum: 70 }, format: { without: NGWORD_REGEX }
-  validates :access, length: { maximum: 100 }, format: { without: NGWORD_REGEX }
+  validates :open_time, length: { maximum: 150 }, format: { without: NGWORD_REGEX }
+  validates :price, length: { maximum: 200 }, format: { without: NGWORD_REGEX }
+  validates :holiday, length: { maximum: 200 }, format: { without: NGWORD_REGEX }
+  validates :access, length: { maximum: 500 }, format: { without: NGWORD_REGEX }
 
   def cliped_by?(user) # ジムをブックマークしてあるかどうか
     clips.where(user_id: user.id).exists?
