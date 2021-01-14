@@ -5,8 +5,8 @@
     <div class="col-sm-5">
         <div class="card" style="background-color:#EBD9B9">
             <div class="card-body">
-            <h4 class="card-title"><%= @user.name %>さんの登りたいジム</h4>
-                    <% @clip_gyms.reverse_each do |gym| %>
+                <h4 class="card-title"><%= @user.name %>さんの登りたいジム</h4>
+                <% @clip_gyms.reverse_each do |gym| %>
                     <div class="card">
                         <div class="card-body">
                             <table>
@@ -21,9 +21,9 @@
                         </div>
                     </div>
                 <% end %>
-                </div>
             </div>
         </div>
+    </div>
     <div class="col-sm-7">
         <div class="card" style="background-color:#EBD9B9">
             <div class="card-body">
@@ -31,7 +31,9 @@
                  <div id="gym_comments">
                     <%= render partial: 'comments/index', locals: {comments: @comments, gym: @gym, user: @user} %>
                 </div>
-                <%= paginate @comments %>
+                <div class="row justify-content-center">
+                    <%= paginate @comments %>
+                </div>
             </div>
         </div>
     </div>
