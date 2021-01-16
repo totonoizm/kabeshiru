@@ -22,11 +22,11 @@ class User < ApplicationRecord
   
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
-      user.password = Rails.application.secrets.test_account_pass
+      user.password = SecureRandom.urlsafe_base64
     end
   end
   
   def active_for_authentication?
-    super && (is_deleted === false)
+    super && (self.is_deleted == false)
   end
 end
