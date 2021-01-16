@@ -19,9 +19,14 @@
             <div class="text-center">
                 <%= link_to 'ジム登録', new_gym_path, class: "btn btn-primary btn-lg" %>
             </div>
+            <% if user_signed_in? %> 
+            <div class="text-center">
+            </div>
+            <% else %>
             <div class="text-center">
                 <%= link_to 'ゲストログイン（ポートフォリオ閲覧の方はこちら）', users_guest_sign_in_path, method: :post %>
             </div>
+            <% end %>
         </div>
     </div>
 </div>
