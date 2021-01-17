@@ -33,8 +33,13 @@ RSpec.describe User, type: :model do
         test_user_2.save
         expect(test_user_2).to be_invalid
       end
-      it "NGWORDが入っていないこと" do
-      　test_user.name = Faker::Lorem.characters() 
+      it "NGWORDが入っていたらfalse" do
+        test_user.name = "クソ野郎"
+        is_expected.to eq false;
+      end
+      it "NGWORDがなければ投稿できる" do
+        test_user.name = "jiro"
+        is_expected.to eq true;
       end
     end
     
@@ -56,7 +61,7 @@ RSpec.describe User, type: :model do
         test_user_2.save
         expect(test_user_2).to be_invalid
       end
-      it "英数字以外が含まれていないこと" do
+      it "英数字以外が含まれていたら無効" do
         test_user.email = 'テスト@co.jp'
         is_expected.to eq false;
       end
@@ -72,8 +77,9 @@ RSpec.describe User, type: :model do
         test_user.introduction = Faker::Lorem.characters(151)
         is_expected.to eq false;
       end
-      it "プロフィールにNGWORDが含まれていないこと" do
-        expect(page).not_to have_content'@'
+      it "プロフィールにNGWORDが含まれていたら無効" do
+        test_user.introduction = "クソ野郎"
+        is_expected.to eq false;
       end
     end
     

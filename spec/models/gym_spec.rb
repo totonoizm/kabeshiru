@@ -93,8 +93,9 @@ RSpec.describe Gym, type: :model do
         context 'access' do
             it '100字以下であること'
             it 'NGWORDが入っていないこと'
+                    # expect(page).not_to have_content'@'
+
         end
     end
     end
-end
 end
