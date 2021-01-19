@@ -20,7 +20,7 @@
       <div class="row justify-content-center">
         <table>
           <tr>
-            <td><%= attachment_image_tag @comment, :comment_image, size:"400x300", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %>
+            <td><%= attachment_image_tag @comment, :comment_image, size:"400x300", format: 'jpeg', class: "rounded" %>
           </tr>
           <tr>
             <td><%= simple_format(@comment.comment) %></td>
