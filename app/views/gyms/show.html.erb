@@ -115,11 +115,11 @@
             <div id="comments_error">
               <%= render 'layouts/error_messages', model: @comment %>
             </div>
-          <div class="form_group"> 
+          <div class="form_group">
             <%= form_with model:[@gym,@comment], url: gym_comments_path(gym_id: @gym.id, page: params[:page]) do |f| %>
-            <%= f.label :image, "登った課題の写真を投稿してみましょう" %></th>
-            <%= attachment_image_tag @comment, :comment_image, :fill, 100, 100, format: 'jpeg', class: "rounded-circle", fallback: "gym_default.jpg" %>
-            <%= f.attachment_field :comment_image %></td>
+            <%= f.label :image, "登った課題の写真を投稿してみましょう" %>
+            <img id="preview" style="width:40%;">
+            <%= f.attachment_field :comment_image %>
             <%= f.text_area :comment, size:"95x5", class: "form-control", placeholder: "登った本数、課題について、書き込んでみましょう" %>
             <%= f.submit "ノボッタ！", class: "btn btn-primary btn-lg btn-block" %>
             <% end %>
@@ -176,4 +176,13 @@
 </script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+</script>
+<script>
+  $('#comment_comment_image').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#preview").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+});
 </script>
