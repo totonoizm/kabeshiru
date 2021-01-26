@@ -17,16 +17,19 @@
 @import 'font-awesome';
 
 body {
-    min-height: 100vh !important; 
-    display: flex;
-    flex-flow: column;
-    padding-top: 150px;
     background-image: image-url("bg-image.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
-
+.bg{
+    min-height: 100vh !important; 
+    display: flex;
+    flex-flow: column;
+    padding-top: 150px;
+    background: rgba(0,0,0,0.1);
+    height:100%;
+}
 .row{
     margin-top: 30px;
 }
