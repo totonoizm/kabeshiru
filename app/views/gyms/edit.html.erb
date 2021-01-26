@@ -18,9 +18,10 @@
         <div class="card-text-center">
          <div class="form_group"><%= form_with model:@gym, local:true do |f| %>
             <%= render 'layouts/error_messages', model: f.object %>
-            <h4><%= f.label :image, "ジム画像" %></h4>
-            <div><%= attachment_image_tag @gym, :gym_image, size: "200x200", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %>
-                <%= f.attachment_field :gym_image %></div>
+            <div>現在のジム画像<%= attachment_image_tag @gym, :gym_image, size: "200x200", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %></div>
+            <h4><%= f.label :image, "新しいジム画像" %></h4>
+            <div><img id="preview" style="width:40%;">
+            <%= f.attachment_field :gym_image %></div>
             <h4><%= f.label :name, "ジム名" %></h4>
             <h4><%= f.text_field :name, class: "form-control", placeholder:"例：B-PUMP TOKYO" %></h4>
             <h4><%= f.label :address, "住所" %></h4>
