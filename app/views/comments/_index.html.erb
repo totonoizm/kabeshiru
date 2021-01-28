@@ -27,7 +27,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <div class="text"><%= attachment_image_tag comment, :comment_image, size:"400x400", format: 'jpeg' %></div>
+                  <div class="embed-responsive"><%= attachment_image_tag comment, :comment_image, size:"400x300", format: 'jpeg' %></div>
                   <div class="text"><%= simple_format(comment.comment)%></div>
                   <div class="text-sm-right"><%= link_to "ノボログ詳細へ", comment_path(comment) %></div>
                 </div>
