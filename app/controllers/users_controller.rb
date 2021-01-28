@@ -39,12 +39,23 @@ class UsersController < ApplicationController
     @user.update(is_deleted: true)
     reset_session
     redirect_to new_user_session_path,flash: {danger: 'またのご利用をお待ちしております'}
-
   end
 
   def destroy
     User.find(params[:id]).destroy
     redirect_to users_path,flash: {danger: 'ユーザーを削除しました'}
+  end
+  
+  def following #フォローしている一覧
+    @user = User.find(params[:id])
+    @users = @user.following_user
+    render 'follow'
+  end
+  
+  def followers #フォローされている一覧
+    @user = User.find(params[:id])
+    @users = @user.follower_user
+    render 'follower'
   end
   
   private
