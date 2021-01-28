@@ -1,12 +1,23 @@
-フォローしている！
-<% @user.following_user.where.not(id: current_user.id).each do |user| %>
-
-<%= "id: #{user.id} email: #{user.email}" %>
-<% if current_user.following?(user) %>
-<%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-<% else %>
-<%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-<% end %>
-<%= link_to "show", user_path(user) %>
-
-<% end %>
+<div>
+  <% @user.following_user.where.not(id: current_user.id).each do |user| %>
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">
+          <%= link_to (user) do %>
+            <%= attachment_image_tag user, :profile_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+          <a><%= user.name %><a>
+          <% end %>
+          <a><%= user.created_at.strftime('%Y/%m/%d') %></a>
+        </div>
+        <div class="card-text"><%= user.name %></div>
+        <div class="card-text"><%= user.introduction %></div>
+        <% if current_user.following?(user) %>
+        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+        <% else %>
+        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+        <% end %>
+        <%= link_to "show", user_path(user) %>
+        </div>
+      </div>
+  <% end %>
+</div>
