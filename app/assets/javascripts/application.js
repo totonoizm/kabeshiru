@@ -33,4 +33,5 @@ jQuery(document).on('turbolinks:load', function(){
         reader.readAsDataURL(e.target.files[0]);
     });
     
+    
 });
