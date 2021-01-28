@@ -1,6 +1,5 @@
-
 <div>
-<% @user.follower_user.where.not(id: current_user.id).each do |user| %>
+    <% @user.follower_user.where.not(id: current_user.id).each do |user| %>
     <div class="card">
       <div class="card-body">
         <div class="card-title">
@@ -17,7 +16,6 @@
         <% else %>
         <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
         <% end %>
-        <%= link_to "show", user_path(user) %>
         </div>
       </div>
   <% end %>
