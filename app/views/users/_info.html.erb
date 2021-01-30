@@ -14,8 +14,20 @@
         <span>ユーザー情報修正</span>
         <% end %>
       <% end %>
+      <% if current_user != user %>
+        <% if current_user.following?(user) %>
+          <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+        <% else %>
+          <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+        <% end %>
+      <%end %>
+      フォロー
+      <%= link_to user.follower.count, following_user_path(user) %>
+      forowa-
+      <%= link_to user.followed.count, followers_user_path(user) %>
       </div>
       <table>
+        <tr>
           <th>プロフィール</th>
           <% if @user.introduction.nil? %>
             <td><%= user.introduction %></td>

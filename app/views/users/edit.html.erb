@@ -13,9 +13,10 @@
                 <div><%= form_with model:@user, local:true do |f| %>
                 <%= render 'layouts/error_messages', model: f.object %>
                   <table>
-                    <tr>                      
-                    <td><%= attachment_image_tag @user, :profile_image, size:"70x70", format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
-                        <%= f.label :image %>
+                    <tr>
+                    <td>現在のプロフィール画像<%= attachment_image_tag @user, :profile_image, size:"70x70", format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+                        <%= f.label :image, "新しいプロフィール画像" %>
+                        <div><img id="preview" class="rounded-circle" height=70px width=70px></div>
                         <%= f.attachment_field :profile_image %></td>
                     </tr>
                     <tr>

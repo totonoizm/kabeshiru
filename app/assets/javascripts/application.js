@@ -18,6 +18,13 @@
 
 jQuery(document).on('turbolinks:load', function(){
     
+    $('#user_profile_image').on('change', function (e) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+    $("#preview").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    });
     $('#gym_gym_image').on('change', function (e) {
         var reader = new FileReader();
         reader.onload = function (e) {
@@ -32,5 +39,6 @@ jQuery(document).on('turbolinks:load', function(){
         }
         reader.readAsDataURL(e.target.files[0]);
     });
+    
     
 });
