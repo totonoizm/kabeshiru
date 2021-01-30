@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Relationship, type: :model do
-
+  # follow/followedメソッド
+  describe "follower/followed methods" do
   let(:user) { create(:user) }             # => フォローしているユーザ
   let(:other_user) { create(:other_user) } # => フォローされているユーザ
   let(:true) { user.relationships.build(followed_id: other_user.id) }
@@ -10,8 +11,6 @@ RSpec.describe Relationship, type: :model do
   # リレーションシップが有効であること
   it { should be_valid }
 
-  # follow/followedメソッド
-  describe "follower/followed methods" do
     it { should respond_to(:follower) }
     it { should respond_to(:followed) }
     # followメソッドは、フォローしているユーザを返すこと

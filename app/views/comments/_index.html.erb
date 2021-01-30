@@ -5,20 +5,26 @@
         <div class="card-title">
           <%= link_to (comment.user) do %>
             <%= attachment_image_tag comment.user, :profile_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
-          <a><%= comment.user.name %><a>
+          <%= comment.user.name %>
           <% end %>
           <%= link_to (comment.gym) do %>
-          <a><%= comment.gym.name %><a>
+            <%= comment.gym.name %>
           <% end %>
           <a><%= comment.comment_seq %>回目の訪問</a><!--コメントモデルでメソッドを定義-->
           <a><%= comment.created_at.strftime('%Y/%m/%d') %></a>
         </div>
-        <div class="card-text"><%= attachment_image_tag comment, :comment_image, :fill, 100, 100, format: 'jpeg' %></div>
-        <div class="card-text"><%= comment.comment.truncate(50) %></div>
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="card-text"><%= attachment_image_tag comment, :comment_image, :fill, 100, 100, format: 'jpeg' %></div>
+          </div>
+          <div class="col-sm-9">
+            <div class="card-text"><%= comment.comment.truncate(50) %></div>
+          </div>
+        </div>
         <div class="row justify-content-center">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#comment_modal<%= comment.id %>">全文を表示</button>
           <div class="modal fade" id="comment_modal<%= comment.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="comment_modal<%= comment.id %>"><%= comment.user.name %>さんのコメント</h5>
@@ -27,9 +33,15 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <div class="embed-responsive"><%= attachment_image_tag comment, :comment_image, size:"400x300", format: 'jpeg' %></div>
-                  <div class="text"><%= simple_format(comment.comment)%></div>
-                  <div class="text-sm-right"><%= link_to "ノボログ詳細へ", comment_path(comment) %></div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="comment-img"><%= attachment_image_tag comment, :comment_image, size: "400x400", format: 'jpeg' %></div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="text"><%= simple_format(comment.comment)%></div>
+                    </div>
+                  </div>
+                  <div class="text-sm-center"><%= link_to "ノボログ詳細へ", comment_path(comment) %></div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -38,14 +50,12 @@
             </div>
           </div>
         </div>
-        <div>
+        <div class="row justify-content-end">
           <% if comment.user == current_user || current_user.admin? %>
             <% if request.path.include?('gym') %>
-                <div class="text-sm-right"><%= link_to "削除", gym_comment_path(comment.gym,comment, page: params[:page]), class: "btn btn-danger", data: {confirm: "Are you sure?"}, method: :delete, remote:true %></div>
+                <div class="text"><%= link_to "削除", gym_comment_path(comment.gym,comment, page: params[:page]), class: "btn btn-danger btn-sm", data: {confirm: "Are you sure?"}, method: :delete, remote:true %></div>
             <% elsif request.path.include?('user') %>
-                <div class="text-sm-right"><%= link_to "削除", user_comment_path(comment.user,comment, page: params[:page]), class: "btn btn-danger", data: {confirm: "Are you sure?"}, method: :delete, remote:true %></div>
-            <% else %>
-                <div class="text-sm-right"><%#= link_to "削除", comments_path(comment.user,comment), class: "btn btn-danger", data: {confirm: "Are you sure?"}, method: :delete, remote:true %></div>
+                <div class="text"><%= link_to "削除", user_comment_path(comment.user,comment, page: params[:page]), class: "btn btn-danger btn-sm", data: {confirm: "Are you sure?"}, method: :delete, remote:true %></div>
             <% end %>
           <% end %>
         </div>

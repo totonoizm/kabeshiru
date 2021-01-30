@@ -7,14 +7,19 @@
             <%= attachment_image_tag user, :profile_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
           <a><%= user.name %><a>
           <% end %>
-          <a><%= user.created_at.strftime('%Y/%m/%d') %></a>
         </div>
-        <div class="card-text"><%= user.name %></div>
+        <div class="card-text"></div>
         <div class="card-text"><%= user.introduction %></div>
         <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+          <%= link_to unfollow_path(user.id), method: :POST, class: "btn btn-danger" do %>
+          <i class="fa fa-user-circle"></i>
+          <span>フォロー解除</span>
+          <% end %>
         <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+          <%= link_to follow_path(user.id), method: :POST, class: "btn btn-primary" do %>
+          <i class="fa fa-user-circle"></i>
+          <span>フォローする</span>
+          <% end %>
         <% end %>
         </div>
       </div>
