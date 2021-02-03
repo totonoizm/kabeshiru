@@ -1,0 +1,31 @@
+<footer>
+<div class="container">
+ <div class="row">
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <span class="logo">KABESHIRU</span>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <ul class="menu">
+             <span>Menu</span>   
+              <li>
+                <%= link_to 'Home', root_path %>
+              </li>
+              <li>
+                <%= link_to 'About', about_gyms_path %>
+              </li>
+              <li>
+                <%= link_to 'ジム登録', new_gym_path %>
+              </li>
+              <li>
+                 <%= link_to 'Nobolog', comments_path %>
+              </li>
+         </ul>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="address">
+        <span>©︎ KABESHIRU</span>
+      </div>
+    </div> 
+  </div>
+</div>
+</footer>
