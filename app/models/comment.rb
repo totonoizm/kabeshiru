@@ -9,7 +9,7 @@ class Comment < ApplicationRecord
   validates :comment, presence: true, length: { maximum: 500 }, format: { without: NGWORD_REGEX }
 
   attachment :comment_image
-  # #クラスメソッド　一つのジムに対して何個コメントしたかを取得
+  #クラスメソッド　一つのジムに対して何個コメントしたかを取得
   # def users_comment_count
   #   user.comments.where(gym_id:self.gym_id).count
   # end

@@ -11,7 +11,8 @@
       <table>
         <tr>                      
           <th> <%= f.label :image, "画像の編集" %></th>
-          <td><%= attachment_image_tag @comment, :comment_image, size:"400x300", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %>
+          <td><%= attachment_image_tag @comment, :comment_image, size:"400x400", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %>
+            <img id="preview" style="width:40%;">
               <%= f.attachment_field :comment_image %></td>
         </tr>
         <tr>                      
