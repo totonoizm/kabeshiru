@@ -1,19 +1,22 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="jumbotron" style="background-color:#EBD9B9">
-      <span class="profile_image">
-      <%= link_to user_path(user) do %>
-        <%= attachment_image_tag user, :profile_image, size:'100x100', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
-      <% end %>
-      </span>
-      <span class="display-4"><%= user.name %></span>
-      <div class="text-sm-right">
-      <% if user.id == current_user.id %>
-        <%= link_to edit_user_path(user), data: {"turbolinks" => false}, class: 'btn btn-dark' do %>
-        <i class="fa fa-tools fa-sm"></i>
-        <span>ユーザー情報修正</span>
+      <div class="row">
+        <div class="col-sm-2 profile_image">
+        <%= link_to user_path(user) do %>
+          <%= attachment_image_tag user, :profile_image, size:'150x150', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
         <% end %>
-      <% end %>
+        </div>
+        <div class="col-sm-8 display-4"><%= user.name %></div>
+        <div class="col-sm-2">
+        <% if user.id == current_user.id %>
+          <%= link_to edit_user_path(user), data: {"turbolinks" => false}, class: 'btn btn-dark btn-sm' do %>
+            <i class="fa fa-tools fa-sm"></i>
+            <span>登録情報編集</span>
+          <% end %>
+        <% end %>
+        </div>
+      </div>
       <table>
         <tr>
           <th>プロフィール</th>
@@ -24,7 +27,6 @@
           <% end %>
         </tr>
       </table>
-    </div>
       <% if current_user != user %>
         <% if current_user.following?(user) %>
           <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
@@ -32,15 +34,17 @@
           <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
         <% end %>
       <%end %>
-      <%= link_to user_path(user) do %>
-        <i class="fas fa-mountain" aria-hidden="true" style="color: green;">ノボログ<%= user.comments.count %></i>
-      <% end %>
-      <%= link_to following_user_path(user) do %>
-        <i class="fa fa-user-circle" aria-hidden="true" style="color: green;"><%= user.follower.count %>フォロー</i>
-      <% end %>
-      <%= link_to followers_user_path(user) do %>
-        <i class="fa fa-user-circle" aria-hidden="true" style="color: green;"><%= user.followed.count %>フォロワー</i>
-      <% end %>
+      <div class="row">
+        <%= link_to user_path(user) do %>
+          <i class="fas fa-mountain" aria-hidden="true" style="color: green;">ノボログ<%= user.comments.count %></i>
+        <% end %>
+        <%= link_to following_user_path(user) do %>
+          <i class="fa fa-user-circle" aria-hidden="true" style="color: green;"><%= user.follower.count %>フォロー</i>
+        <% end %>
+        <%= link_to followers_user_path(user) do %>
+          <i class="fa fa-user-circle" aria-hidden="true" style="color: green;"><%= user.followed.count %>フォロワー</i>
+        <% end %>
       </div>
+    </div>
   </div>
 </div>

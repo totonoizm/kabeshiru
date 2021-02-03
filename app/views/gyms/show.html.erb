@@ -1,16 +1,16 @@
 <div class="row">    
   <div class="col-sm-12">
     <div class="jumbotron" style="background-color:#EBD9B9">
-        <div class="row justify-content-center">
-          <h1><%= @gym.name %></h1>
+      <div class="row justify-content-center">
+        <h1><%= @gym.name %></h1>
+      </div>
+      <div class="row">    
+        <div class="col-sm-11 text-right">
+          <h3 id="comments_count"><%= @gym.comments.count %>件のノボログ</h3>
+          <h3 id="clips_btns_<%= @gym.id %>"> 
+          <%= render partial: 'clips/clip', locals: {gym: @gym} %>
+          </h3>
         </div>
-        <div class="row">    
-          <div class="col-sm-11 text-right">
-              <h3 id="comments_count"><%= @gym.comments.count %>件のノボログ</h3>
-                <h3 id="clips_btns_<%= @gym.id %>"> 
-              <%= render partial: 'clips/clip', locals: {gym: @gym} %>
-            </h3>
-          </div>
       </div>
     </div>
   </div>
