@@ -27,21 +27,19 @@ body {
     display: flex;
     flex-flow: column;
     padding-top: 150px;
-    background: rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.3);
     height:100%;
 }
 .row{
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .gym_comments{
     margin-top: 40px;
 }
 a, p{
     letter-spacing: 3px;
-    text-decoration:none;
     font-family: 'Roboto', sans-serif;
 }
-
 .title{
       font-weight:700;
       font-family: 'Sawarabi Gothic', sans-serif;
@@ -78,7 +76,6 @@ footer{
 }
 .nav-item{
     letter-spacing: 3px;
-    text-decoration:none;
     font-size:17px;
 }
 .address span , .menu span{

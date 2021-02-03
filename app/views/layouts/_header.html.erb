@@ -1,0 +1,71 @@
+  <header>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg" style="background-color:#83967C">
+      <a class="navbar-brand" href="/"><%= image_tag 'logo.png' %></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#responsiveMenu" aria-controls="responsiveMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="responsiveMenu">
+          <ul class="navbar-nav ml-left">
+              <li class="nav-item">
+                <%= link_to 'Gyms', gyms_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'About', about_gyms_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Nobolog', comments_path, class: "nav-link" %> 
+              </li>
+             <% if user_signed_in? %>
+              <% if current_user.admin? %>
+                <li class="nav-item">
+                  <%= link_to '全ユーザー一覧', users_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'ジム登録', new_gym_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "LOGOUT", destroy_user_session_path, method: :delete, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to user_path(current_user), class: "nav-link" do %>
+                    <%= "管理者権限" %>
+                    <% end %>
+                </li>
+              <% else %>  
+                <li class="nav-item">
+                    <%= link_to 'ジム登録', new_gym_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "LOGOUT", destroy_user_session_path, method: :delete, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to user_path(current_user), class: "nav-link" do %>
+                    <%= attachment_image_tag current_user, :profile_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+                    <% end %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to user_path(current_user), class: "nav-link" do %>
+                    <%= (current_user.name) %>"さんのマイページ" 
+                    <% end %>
+                </li>
+              <% end %>
+            <% else %>
+              <li class="nav-item">
+                  <%= link_to ' 新規登録', new_user_registration_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                  <%= link_to ' ログイン', new_user_session_path, class: "nav-link" %>
+              </li>
+            <% end %>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+              <li class="form-inline">
+                  <%= search_form_for @search, url: search_gyms_path do |f| %>
+                  <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'form-control' %>
+                <button class="btn btn-success my-2 my-sm-0" type="submit">検索</button>
+                <% end %>
+              </li>
+            </ul>
+        </div>
+    </nav>
+  </header>
