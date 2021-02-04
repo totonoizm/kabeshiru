@@ -17,11 +17,13 @@
 @import 'font-awesome';
 
 .alert {
-  color: #white;
-  background-color: #28A745;
-  text-align: center;
+    color: #white;
+    background-color: #28A745;
+    text-align: center; 
 }
-
+ul {
+    list-style: none;
+}
 body {
     background-image: image-url("bg-image.jpg");
     background-size: cover;

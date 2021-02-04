@@ -1,6 +1,33 @@
 ---
 ja:
   activerecord:
+    models:
+      user: ユーザー 
+      gym: ジム
+      comment: ノボログ
+    # model毎に定義したいattributesを記述
+    attributes:
+      user:
+        id: ID
+        name: ユーザー名
+        introduction: 自己紹介
+        email: メールアドレス
+        profile_image_id: プロフィール画像
+        encrypted_password: パスワード
+      gym:
+        name: ジム名
+        introduction: ジム紹介
+        tel: 電話番号
+        gym_image_id: ジム画像
+        address: 住所
+        postcode: 郵便番号
+        url: ホームページ
+        open_time: 営業時間
+        price: 利用料金
+        holiday: 定休日
+        access: アクセス方法
+      comment:
+        comment: ノボログ
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
