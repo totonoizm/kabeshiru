@@ -16,6 +16,12 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.alert {
+  color: #white;
+  background-color: #28A745;
+  text-align: center;
+}
+
 body {
     background-image: image-url("bg-image.jpg");
     background-size: cover;
