@@ -5,7 +5,7 @@
 クライミングジム検索、レビュー、トレーニング記録シェアサービス。
 
 ### URL
-http://kabeshiru.work
+https://kabeshiru.work
 【ゲストログイン】リンクからゲストユーザーとしてログインできます。
 
 ### サイトテーマ
@@ -38,6 +38,7 @@ KABESHIRUはクライマーライフをちょっぴり豊かにするサイト�
 そのジムで登った回数や感想、登ったコースなど、自分のトレーニング記録を残したいときに。
 
 ### 機能一覧
+
 ・ジム登録機能
 ・コメント機能
 ・ジム検索機能
@@ -50,6 +51,7 @@ https://docs.google.com/spreadsheets/d/11c-3oiSjkGZnU5FRC_Zv4oIA_uMa5Geq6-eNhcV5
 ##環境・使用技術
 
 ### 開発環境
+
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL,Bootstrap4.5.0
 - フレームワーク：Ruby on Rails
@@ -57,13 +59,16 @@ https://docs.google.com/spreadsheets/d/11c-3oiSjkGZnU5FRC_Zv4oIA_uMa5Geq6-eNhcV5
 - IDE：Cloud9
 
 ### 本番環境
+
 　AWS (EC2,RDS for MySQL,AWS (EC２,RDS for MySQL,Route53）
 　MySQL2
 　Nginnx,Puma
 　GitHub Actionを使用した自動デプロイ
-###　テスト
+### テスト
+
 　Rspec
-###その他使用技術
+### その他使用技術
+
 　非同期通信（ユーザー投稿、削除、ブックマークボタンの即時反映）
 　外部API （Google MapAPI,Geocording API)
 　
