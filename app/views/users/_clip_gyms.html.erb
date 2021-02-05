@@ -1,0 +1,20 @@
+<div class="card" style="background-color:#EBD9B9">
+    <div class="card-body">
+        <h4 class="card-title"><%= user.name %>さんの登りたいジム</h4>
+        <% clip_gyms.reverse_each do |gym| %>
+            <div class="card">
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <td><%= link_to attachment_image_tag(gym, :gym_image, size:"70x70", fallback: "gym_default.jpg"),gym_path(gym.id) %></td>
+                            <td><%= gym.name %></td>
+                            <td id="clips_btns_<%= gym.id %>"> 
+                            <%= render partial: 'clips/clip', locals: {gym: gym} %>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

@@ -17,6 +17,7 @@ class GymsController < ApplicationController
 
   def create
     @gym = Gym.new(gym_params)
+    @gym.user_id = current_user.id
     if @gym.save
       redirect_to gym_path(@gym.id),flash: {success: 'ジムの登録ありがとうございます!'}
     else

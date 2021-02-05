@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_01_28_055258) do
     t.string "name"
     t.text "introduction"
     t.string "tel"
+    t.integer "user_id"
     t.string "gym_image_id"
     t.string "address"
     t.string "postcode"

@@ -49,11 +49,14 @@ a, p{
     font-family: 'Roboto', sans-serif;
 }
 .title{
-      font-weight:700;
-      font-family: 'Sawarabi Gothic', sans-serif;
-      font-size: 20px;
+    font-weight:700;
+    font-family: 'Sawarabi Gothic', sans-serif;
+    font-size: 20px;
 }
-
+.user_name{
+    font-size: 11px;
+    color: grey;
+}
 table, th, td,{
     padding-top: 50px;
     width: 20vw;
