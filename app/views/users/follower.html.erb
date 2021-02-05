@@ -2,7 +2,7 @@
 <div>
   <div class="row">
     <div class="col-sm-5">
-        <%= render 'users/clip_gyms', user: @user, clip_gyms: @clip_gyms %>
+      <%= render 'users/clip_gyms', user: @user, clip_gyms: @clip_gyms %>
     </div>
     <div class="col-sm-7">
       <div class="card" style="background-color:#EBD9B9">
@@ -20,13 +20,13 @@
               <div class="card-text"><%= user.introduction %></div>
               <% if current_user.following?(user) %>
                 <%= link_to unfollow_path(user.id), method: :POST, class: "btn btn-danger" do %>
-                <i class="fa fa-user-circle"></i>
-                <span>フォロー解除</span>
+                  <i class="fa fa-user-circle"></i>
+                  <span>フォロー解除</span>
                 <% end %>
               <% else %>
                 <%= link_to follow_path(user.id), method: :POST, class: "btn btn-primary" do %>
-                <i class="fa fa-user-circle"></i>
-                <span>フォローする</span>
+                  <i class="fa fa-user-circle"></i>
+                  <span>フォローする</span>
                 <% end %>
               <% end %>
             </div>
