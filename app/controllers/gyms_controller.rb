@@ -17,6 +17,7 @@ class GymsController < ApplicationController
 
   def create
     @gym = Gym.new(gym_params)
+    @gym.user_id = current_user.id
     if @gym.save
       redirect_to gym_path(@gym.id),flash: {success: 'ジムの登録ありがとうございます!'}
     else
@@ -52,7 +53,7 @@ class GymsController < ApplicationController
   private
 
   def gym_params
-    params.require(:gym).permit(:name, :introduction, :tel, :gym_image, :user_id,
+    params.require(:gym).permit(:name, :introduction, :tel, :gym_image,
                                 :address, :postcode, :url, :open_time, :price, :holiday,
                                 :access, :latitude, :longitude)
   end

@@ -29,7 +29,6 @@ class CommentsController < ApplicationController
   def create
     puts "-----"
     puts params
-
     puts "-----"
 
     @gym = Gym.find(params[:gym_id])
