@@ -6,7 +6,7 @@ class Gym < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :clips, dependent: :destroy
   has_many :clip_gyms, through: :clips, source: :gym # ユーザーがブックマークしたジムを定義
-  belongs_to :user, optional: true
+  belongs_to :user
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
