@@ -39,7 +39,6 @@
             <div><%= f.text_field :url,  class: "form-control", placeholder:"URL"  %></div>
             <h4><%= f.label :introduction %></h4>
             <div><%= f.text_area :introduction,  class: "form-control", placeholder:"課題の傾向や特徴、紹介したいこと"  %></div>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
             <div class="row justify-content-center">
               <%= f.submit "登録を完了する", class:"btn btn-primary" %>
               <% end %>
