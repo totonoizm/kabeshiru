@@ -31,6 +31,7 @@ class GymsController < ApplicationController
 
   def update
     @gym = Gym.find(params[:id])
+    @gym.user_id = current_user.id #更新したユーザーの名前を保存する
     if @gym.update(gym_params)
       redirect_to gym_path(@gym.id), flash: {success:  '編集に成功しました'}
     else
