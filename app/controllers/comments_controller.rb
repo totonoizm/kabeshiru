@@ -35,6 +35,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.gym_id = @gym.id
     @comment.user_id = current_user.id
+    @comment.comment_images.build
     @comment.comment_seq = @comment.comment_seq_count
     @comments = @gym.comments.order(created_at: :desc).page(params[:page])
     unless @comment.save
@@ -59,6 +60,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:comment, :comment_image)
+    params.require(:comment).permit(:comment, :comment_image, comment_images_images: [])
   end
 end

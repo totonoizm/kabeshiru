@@ -127,7 +127,7 @@
             <%= form_with model:[@gym,@comment], url: gym_comments_path(gym_id: @gym.id, page: params[:page]) do |f| %>
             <%= f.label :image, "登った課題の写真を投稿してみましょう" %>
             <img id="preview" style="width:40%;">
-            <%= f.attachment_field :comment_image %>
+            <%= f.attachment_field :comment_images_images, multiple: true %>
             <%= f.text_area :comment, size:"95x5", class: "form-control", placeholder: "登った本数、課題について、書き込んでみましょう" %>
             <%= f.submit "ノボッタ！", class: "btn btn-primary btn-lg btn-block" %>
             <% end %>

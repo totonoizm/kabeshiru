@@ -1,6 +1,9 @@
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :gym
+  has_many :comment_images, dependent: :destroy
+  accepts_attachments_for :comment_images, attachment: :image
+
   
   NGWORD = %w(クソ野郎 糞野郎).freeze
   NGWORD_REGEX = %r{#{NGWORD.join('|')}}.freeze
