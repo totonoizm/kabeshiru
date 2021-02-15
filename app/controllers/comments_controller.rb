@@ -9,8 +9,6 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @user = User.find(@comment.user_id)
     @gym = Gym.find(@comment.gym_id)
-    # @user = User.find(params[:id]) findメソッド、paramsidの意味を学び直す
-    # @gym = Gym.find(params[:id])
   end
 
   def edit
@@ -27,10 +25,6 @@ class CommentsController < ApplicationController
   end
 
   def create
-    puts "-----"
-    puts params
-    puts "-----"
-
     @gym = Gym.find(params[:gym_id])
     @comment = Comment.new(comment_params)
     @comment.gym_id = @gym.id
