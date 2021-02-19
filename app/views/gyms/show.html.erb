@@ -4,7 +4,7 @@
       <div class="row justify-content-end">
         <div class="user_name">
           登録日：<%= @gym.created_at.strftime('%Y/%m/%d') %></br>
-          最新更新ユーザー：<%= link_to @gym.user.name, @gym.user %>
+          最新更新ユーザー：<%= link_to @gym.user.name, @gym.user %></br>
           最新更新日：<%= @gym.updated_at.strftime('%Y/%m/%d') %></br>
         </div>
       </div>
@@ -41,18 +41,17 @@
         </div> 
       </div>
       <div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      </a>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
       </div>
     </div>
     </div>
   </div>
 </div>
-
   <div class="row"> 
     <div class="col-sm-6">
       <div class="card" style="background-color:#EBD9B9">
@@ -126,11 +125,17 @@
           <div class="form_group">
             <%= form_with model:[@gym,@comment], url: gym_comments_path(gym_id: @gym.id, page: params[:page]) do |f| %>
             <%= f.label :image, "登った課題の写真を投稿してみましょう" %>
-            <img id="preview" style="width:40%;">
-            <%= f.attachment_field :comment_image %>
-            <%= f.text_area :comment, size:"95x5", class: "form-control", placeholder: "登った本数、課題について、書き込んでみましょう" %>
-            <%= f.submit "ノボッタ！", class: "btn btn-primary btn-lg btn-block" %>
-            <% end %>
+            <div class="row justify-content-center">
+              <img id="preview" style="width:40%;">
+            </div>
+            <div class="row justify-content-center">
+              <%= f.attachment_field :comment_image %>
+            </div>
+            <div class="row">
+              <%= f.text_area :comment, size:"95x5", class: "form-control", placeholder: "登った本数、課題について、書き込んでみましょう" %>
+              <%= f.submit "ノボッタ！", class: "btn btn-primary btn-lg btn-block" %>
+              <% end %>
+            </div>
           </div>
         </div>
         <div class="row">
