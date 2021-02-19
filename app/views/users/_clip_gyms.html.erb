@@ -4,15 +4,13 @@
         <% clip_gyms.reverse_each do |gym| %>
             <div class="card">
                 <div class="card-body">
-                    <table>
-                        <tr>
-                            <td><%= link_to attachment_image_tag(gym, :gym_image, size:"70x70", fallback: "gym_default.jpg"),gym_path(gym.id) %></td>
-                            <td><%= gym.name %></td>
-                            <td id="clips_btns_<%= gym.id %>"> 
-                            <%= render partial: 'clips/clip', locals: {gym: gym} %>
-                            </td>
-                        </tr>
-                    </table>
+                    <div class="card-title">
+                        <a><%= link_to attachment_image_tag(gym, :gym_image, size:"70x70", fallback: "gym_default.jpg"),gym_path(gym.id) %></a>
+                        <a id="clips_btns_<%= gym.id %>"> 
+                        <%= render partial: 'clips/clip', locals: {gym: gym} %>
+                        </a>
+                        <div><%= gym.name %></div>
+                    </div>
                 </div>
             </div>
         <% end %>
