@@ -1,11 +1,11 @@
-    <% if user_signed_in? %>
-      <% if gym.cliped_by?(current_user) %>
-        <%= link_to gym_clips_path(gym), method: :delete, remote: true do %>
-          <i class="fas fa-star" aria-hidden="true" style="color: orange;"><%= gym.clips.count %></i>
-        <% end %>
-      <% else %>
-        <%= link_to gym_clips_path(gym), method: :post, remote: true do %>
-          <i class="far fa-star" aria-hidden="true" style="color: grey;"><%= gym.clips.count %></i>
-        <% end %>
-      <% end %>
+<% if user_signed_in? %>
+  <% if gym.cliped_by?(current_user) %>
+    <%= link_to gym_clips_path(gym), method: :delete, remote: true do %>
+      <i class="fas fa-star" aria-hidden="true" style="color: orange;"><%= gym.clips.count %></i>
     <% end %>
+  <% else %>
+    <%= link_to gym_clips_path(gym), method: :post, remote: true do %>
+      <i class="far fa-star" aria-hidden="true" style="color: grey;"><%= gym.clips.count %></i>
+    <% end %>
+  <% end %>
+<% end %>

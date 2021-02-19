@@ -20,7 +20,7 @@
         <div class="card rounded text-white">
             <div class="embed-responsive">
                 <%= attachment_image_tag gym, :gym_image, size:"400x300", fallback: "gym_default.jpg" %>
-            </div>      
+            </div>
             <div class="card-body" style="background-color:#353132">
                 <div class="card-title"><%= link_to gym_path(gym.id), class: "text-white stretched-link" do %><%= gym.name %></div>
                  <% end %>

@@ -31,7 +31,9 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.comment_seq = @comment.comment_seq_count
     @comments = @gym.comments.order(created_at: :desc).page(params[:page])
-    unless @comment.save
+    if @comment.save
+      render 'create'
+    else
       render 'error'
     end
   end
