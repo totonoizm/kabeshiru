@@ -6,9 +6,9 @@
                 <div class="card-body">
                     <div class="card-title">
                         <a><%= link_to attachment_image_tag(gym, :gym_image, size:"70x70", fallback: "gym_default.jpg"),gym_path(gym.id) %></a>
-                        <a id="clips_btns_<%= gym.id %>"> 
+                        <span id="clips_btns_<%= gym.id %>"> 
                         <%= render partial: 'clips/clip', locals: {gym: gym} %>
-                        </a>
+                        </span>
                         <div><%= gym.name %></div>
                     </div>
                 </div>

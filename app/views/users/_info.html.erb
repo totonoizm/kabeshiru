@@ -27,22 +27,17 @@
           <% end %>
         </tr>
       </table>
-      <% if current_user != user %>
-        <% if current_user.following?(user) %>
-          <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-        <% else %>
-          <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-        <% end %>
-      <%end %>
       <div class="row">
         <%= link_to user_path(user) do %>
           <i class="fas fa-mountain" aria-hidden="true" style="color: green;">ノボログ<%= user.comments.count %></i>
         <% end %>
         <%= link_to following_user_path(user) do %>
-          <i class="fa fa-user-circle" aria-hidden="true" style="color: green;"><%= user.follower.count %>フォロー</i>
+          <i class="fa fa-user-circle" aria-hidden="true" style="color: green;">
+            <span id="followed_count"><%= user.follower.count %>フォロー</span></i>
         <% end %>
         <%= link_to followers_user_path(user) do %>
-          <i class="fa fa-user-circle" aria-hidden="true" style="color: green;"><%= user.followed.count %>フォロワー</i>
+          <i class="fa fa-user-circle" aria-hidden="true" style="color: green;">
+            <span id="followed_count"><%= user.followed.count %>フォロワー</span></i>
         <% end %>
       </div>
     </div>
