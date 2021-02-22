@@ -13,27 +13,31 @@
 <div>
   <div class="row">
     <div class="col-sm-5">
-        <%= render 'users/clip_gyms', user: @user, clip_gyms: @clip_gyms %>
+      <%= render 'users/clip_gyms', user: @user, clip_gyms: @clip_gyms %>
     </div>
     <div class="col-sm-7">
       <div class="card" style="background-color:#EBD9B9">
         <div class="card-body">
-          <h4 class="card-title"><%= @user.name %>さんがフォロー中のユーザー</h4>
-          <% @user.following_user.where.not(id: current_user.id).each do |user| %>
-          <div class="card">
-            <div class="card-body">
-              <div class="card-title">
-                <%= link_to (user) do %>
-                  <%= attachment_image_tag user, :profile_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
-                <a><%= user.name %><a>
-                <% end %>
-              </div>
-              <div class="card-text"><%= user.introduction %></div>
-              <div id="follow_btn">
-                <%= render 'relationships/follow', user: user %>
+          <h4 class="card-title"><%= @user.name %>さんがフォロー中のユーザー　<%= @user.follower.count %>人</h4>
+          <% if @user.following_user.exists? %>
+            <% @user.following_user.where.not(id: current_user.id).each do |user| %>
+            <div class="card">
+              <div class="card-body">
+                <div class="card-title">
+                  <%= link_to (user) do %>
+                    <%= attachment_image_tag user, :profile_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+                  <a><%= user.name %><a>
+                  <% end %>
+                </div>
+                <div class="card-text"><%= user.introduction %></div>
+                <div id="follow_btn">
+                  <%= render 'relationships/follow', user: user %>
+                </div>
               </div>
             </div>
-          </div>
+            <% end %>
+          <% else %>
+            <div>該当ユーザーはいません</div>
           <% end %>
         </div>
       </div>
