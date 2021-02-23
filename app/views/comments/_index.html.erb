@@ -8,7 +8,7 @@
             <%= attachment_image_tag comment.user, :profile_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
             <%= comment.user.name %>
           <% end %>
-          <a class="col-sm-3"><%= comment.created_at.strftime('%Y/%m/%d') %></a>
+          <a class="col-sm-3">投稿日：<%= comment.created_at.strftime('%Y/%m/%d') %></a>
           <a class="col-sm-3"><%= comment.comment_seq %>回目の訪問</a><!--コメントモデルでメソッドを定義-->
         </div>
         <div class="row col-sm-3">
