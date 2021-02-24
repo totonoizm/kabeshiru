@@ -132,6 +132,7 @@
               <%= f.attachment_field :comment_image %>
             </div>
             <div class="row">
+              <%= f.date_field :created_at %>
               <%= f.text_area :comment, size:"95x5", class: "form-control", placeholder: "登った本数、課題について、書き込んでみましょう" %>
               <%= f.submit "ノボッタ！", class: "btn btn-primary btn-lg btn-block" %>
               <% end %>
