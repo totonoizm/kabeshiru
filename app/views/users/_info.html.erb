@@ -24,6 +24,9 @@
     <% else %>
       <td><%= safe_join(user.introduction.split("\n"),tag(:br)) %></td>
     <% end %>
+    <% if current_user != user %>
+  <%= link_to 'chatを始める', chat_path(user.id) %>
+<% end %>
   </tr>
 </table>
 
