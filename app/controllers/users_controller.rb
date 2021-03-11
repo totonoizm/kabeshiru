@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_user, only: [:destroy, :index]
+  before_action :check_guest, only: :withdraw
 
   def index
     @users = User.page(params[:page]).per(20).reverse_order
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user.id),flash: {success:  '編集に成功しました'}
+      redirect_to user_path(@user.id), flash: {success:  '編集に成功しました'}
     else
       render 'edit'
     end
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
     if @user == current_user
       render 'edit'
     else
-      redirect_to user_path(current_user.id),flash: {success:  '編集に成功しました'}
+      redirect_to user_path(current_user.id), flash: {success:  '編集に成功しました'}
     end
   end
 
@@ -38,12 +39,12 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     @user.update(is_deleted: true)
     reset_session
-    redirect_to new_user_session_path,flash: {danger: 'またのご利用をお待ちしております'}
+    redirect_to new_user_session_path, flash: {danger: 'またのご利用をお待ちしております'}
   end
 
   def destroy
     User.find(params[:id]).destroy
-    redirect_to users_path,flash: {danger: 'ユーザーを削除しました'}
+    redirect_to users_path, flash: {danger: 'ユーザーを削除しました'}
   end
   
   def following #フォローしている一覧
