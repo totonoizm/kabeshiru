@@ -1,8 +1,14 @@
+<div class="jumbotron"> 
 <h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h1>
-
-<%= render "chats/messages", chats: @chats %>
-
-<%= form_with model: @chat do |f| %>
-  <%= f.text_field :message %>
-  <%= f.hidden_field :room_id %>
-<% end %>
+  <div class="message">
+    <% @chats.each do |chat| %>
+      <%= render "chats/messages", chat: chat %>
+    <% end %>
+  </div>
+  <div class="form">
+  <%= form_with model: @chat do |f| %>
+    <%= f.text_field :message %>
+    <%= f.hidden_field :room_id %>
+  <% end %>
+  </div>
+</div> 
