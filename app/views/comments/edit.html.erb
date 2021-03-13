@@ -5,27 +5,26 @@
       <hr class="my-4"><h1><%= @comment.gym.name %></h1>
       <a><%= @comment.comment_seq %>回目の訪問</a><!--コメントモデルでメソッドを定義-->
       <a><%= @comment.created_at.strftime('%Y/%m/%d') %></a>
-  <div class="row justify-content-center">
-   <div><%= form_with model:@comment, local:true do |f| %>
-    <%= render 'layouts/error_messages', model: f.object %>
-      <table>
-        <tr>                      
-          <th> <%= f.label :image, "画像の編集" %></th>
-          <td><%= attachment_image_tag @comment, :comment_image, size:"400x400", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %>
-            <img id="preview" style="width:40%;">
-              <%= f.attachment_field :comment_image %></td>
-        </tr>
-        <tr>                      
-          <th><%= f.label :comment, "ノボログ内容" %></th>
-          <td><%= f.text_area :comment, autofocus: true, autocomplete: 'ノボログ', class: "form-control" %></td>
-        </tr>
-      </table>
       <div class="row justify-content-center">
-          <%= f.submit "編集を完了する", class:"btn btn-primary" %>
-          <% end %>
+       <div><%= form_with model:@comment, local:true do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+          <div><%= f.label :image, "投稿画像" %></div>
+          <div><%= attachment_image_tag @comment, :comment_image, size:"400x400", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %>
+          </div>
+                <div>新しい画像</div>
+                <div><img id="preview" style="width:40%;"></div>
+                  <div><%= f.attachment_field :comment_image %></div>
+              <div><%= f.label :comment, "ノボログ内容" %></div>
+              <div><%= f.text_area :comment, autofocus: true, autocomplete: 'ノボログ', class: "form-control" %></div>
+          <div class="row justify-content-center">
+              <%= f.submit "編集を完了する", class:"btn btn-primary" %>
+              <% end %>
+          </div>
+          <div class="row justify-content-center">
+            <%= link_to "戻る", comment_path(@comment), class:"btn btn-primary"%>
+          </div>
+        </div>
       </div>
-      <div class="row justify-content-center">
-        <%= link_to "戻る", comment_path(@comment), class:"btn btn-primary"%>
-      </div>
+    </div>
   </div>
 </div>

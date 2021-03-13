@@ -15,6 +15,10 @@ class User < ApplicationRecord
   has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
   has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
   
+  has_many :user_rooms
+  has_many :chats
+  has_many :rooms, through: :user_rooms
+  
   NGWORD = %w(クソ野郎 糞野郎).freeze
   NGWORD_REGEX = %r{#{NGWORD.join('|')}}.freeze
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

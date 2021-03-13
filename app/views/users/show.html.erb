@@ -1,5 +1,14 @@
-<div>
-    <%= render 'users/info', user: @user %>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="jumbotron" style="background-color:#EBD9B9">
+      <div class="row">
+        <%= render 'users/info', user: @user %>
+      </div>
+      <div class="row justify-content-center">
+        <%= render 'relationships/follow_stats', user: @user %>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="row">
     <div class="col-sm-5">

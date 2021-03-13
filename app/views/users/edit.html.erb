@@ -11,31 +11,29 @@
         <div class="jumbotron" style="background-color:#EBD9B9">    
             <div class="row justify-content-center">
                 <div><%= form_with model:@user, local:true do |f| %>
-                <%= render 'layouts/error_messages', model: f.object %>
-                  <table>
-                    <tr>
-                    <td>現在のプロフィール画像<%= attachment_image_tag @user, :profile_image, size:"70x70", format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
-                        <%= f.label :image, "新しいプロフィール画像" %>
-                        <div><img id="preview" class="rounded-circle" height=70px width=70px></div>
-                        <%= f.attachment_field :profile_image %></td>
-                    </tr>
-                    <tr>
-                    <td><%= f.label :name, "ユーザーネーム" %>
-                        <%= f.text_field :name, autofocus: true, placeholder: 'ユーザーネーム', class: "form-control" %></td>
-                    </tr>
-                    <tr>
-                    <td><%= f.label :introduction, "プロフィール" %>
-                        <%= f.text_area :introduction, autofocus: true, placeholder: '例：オーバーハングが大好きです！', class: "form-control", size: "30x7" %></td>
-                    </tr>
-                  </table>
-            </div>
-        </div>
-            <div class="row justify-content-center">
-                <%= f.submit "登録を完了する", class:"btn btn-primary" %>
-                <% end %>
-            </div>
-            <div class="row justify-content-center">
-                <%= link_to "退会はこちら", quit_user_path, class: "nav-link" %>
+                    <%= render 'layouts/error_messages', model: f.object %>
+                    <div>現在のプロフィール画像<%= attachment_image_tag @user, :profile_image, size:"70x70", format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+                    </div>
+                    <div><%= f.label :image, "新しいプロフィール画像" %>
+                        <img id="preview" class="rounded-circle" height=70px width=70px>
+                        <div>
+                            <%= f.attachment_field :profile_image %>
+                        </div>
+                    </div>
+                    <div><%= f.label :name, "ユーザーネーム" %>
+                        <%= f.text_field :name, autofocus: true, placeholder: 'ユーザーネーム', class: "form-control" %>
+                    </div>
+                    <div><%= f.label :introduction, "プロフィール" %>
+                        <%= f.text_area :introduction, autofocus: true, placeholder: '例：オーバーハングが大好きです！', class: "form-control", size: "30x7" %>
+                    </div>
+                    <div class="row justify-content-center">
+                        <%= f.submit "登録を完了する", class:"btn btn-primary" %>
+                        <% end %>
+                    </div>
+                    <div class="row justify-content-center">
+                        <%= link_to "退会はこちら", quit_user_path, class: "nav-link" %>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

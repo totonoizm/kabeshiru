@@ -18,7 +18,13 @@ class ApplicationController < ActionController::Base
   def admin_user
     redirect_to(root_url) unless current_user.admin?
   end
-
+  
+  def check_guest # ゲストユーザー判別メソッド
+    if current_user.email == 'guest@example.com'
+      redirect_to root_path, flash: {danger: 'ゲストユーザーは退会できません。'}
+    end
+  end
+  
   protected
 
   def configure_permitted_parameters
