@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   post 'follow/:id' => 'relationships#create', as: 'follow' # フォローする
   post 'unfollow/:id' => 'relationships#destroy', as: 'unfollow' # フォロー外す
 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'

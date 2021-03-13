@@ -48,7 +48,7 @@ KABESHIRUはクライマーライフをちょっぴり豊かにするサイト�
 
 https://docs.google.com/spreadsheets/d/11c-3oiSjkGZnU5FRC_Zv4oIA_uMa5Geq6-eNhcV56os/edit?usp=sharing
 
-##環境・使用技術
+## 環境・使用技術
 
 ### 開発環境
 
@@ -67,6 +67,7 @@ https://docs.google.com/spreadsheets/d/11c-3oiSjkGZnU5FRC_Zv4oIA_uMa5Geq6-eNhcV5
 ### テスト
 
 　Rspec
+ 
 ### その他使用技術
 
 　非同期通信（ユーザー投稿、削除、ブックマークボタンの即時反映）

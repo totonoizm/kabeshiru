@@ -69,14 +69,14 @@
       <div class="card" style="background-color:#EBD9B9">
         <div class="card-body">
           <h3 class="card-title">Gym info</h3>
-          <div class="card-text">
             <div class="text-sm-right">
               <%= link_to edit_gym_path, class: 'btn btn-dark' do %>
               <i class="fa fa-tools"></i>
               <span>情報修正</span>
               <% end %>
             </div>
-            <div class="table-responsive">
+          <div class="card-text">
+            <div class="table table-borderless table-responsive ">
               <table class="text-nowrap">
                 <tr>
                   <th>住所</th>
@@ -101,6 +101,10 @@
                 <tr>
                   <th>公式HP</th>
                   <td><%= @gym.url %></td>
+                </tr>
+                <tr>
+                  <th>アクセス</th>
+                  <td><%= simple_format(@gym.access) %></td>
                 </tr>
                 <tr>
                   <th>ジム紹介</th>
