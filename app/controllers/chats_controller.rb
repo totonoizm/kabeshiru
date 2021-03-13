@@ -1,7 +1,10 @@
 class ChatsController < ApplicationController
-    
+  before_action :authenticate_user!
+  before_action :check_user
+  
+  
     def show
-        @user = User.find(params[:id])
+        @user = User.find(params[:id]) # メッセージ相手を取得
         rooms = current_user.user_rooms.pluck(:room_id)
         user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
         
@@ -20,6 +23,12 @@ class ChatsController < ApplicationController
     def create
         @chat = current_user.chats.new(chat_params)
         @chat.save
+    end
+    
+    def check_user
+        if @user == current_user
+         redirect_to root_path
+        end
     end
     
     private
