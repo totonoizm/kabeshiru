@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     if @user == current_user
       render 'edit'
     else
-      redirect_to user_path(current_user.id), flash: {success:  '編集に成功しました'}
+      redirect_to user_path(current_user.id)
     end
   end
 
