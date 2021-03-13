@@ -37,13 +37,6 @@ ActiveRecord::Schema.define(version: 2021_03_08_044425) do
     t.integer "comment_seq"
   end
 
-  create_table "gym_images", force: :cascade do |t|
-    t.integer "gym_id"
-    t.string "image_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "gyms", force: :cascade do |t|
     t.string "name"
     t.text "introduction"
