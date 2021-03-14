@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12">
-        <div class="jumbotron" style="background-color:#EBD9B9">
+        <div class="card">
             <div class="row justify-content-center">
                 <%= image_tag 'logo.png' %>
             </div>
@@ -41,7 +41,7 @@
 <div class="col-sm-12">
     <div class="card-columns">
         <% @gyms.each do |gym| %>
-        <div class="card">
+        <div class="card card-image">
             <div class="embed-responsive">
                 <%= link_to gym_path(gym.id) do %>
                     <%= attachment_image_tag gym, :gym_image, size:"400x300", fallback: "gym_default.jpg" %>
