@@ -3,7 +3,6 @@
     <div class="jumbotron" style="background-color:#EBD9B9">
       <div class="row justify-content-end">
         <div class="user_name">
-          登録日：<%= @gym.created_at.strftime('%Y/%m/%d') %></br>
           最新更新ユーザー：<%= link_to @gym.user.name, @gym.user %></br>
           最新更新日：<%= @gym.updated_at.strftime('%Y/%m/%d') %></br>
         </div>
@@ -11,17 +10,97 @@
       <div class="row justify-content-center">
         <h1><%= @gym.name %></h1>
       </div>
-      <div class="row">    
-        <div class="col-sm-11 text-right">
-          <h3 id="comments_count"><%= @gym.comments.count %>件のノボログ</h3>
-          <h3 id="clips_btns_<%= @gym.id %>"> 
+      <div class="row">
+        <div class="col-sm-12 text-right">
+          <a id="comments_count"><%= @gym.comments.count %>件のノボログ</a>
+          <span class="px-2" id="clips_btns_<%= @gym.id %>"> 
           <%= render partial: 'clips/clip', locals: {gym: @gym} %>
-          </h3>
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 text-left">
+          <span id="go_comment">
+            <a href="#nobolog"><i class="btn btn-secondary fas fa-comments">投稿する</i></a>
+          </span>
+          <span id="go_info">
+            <a href="#gym_info"><i class="btn btn-secondary fas fa-caret-down">ジム詳細</i></a>
+          </span>
+          <span id="go_index">
+            <a href="#gym_index"><i class="btn btn-secondary fa fa-book-open">ノボログ一覧</i></a>
+          </span>
+        </div>
+      </div>
+      <span id="gym_info">
+    </div>
+  </div>
+</div>
+<div class="row"> 
+  <div class="col-sm-6">
+    <div class="card" style="background-color:#EBD9B9">
+      <div class="card-body">
+        <div class="card-text text-center">
+          <div class="embed-responsive"><%= attachment_image_tag @gym, :gym_image, size:"400x400", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %></div>
+          <div class="row"> 
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card" style="background-color:#EBD9B9">
+      <div class="card-body">
+        <h3 class="card-title">Gym info</h3>
+          <div class="text-sm-right">
+            <%= link_to edit_gym_path, class: 'btn btn-dark' do %>
+            <i class="fa fa-tools"></i>
+            <span>情報修正</span>
+            <% end %>
+          </div>
+        <div class="card-text">
+          <div class="table table-borderless table-responsive ">
+            <table class="text-nowrap">
+              <tr>
+                <th>住所</th>
+                <td><%= @gym.address %></td>
+              </tr>
+              <tr>
+                <th>電話番号</th>
+                <td><%= @gym.tel %></td>
+              </tr>
+              <tr>
+                <th>営業時間</th>
+                <td><%= simple_format(@gym.open_time) %></td>
+              </tr>
+              <tr>
+                <th>利用料金</th>
+                <td><%= simple_format(@gym.price) %></td>
+              </tr>
+              <tr>
+                <th>定休日</th>
+                <td><%= simple_format(@gym.holiday) %></td>
+              </tr>
+              <tr>
+                <th>公式HP</th>
+                <td><%= @gym.url %></td>
+              </tr>
+              <tr>
+                <th>アクセス</th>
+                <td><%= simple_format(@gym.access) %></td>
+              </tr>
+              <tr>
+                <th>ジム紹介</th>
+                <td><%= simple_format(@gym.introduction) %></td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<section id="nobolog">
 <div class="row">
   <div class="col-sm-12">
     <div class="jumbotron" style="background-color:#EBD9B9">
@@ -52,80 +131,15 @@
     </div>
   </div>
 </div>
-  <div class="row"> 
-    <div class="col-sm-6">
-      <div class="card" style="background-color:#EBD9B9">
-        <div class="card-body">
-          <div class="card-text text-center">
-            <div class="embed-responsive"><%= attachment_image_tag @gym, :gym_image, size:"400x400", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %></div>
-            <div class="row"> 
-              <div id="map"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="card" style="background-color:#EBD9B9">
-        <div class="card-body">
-          <h3 class="card-title">Gym info</h3>
-            <div class="text-sm-right">
-              <%= link_to edit_gym_path, class: 'btn btn-dark' do %>
-              <i class="fa fa-tools"></i>
-              <span>情報修正</span>
-              <% end %>
-            </div>
-          <div class="card-text">
-            <div class="table table-borderless table-responsive ">
-              <table class="text-nowrap">
-                <tr>
-                  <th>住所</th>
-                  <td><%= @gym.address %></td>
-                </tr>
-                <tr>
-                  <th>電話番号</th>
-                  <td><%= @gym.tel %></td>
-                </tr>
-                <tr>
-                  <th>営業時間</th>
-                  <td><%= simple_format(@gym.open_time) %></td>
-                </tr>
-                <tr>
-                  <th>利用料金</th>
-                  <td><%= simple_format(@gym.price) %></td>
-                </tr>
-                <tr>
-                  <th>定休日</th>
-                  <td><%= simple_format(@gym.holiday) %></td>
-                </tr>
-                <tr>
-                  <th>公式HP</th>
-                  <td><%= @gym.url %></td>
-                </tr>
-                <tr>
-                  <th>アクセス</th>
-                  <td><%= simple_format(@gym.access) %></td>
-                </tr>
-                <tr>
-                  <th>ジム紹介</th>
-                  <td><%= simple_format(@gym.introduction) %></td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 <div class="row">
   <div class="col-sm-12">
     <div class="card" style="background-color:#EBD9B9">
       <div class="card-body">
         <h5 class="card-title"><%= @gym.name %>のノボログ一覧</h5>
         <div class="card-text">
-            <div id="comments_error">
-              <%= render 'layouts/error_messages', model: @comment %>
-            </div>
+          <div id="comments_error">
+            <%= render 'layouts/error_messages', model: @comment %>
+          </div>
           <div class="form_group">
             <%= form_with model:[@gym,@comment], url: gym_comments_path(gym_id: @gym.id, page: params[:page]) do |f| %>
             <%= f.label :image, "登った課題の写真を投稿してみましょう" %>
@@ -142,6 +156,7 @@
             </div>
           </div>
         </div>
+        <section id="gym_index">
         <div class="row">
           <div class="col-sm-12">
             <div id="gym_comments">
@@ -154,7 +169,7 @@
     </div>
   </div>
 </div>
-
+</section>
 <style type="text/css">
   #map { height: 400px;
     width: 100%;}
