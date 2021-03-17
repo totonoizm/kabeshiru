@@ -41,10 +41,10 @@ jQuery(document).on('turbolinks:load', function(){
     });
     
 $('a[href^="#"]').click(function() {
-  let speed = 400;
-  let href = $(this).attr("href");
-  let target = $(href == "#" || href == "" ? 'html' : href);
-  let position = target.offset().top;
+  var speed = 400;
+  var href = $(this).attr("href");
+  var target = $(href == "#" || href == "" ? 'html' : href);
+  var position = target.offset().top;
   $('body,html').animate({
     scrollTop: position
   }, speed, 'swing');
