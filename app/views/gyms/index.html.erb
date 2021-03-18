@@ -37,35 +37,9 @@
 </div>
 
 <!--余裕があればランダムで表示-->
-
 <div class="col-sm-12">
     <div class="card-columns">
-        <% @gyms.each do |gym| %>
-        <div class="card card-image">
-            <div class="embed-responsive">
-                <%= link_to gym_path(gym.id) do %>
-                    <%= attachment_image_tag gym, :gym_image, size:"400x300", fallback: "gym_default.jpg" %>
-                <% end %>
-            </div>
-          <div class="card-body text-center text-white pb-0" style="background-color:#353132">
-            <h2 class="card-title"><strong><%= gym.name %></strong></h2>
-            <div class="card-text text-left">
-                <strong>
-                    <p>住所：<%= gym.address %></p>
-                    <p>定休日：<%= gym.holiday %></p>
-                    <p>営業時間：<%= gym.open_time %></p>
-                    <p class="text-right"><%= link_to "READ MORE>>", gym_path(gym.id) %></p>
-                </strong>
-            </div>
-            <div class="card-footer mt-4" style="background-color:#353132">
-                <i class="far fa-comments px-2" ><%= gym.comments.count %></i>
-                <span class="px-2" id="clips_btns_<%= gym.id %>"> 
-                    <%= render partial: 'clips/clip', locals: {gym: gym} %>
-                </span>
-            </div>
-          </div>
-        </div>
-        <% end %>
+        <%= render 'gyms/index', gyms: @gyms, gym: @gym %>
     </div>
 </div>
 <div class="row justify-content-center">
