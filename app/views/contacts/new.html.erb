@@ -1,0 +1,7 @@
+<div>問い合わせ</div>
+<%= form_with model: @contact, local: true do |f| %>
+<%= f.label :name,"お名前" %>
+<%= f.text_field :name,"name" %>
+<%= f.label:email, "" %>
+<%= f.email_field :email,autocomplete:"email" %>
+<%= f.submit"送る" %>
