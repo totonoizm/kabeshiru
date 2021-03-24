@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
         @contact = Contact.new(contact_params)
         if @contact.save
             ContactMailer.contact_mail(@contact).deliver
-            redirect_to thanks_contacts_path
+            redirect_to root_path
         else
             render "new"
         end
