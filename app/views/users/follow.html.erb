@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-sm-12">
     <div class="jumbotron" style="background-color:#EBD9B9">
@@ -30,8 +31,13 @@
                   <% end %>
                 </div>
                 <div class="card-text"><%= user.introduction %></div>
-                <div id="follow_btn">
-                  <%= render 'relationships/follow', user: user %>
+                <div class="row">
+                  <div class="chat_btn">
+                    <%= render 'chats/button', user: user %>
+                  </div>
+                  <div id="follow_btn">
+                    <%= render 'relationships/follow', user: user %>
+                  </div>
                 </div>
               </div>
             </div>
