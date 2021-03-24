@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12">
-        <div class="jumbotron" style="background-color:#EBD9B9">
+        <div class="jumbotron" style="background: rgba(255,255,255,0.8)">
             <div class="row justify-content-center">
                 <%= image_tag 'logo.png' %>
             </div>
@@ -10,7 +10,7 @@
             <div class="row justify-content-center">
                 <%= search_form_for @search, url: search_gyms_path do |f| %>
                 <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、登ってみたい壁を入力してください...", size: "100x10", class: 'input form-control' %>
-                <button class="btn btn-success btn-lg btn-block" type="submit">検索</button>
+                <button class="btn btn-secondary btn-lg btn-block" type="submit">検索</button>
                 <% end %>
             </div>
             <div class="row justify-content-center">
@@ -19,11 +19,16 @@
             <div class="text-center">
                 <%= link_to 'ジム登録', new_gym_path, class: "btn btn-primary btn-lg" %>
             </div>
-            <% if user_signed_in? %> 
-            <div class="text-center">
+            <% unless user_signed_in? %> 
+            <div class="row justify-content-center">
+                <div class="info-btn">
+                    <%= link_to '新規登録', new_user_registration_path, class: "btn btn-info btn-lg" %>
+                </div>
+                <div class="info-btn">
+                    <%= link_to 'ログイン', new_user_session_path, class: "btn btn-success btn-lg" %>
+                </div>
             </div>
-            <% else %>
-            <div class="text-center">
+            <div class="row justify-content-center">
                 <%= link_to 'ゲストログイン（ポートフォリオ閲覧の方はこちら）', users_guest_sign_in_path, method: :post %>
             </div>
             <% end %>
@@ -32,28 +37,9 @@
 </div>
 
 <!--余裕があればランダムで表示-->
-<div class="col-12">
+<div class="col-sm-12">
     <div class="card-columns">
-        <% @gyms.each do |gym| %>
-        <div class="card rounded text-white">
-            <div class="embed-responsive">
-                <%= attachment_image_tag gym, :gym_image, size:"400x300", fallback: "gym_default.jpg" %>
-            </div>      
-            <div class="card-body" style="background-color:#353132">
-                <div class="card-title"><%= link_to gym_path(gym.id), class: "text-white stretched-link" do %><%= gym.name %></div>
-                 <% end %>
-                <div id="clips_btns_<%= gym.id %>"> 
-                  <%= render partial: 'clips/clip', locals: {gym: gym} %>
-                </div>
-                <div class="card-text">
-                    <p>施設利用料金：<%= gym.price %></p>
-                    <p>定休日：<%= gym.holiday %></p>
-                    <p>営業時間：<%= gym.open_time %></p>
-                    <p>ノボログ：<%= gym.comments.count %></p>
-                </div>
-            </div>
-        </div>
-        <% end %>
+        <%= render 'gyms/index', gyms: @gyms, gym: @gym %>
     </div>
 </div>
 <div class="row justify-content-center">

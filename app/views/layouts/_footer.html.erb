@@ -6,24 +6,25 @@
       </div>
       <div class="col-md-4 col-sm-6 col-xs-12">
           <ul class="menu">
-               <span>Menu</span>   
-                <li>
-                  <%= link_to 'Home', root_path %>
-                </li>
-                <li>
-                  <%= link_to 'About', about_gyms_path %>
-                </li>
-                <li>
-                  <%= link_to 'ジム登録', new_gym_path %>
-                </li>
-                <li>
-                   <%= link_to 'Nobolog', comments_path %>
-                </li>
+           <span>Menu</span>   
+        <li>
+          <%= link_to root_path, class: "nav-link" do %><i class="fas fa-warehouse">Home</i><% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to about_gyms_path, class: "nav-link" do %><i class="fas fa-question-circle">About</i><% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_gym_path, class: "nav-link" do %><i class="fas fa-edit">ジム登録</i><% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to comments_path, class: "nav-link" do %><i class="fas fa-comments">Nobolog</i><% end %> 
+        </li>
+
            </ul>
       </div>
       <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="address">
-          <span>©︎ KABESHIRU</span>
+          <span>© T.Ota</span>
         </div>
       </div> 
     </div>

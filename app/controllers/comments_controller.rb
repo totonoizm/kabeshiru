@@ -13,6 +13,11 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = Comment.find(params[:id])
+    if @comment.user == current_user
+      render 'edit'
+    else
+      redirect_to comment_path(@comment.id)
+    end
   end
 
   def update
