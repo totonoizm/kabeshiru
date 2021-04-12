@@ -10,47 +10,4 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-sm-12">
-    <div class="card" style="background-color:#EBD9B9">
-      <div class="card-body">
-        <h4 class="card-title">ジム情報登録</h4>
-        <div class="card-text-center">
-         <div class="form_group"><%= form_with model:@gym, local:true do |f| %>
-            <%= render 'layouts/error_messages', model: f.object %>
-            <h4>現在のジム画像</h4>
-              <div class="row justify-content-center"><%= attachment_image_tag @gym, :gym_image, size: "400x400", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %></div>
-            <h4><%= f.label :image, "新しいジム画像" %></h4>
-            <div class="row justify-content-center"><img id="preview" style="width:40%;"></div>
-            <div class="row justify-content-center"><%= f.attachment_field :gym_image %></div>
-            <h4><%= f.label :name %></h4>
-            <div><%= f.text_field :name, class: "form-control", placeholder:"例：B-PUMP TOKYO" %></div>
-            <h4><%= f.label :address %></h4>
-            <div><%= f.text_area :address,  class: "form-control", placeholder:"例：東京都文京区湯島１丁目１−８"  %></div>
-            <h4><%= f.label :tel %></h4>
-            <div><%= f.text_field :tel,  class: "form-control", placeholder:"例：03-6206-9189" %></div>
-            <h4><%= f.label :open_time %></h4>
-            <div><%= f.text_area :open_time,  class: "form-control", placeholder:"例：平日	12:00～23:00"  %></div>
-            <h4><%= f.label :price %></h4>
-            <div><%= f.text_area :price,  class: "form-control", placeholder:"例：平日・通日	2,000円(税抜)"  %></div>
-            <h4><%= f.label :holiday %></h4>
-            <div><%= f.text_area :holiday,  class: "form-control", placeholder:"例：年中無休"  %></div>
-            <h4><%= f.label :access %></h4>
-            <div><%= f.text_area :access,  class: "form-control", placeholder:"例：JR「秋葉原駅」徒歩5分"  %></div>
-            <h4><%= f.label :url %></h4>
-            <div><%= f.text_field :url,  class: "form-control", placeholder:"URL"  %></div>
-            <h4><%= f.label :introduction %></h4>
-            <div><%= f.text_area :introduction,  class: "form-control", placeholder:"課題の傾向や特徴、紹介したいこと"  %></div>
-            <div class="row justify-content-center">
-              <%= f.submit "登録を完了する", class:"btn btn-primary" %>
-              <% end %>
-              <% if current_user.admin? %>
-                <%= link_to "ジム情報を削除", @gym, class: "btn btn-danger", data: {confirm: "本当に削除してよろしいですか?"}, method: :delete %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render "form", gym: @gym %>
