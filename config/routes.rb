@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   root 'gyms#index'
   post 'follow/:id' => 'relationships#create', as: 'follow' # フォローする
   post 'unfollow/:id' => 'relationships#destroy', as: 'unfollow' # フォロー外す
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
@@ -24,6 +26,9 @@ Rails.application.routes.draw do
   
   resources :contacts, only: [:new, :create]
   
+  get 'chat/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
+
   resources :gyms do
     resources :comments, only: [:index, :show, :edit, :update, :create, :destroy]
     resource :clips, only: [:create, :destroy]

@@ -1,5 +1,5 @@
 class GymsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :show]
+  before_action :authenticate_user!, except: [:index,:show,:about,:search]
   before_action :admin_user, only: :destroy
 
   def index
