@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:index, :show, :edit, :update, :create, :destroy]
   
-  resources :contacts, only: [:new, :create,]
+  resources :contacts, only: [:new, :create]
   
   resources :gyms do
     resources :comments, only: [:index, :show, :edit, :update, :create, :destroy]

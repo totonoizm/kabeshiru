@@ -1,12 +1,20 @@
-<div class="jumbotron">
-<h3>おといあわせ</h3>
-<%= form_with(model: @contact, local: true) do |f| %>
-  <%= f.label :name, "おなまえ" %>
-  <%= f.text_field :name %>
-  <%= f.label :email, "メールアドレス" %>
-  <%= f.email_field :email, autocomplete: "email" %>
-  <%= f.label :content, "ないよう" %>
-  <%= f.text_field :content %>
-  <%= f.submit "おくる" %>
-<% end %>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card" style="background-color:#EBD9B9">    
+            <div class="row justify-content-center">
+                <div><%= form_with(model: @contact, local: true) do |f| %>
+                    <div><%= f.label :email, "メールアドレス" %>
+                          <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+                    </div>
+                    <div><%= f.label :content, "問い合わせ内容" %>
+                          <%= f.text_area :content, class: "form-control" %>
+                    </div>
+                    <div class="row justify-content-center">
+                        <%= f.submit "送信", class:"btn btn-primary" %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
