@@ -24,9 +24,10 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:index, :show, :edit, :update, :create, :destroy]
   
+  resources :contacts, only: [:new, :create]
+  
   get 'chat/:id' => 'chats#show', as: 'chat'
   resources :chats, only: [:create]
-
 
   resources :gyms do
     resources :comments, only: [:index, :show, :edit, :update, :create, :destroy]
