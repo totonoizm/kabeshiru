@@ -49,8 +49,8 @@ a, p{
     font-family: 'Roboto', sans-serif;
 }
 hr {
-  grid-column: span 2;
-  width: 100%;
+    grid-column: span 2;
+    width: 100%;
 }
 .title{
     font-weight:700;
@@ -96,14 +96,17 @@ footer{
     letter-spacing: 3px;
     font-size:17px;
 }
+.name{
+    color:white;
+}
 .address span , .menu span{
-   color: #FFF; 
-   font-weight: bold; 
-   border-bottom: 1px solid #c7c7c7; 
-   padding:10px 0px;
-   display: block;
-   font-size: 16px;
-   letter-spacing: 3px;
+    color: #FFF; 
+    font-weight: bold; 
+    border-bottom: 1px solid #c7c7c7; 
+    padding:10px 0px;
+    display: block;
+    font-size: 16px;
+    letter-spacing: 3px;
 }
  
 .menu li a{
