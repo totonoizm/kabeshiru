@@ -1,29 +1,46 @@
 <footer>
   <div class="container">
-   <div class="row">
+    <div class="row">
       <div class="col-md-4 col-sm-6 col-xs-12">
-        <span class="logo">KABESHIRU</span>
+        <ul class="menu">
+         <span>ジムを探す</span>   
+      <li class="nav-item">
+        <%= link_to search_gyms_path, class: "nav-link" do %><i class="fas fa-edit">ジムを探す</i><% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to new_gym_path, class: "nav-link" do %><i class="fas fa-edit">施設登録</i><% end %>
+      </li>
+      <li class="nav-item">
+          <%= link_to comments_path, class: "nav-link" do %><i class="fas fa-comments">ノボログ一覧</i><% end %> 
+        </li>
+         </ul>
       </div>
       <div class="col-md-4 col-sm-6 col-xs-12">
           <ul class="menu">
-           <span>Menu</span>   
-        <li>
-          <%= link_to root_path, class: "nav-link" do %><i class="fas fa-warehouse">Home</i><% end %>
-        </li>
+           <span>KABESHIRUとは</span>   
         <li class="nav-item">
-          <%= link_to about_gyms_path, class: "nav-link" do %><i class="fas fa-question-circle">About</i><% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to new_gym_path, class: "nav-link" do %><i class="fas fa-edit">ジム登録</i><% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to comments_path, class: "nav-link" do %><i class="fas fa-comments">Nobolog</i><% end %> 
+          <%= link_to about_gyms_path, class: "nav-link" do %><i class="fas fa-comments">About</i><% end %> 
         </li>
            </ul>
       </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+          <ul class="menu">
+           <span>お問い合わせ</span>   
+        <li class="nav-item">
+            <%= link_to new_contact_path, class: "nav-link" do %><i class="fas fa-paper-plane">お問い合わせ</i><% end %> 
+        </li>
+        <li class="nav-item">
+            <%= link_to new_contact_path, class: "nav-link" do %><i class="fas fa-paper-plane">ご意見箱</i><% end %> 
+        </li>
+           </ul>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-md-4 col-sm-6 col-xs-12">
+        <%= link_to root_path, class: "nav-link" do %><span class="logo">KABESHIRU</span><% end %>
+      </div>
         <div class="address">
-          <span>© T.Ota</span>
+          <span>© T.Ota 2021</span>
         </div>
         <!--<ul class="menu">-->
         <!--<li class="nav-item">-->
@@ -31,6 +48,7 @@
         <!--</li>-->
         <!--</ul>-->
       </div> 
+    </div>
     </div>
   </div>
 </footer>
