@@ -48,6 +48,10 @@ a, p{
     letter-spacing: 3px;
     font-family: 'Roboto', sans-serif;
 }
+hr {
+  grid-column: span 2;
+  width: 100%;
+}
 .title{
     font-weight:700;
     font-family: 'Sawarabi Gothic', sans-serif;

@@ -9,13 +9,14 @@
             <%= comment.user.name %>
           <% end %>
           <a class="col-sm-3">投稿日：<%= comment.created_at.strftime('%Y/%m/%d') %></a>
-          <a class="col-sm-3"><%= comment.comment_seq %>回目の訪問</a><!--コメントモデルでメソッドを定義-->
-        </div>
-        <div class="row col-sm-3">
+          <a class="col-sm-3">
             <%= link_to (comment.gym) do %>
               <%= comment.gym.name %>
             <% end %>
+          </a>
+          <a class="col-sm-3"><%= comment.comment_seq %>回目の訪問</a><!--コメントモデルでメソッドを定義-->
         </div>
+        <hr size="10">
         <div class="row">
           <div class="col-sm-3">
             <div class="card-text"><%= attachment_image_tag comment, :comment_image, :fill, 120, 120, format: 'jpeg' %></div>

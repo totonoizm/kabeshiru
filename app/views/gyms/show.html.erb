@@ -18,6 +18,7 @@
           </span>
         </div>
       </div>
+      <hr size="10">
       <div class="row">
         <div class="col-sm-12 text-left">
           <span id="go_comment">
@@ -52,6 +53,7 @@
     <div class="card" style="background-color:#EBD9B9">
       <div class="card-body">
         <h3 class="card-title">Gym info</h3>
+        	<hr size="10">
           <div class="text-sm-right">
             <%= link_to edit_gym_path, class: 'btn btn-dark' do %>
             <i class="fa fa-tools"></i>
@@ -136,6 +138,7 @@
     <div class="card" style="background-color:#EBD9B9">
       <div class="card-body">
         <h5 class="card-title"><%= @gym.name %>のノボログ一覧</h5>
+        <hr size="10">
         <div class="card-text">
           <div id="comments_error">
             <%= render 'layouts/error_messages', model: @comment %>
