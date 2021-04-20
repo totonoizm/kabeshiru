@@ -1,39 +1,42 @@
-<%= render 'users/info', user: @user %>
 <div class="row">
   <div class="col-sm-12">
     <div class="jumbotron" style="background-color:#EBD9B9">
-      <h1 class="display-4">ノボログ詳細</h1>
-      <hr class="my-4">
-      <%= link_to (@comment.gym) do %>
-          <h2 class="row justify-content-center"><%= @comment.gym.name %></h2>
-        <% end %>
-      <div class="text-sm-right">
-        <div>投稿日<%= @comment.created_at.strftime('%Y/%m/%d') %></div>
-        <div><%= @comment.comment_seq %>回目の訪問</div><!--コメントモデルでメソッドを定義-->
-        <% if @user.id == current_user.id %>
-          <div>
-            <%= link_to edit_comment_path(@comment), class: 'btn btn-dark' do %>
+      <% if @user.id == current_user.id %>
+      <div class="row justify-content-end">
+          <%= link_to edit_comment_path(@comment), class: 'btn btn-dark' do %>
             <i class="fa fa-tools fa-sm"></i>
             <span>ノボログ編集</span>
-            <% end %>
-          </div>
+          <% end %>
+      </div>
+      <% end %>
+      <div class="row">
+        <%= link_to (@comment.gym) do %>
+          <h2><%= @comment.gym.name %></h2>
         <% end %>
       </div>
-      <div class="row justify-content-center">
-        <table>
-          <tr>
-            <td><%= attachment_image_tag @comment, :comment_image, size:"400x300", format: 'jpeg', class: "rounded" %>
-          </tr>
-          <tr>
-            <td><%= simple_format(@comment.comment) %></td>
-          </tr>
-        </table>
+      <div class="row"><p><%= @comment.gym.address.truncate(20) %></p></div>
+      <div class="row">
+        <%= link_to "施設情報", gym_path(@gym), class:"btn btn-primary" %>
       </div>
-      <div class="row justify-content-center">
-        <%= link_to "戻る", user_path(@user), class:"btn btn-primary"%>
+      <hr size="10">
+      <div class="row">
+        <div class="user-info">
+          <%= link_to (@comment.user) do %>
+            <%= attachment_image_tag @comment.user, :profile_image, size:'50x50', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+            <%= @comment.user.name %>
+          <% end %>
+          <a class="comment-info">投稿日：<%= @comment.created_at.strftime('%Y/%m/%d') %></a>
+          <a class="comment-info"><%= @comment.comment_seq %>回目の訪問</a><!--コメントモデルでメソッドを定義-->
+        </div>
       </div>
-      <div class="row justify-content-center">
-        <%= link_to "このジムの詳細を見る", gym_path(@gym), class:"btn btn-primary"%>
+      <div class="row">
+          <div class="col-sm-3">
+            <div class="comment-img"><%= attachment_image_tag @comment, :comment_image, size: "400x400", format: 'jpeg' %></div>
+          </div>
+          <div class="col-sm-7">
+            <div class="text"><%= simple_format(@comment.comment)%></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

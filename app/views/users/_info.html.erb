@@ -2,7 +2,7 @@
   <div class="col-sm-12">
     <div class="jumbotron" style="background-color:#EBD9B9">
       <div class="row">
-        <div class="col-sm-2 profile_image">
+        <div class="col-sm-2">
           <%= link_to user_path(user) do %>
             <%= attachment_image_tag user, :profile_image, size:'150x150', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
           <% end %>
