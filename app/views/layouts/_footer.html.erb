@@ -1,10 +1,10 @@
 <footer>
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
-      <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="col-md-4">
         <%= link_to root_path, class: "nav-link" do %><span class="logo">KABESHIRU</span><% end %>
       </div>
-      <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="col-md-4">
         <ul class="menu">
           <span>ジムを探す</span>   
           <li class="nav-item">
@@ -18,7 +18,7 @@
             </li>
          </ul>
       </div>
-      <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="col-md-4">
         <ul class="menu">
           <span>KABESHIRUとは</span>   
           <li class="nav-item">
@@ -28,15 +28,9 @@
       </div>
     </div>
     <div class="row justify-content-center">
-        <ul class="menu list-group list-group-horizontal">
-          <li class="nav-item"><%= link_to "/", class: "nav-link" do %>© tota 2021<% end %></li>
-                    <li class="nav-item">
-            <%= link_to "https://github.com/totonoizm", class: "nav-link" do %><i class="fab fa-github"></i><% end %> 
-          </li>
-          <li class="nav-item">
-            <%= link_to "https://twitter.com/musaremethod", class: "nav-link" do %><i class="fab fa-twitter"></i><% end %> 
-          </li>
-        </ul>
+      <ul class="menu list-group list-group-horizontal">
+        <li class="nav-item"><%= link_to "/", class: "nav-link" do %>© tota 2021<% end %></li>
+      </ul>
     </div> 
   </div>
 </footer>
