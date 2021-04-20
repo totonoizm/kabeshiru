@@ -6,14 +6,12 @@
             <% end %>
         </div>
       <div class="card-body text-center text-white pb-0" style="background-color:#353132">
-        <h2 class="card-title"><strong><%= gym.name %></strong></h2>
+        <div class="card-title"><%= gym.name %></div>
         <div class="card-text text-left">
-            <strong>
-                <p>住所：<%= gym.address %></p>
-                <p>定休日：<%= gym.holiday %></p>
-                <p>営業時間：<%= gym.open_time %></p>
-                <p class="text-right"><%= link_to "READ MORE>>", gym_path(gym.id) %></p>
-            </strong>
+            <p>住所：<%= gym.address %></p>
+            <p>定休日：<%= gym.holiday %></p>
+            <p>営業時間：<%= gym.open_time %></p>
+            <p class="text-right"><%= link_to "READ MORE>>", gym_path(gym.id) %></p>
         </div>
         <div class="card-footer mt-4" style="background-color:#353132">
             <i class="far fa-comments px-2" ><%= gym.comments.count %></i>

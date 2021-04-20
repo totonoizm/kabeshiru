@@ -52,14 +52,14 @@
   <div class="col-sm-6">
     <div class="card" style="background-color:#EBD9B9">
       <div class="card-body">
-        <h3 class="card-title">Gym info</h3>
-        	<hr size="10">
+        <div class="card-title">Gym info</div>
           <div class="text-sm-right">
             <%= link_to edit_gym_path, class: 'btn btn-dark' do %>
             <i class="fa fa-tools"></i>
             <span>情報修正</span>
             <% end %>
           </div>
+        	<hr size="10">
         <div class="card-text">
           <div class="table table-borderless table-responsive ">
             <table class="text-nowrap">
@@ -137,7 +137,7 @@
   <div class="col-sm-12">
     <div class="card" style="background-color:#EBD9B9">
       <div class="card-body">
-        <h5 class="card-title"><%= @gym.name %>のノボログ一覧</h5>
+        <div class="card-title"><%= @gym.name %>のノボログ一覧</div>
         <hr size="10">
         <div class="card-text">
           <div id="comments_error">
