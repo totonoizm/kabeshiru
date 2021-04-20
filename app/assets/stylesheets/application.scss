@@ -40,7 +40,10 @@ body {
     background: rgba(0,0,0,0.3);
     height:100%;
 }
-
+main{
+        padding-top: 50px; 
+        padding-bottom: 100px; 
+}
 
 .gym_comments{
     margin-top: 40px;
@@ -86,6 +89,9 @@ hr {
 
 footer{
     background-color: #353132;
+}
+footer .container{
+    margin-top:30px;
 }
 
 .logo{
