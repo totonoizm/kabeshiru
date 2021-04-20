@@ -8,16 +8,16 @@
                 <p class="title">今日登りたい課題が見つかるボルダリングジム検索サイト</p>
             </div>
             <div class="row justify-content-center">
-                <%= search_form_for @search, url: search_gyms_path do |f| %>
+                <%= search_form_for @search, class:"form-group label-floating",url: search_gyms_path do |f| %>
                 <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、登ってみたい壁を入力してください...", size: "100x10", class: 'input form-control' %>
-                <button class="btn btn-secondary btn-lg btn-block" type="submit">検索</button>
+                <button class="btn btn-raised btn-info btn-lg btn-block" type="submit">検索</button>
                 <% end %>
             </div>
             <div class="row justify-content-center">
                 <p class="title">あなたのお気に入りのジムがない時は今すぐ登録しましょう！</p>
             </div>
             <div class="text-center">
-                <%= link_to 'ジム登録', new_gym_path, class: "btn btn-primary btn-lg" %>
+                <%= link_to 'ジム登録', new_gym_path, class: "btn btn-raised btn-primary btn-lg" %>
             </div>
             <% unless user_signed_in? %> 
             <div class="row justify-content-center">

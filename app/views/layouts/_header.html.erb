@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar fixed-top navbar-light navbar-expand-lg" style="background-color:#83967C">
+  <nav class="navbar fixed-top navbar-light navbar-expand-sm" style="background-color:#FFF">
     <a class="navbar-brand" href="/"><%= image_tag 'logo.png' %></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#responsiveMenu" aria-controls="responsiveMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -31,10 +31,7 @@
                 <%= link_to "管理者権限", user_path(current_user), class: "nav-link"%>
             </li>
             <li class="form-inline">
-                <%= search_form_for @search, url: search_gyms_path do |f| %>
-                  <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'form-control' %>
-                  <button class="btn btn-dark" type="submit"><i class="fas fa-search"></i></button>
-                <% end %>
+              <%= render "layouts/search_form", search:@search %>
             </li>
           </ul>
         <% else %>  
@@ -53,10 +50,7 @@
             <% end %>
         </li>
         <li class="form-inline">
-            <%= search_form_for @search, url: search_gyms_path do |f| %>
-              <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'form-control' %>
-              <button class="btn btn-dark" type="submit"><i class="fas fa-search"></i></button>
-            <% end %>
+              <%= render "layouts/search_form", search:@search %>
         </li>
       </ul>
         <% end %>
@@ -70,10 +64,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="form-inline">
-              <%= search_form_for @search, url: search_gyms_path do |f| %>
-                <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'form-control' %>
-                <button class="btn btn-dark" type="submit"><i class="fas fa-search"></i></button>
-            <% end %>
+              <%= render "layouts/search_form", search:@search %>
           </li>
       <% end %>
         </ul>

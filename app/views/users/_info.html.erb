@@ -8,7 +8,7 @@
     <div class="col-sm-8 display-4"><%= user.name %></div>
     <div class="col-sm-2">
         <% if user.id == current_user.id %>
-          <%= link_to edit_user_path(user), data: {"turbolinks" => false}, class: 'btn btn-dark btn-sm' do %>
+          <%= link_to edit_user_path(user), data: {"turbolinks" => false}, class: 'btn btn-raised btn-dark btn-sm' do %>
             <i class="fa fa-tools fa-sm"></i>
             <span>登録情報編集</span>
           <% end %>
