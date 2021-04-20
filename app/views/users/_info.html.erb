@@ -1,40 +1,36 @@
-<div class="row">
-  <div class="col-sm-12">
-    <div class="jumbotron" style="background-color:#EBD9B9">
-      <div class="row">
-        <div class="col-sm-2">
-          <%= link_to user_path(user) do %>
-            <%= attachment_image_tag user, :profile_image, size:'150x150', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
-          <% end %>
-        </div>
-        <div class="col-sm-8 display-4"><%= user.name %></div>
-        <div class="col-sm-2">
-            <% if user.id == current_user.id %>
-              <%= link_to edit_user_path(user), data: {"turbolinks" => false}, class: 'btn btn-dark btn-sm' do %>
-                <i class="fa fa-tools fa-sm"></i>
-                <span>登録情報編集</span>
-              <% end %>
-            <% else user.id != current_user.id %>
-              <div id="follow_btn">
-                <%= render 'relationships/follow', user: user %>
-              </div>
-            <% end %>
-        </div>
-        <table>
-          <tr>
-            <th>プロフィール</th>
-            <% if @user.introduction.nil? %>
-              <td><%= user.introduction %></td>
-            <% else %>
-              <td><%= safe_join(user.introduction.split("\n"),tag(:br)) %>
-            <% end %>
-          </tr>
-        </table>
-        	<hr size="10">
-      </div>
-      <div class="row justify-content-center">
-        <%= render 'relationships/follow_stats', user: @user %>
-      </div>
+<div class="jumbotron" style="background-color:#EBD9B9">
+  <div class="row">
+    <div class="col-sm-2">
+      <%= link_to user_path(user) do %>
+        <%= attachment_image_tag user, :profile_image, size:'150x150', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+      <% end %>
     </div>
+    <div class="col-sm-8 display-4"><%= user.name %></div>
+    <div class="col-sm-2">
+        <% if user.id == current_user.id %>
+          <%= link_to edit_user_path(user), data: {"turbolinks" => false}, class: 'btn btn-dark btn-sm' do %>
+            <i class="fa fa-tools fa-sm"></i>
+            <span>登録情報編集</span>
+          <% end %>
+        <% else user.id != current_user.id %>
+          <div id="follow_btn">
+            <%= render 'relationships/follow', user: user %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="user_profile col-sm-2">プロフィール</div>
+      <div class="user_profile_content col-sm-6">
+        <% if @user.introduction.nil? %>
+          <a><%= user.introduction %></a>
+        <% else %>
+          <a><%= safe_join(user.introduction.split("\n"),tag(:br)) %></a>
+        <% end %>
+      </div>
+    <hr size="10">
+  </div>
+  <div class="row justify-content-center">
+    <%= render 'relationships/follow_stats', user: @user %>
   </div>
 </div>
