@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-12">
-    <div class="jumbotron" style="background-color:#EBD9B9">
+    <div class="jumbotron" style="background: rgba(255,255,255,0.9)">
       <h1 class="display-4">ユーザー情報登録</h1>
       <hr class="my-4">
     </div>
@@ -8,7 +8,7 @@
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <div class="jumbotron" style="background-color:#EBD9B9">    
+        <div class="jumbotron" style="background: rgba(255,255,255,0.9)">    
             <div class="row justify-content-center">
                 <div><%= form_with model:@user, local:true do |f| %>
                     <%= render 'layouts/error_messages', model: f.object %>
@@ -27,7 +27,7 @@
                         <%= f.text_area :introduction, autofocus: true, placeholder: '例：オーバーハングが大好きです！', class: "form-control", size: "30x7" %>
                     </div>
                     <div class="row justify-content-center">
-                        <%= f.submit "登録を完了する", class:"btn btn-primary" %>
+                        <%= f.submit "登録を完了する", class:"btn btn-raised btn-primary" %>
                         <% end %>
                     </div>
                     <div class="row justify-content-center">

@@ -1,82 +1,75 @@
 <header>
-  <nav class="navbar fixed-top navbar-light navbar-expand-lg" style="background-color:#83967C">
-    <a class="navbar-brand" href="/"><%= image_tag 'logo.png' %></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#responsiveMenu" aria-controls="responsiveMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="responsiveMenu">
-      <ul class="navbar-nav ml-left">
-        <li class="nav-item">
-          <%= link_to gyms_path, class: "nav-link" do %><i class="fas fa-warehouse">Gyms</i><% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to about_gyms_path, class: "nav-link" do %><i class="fas fa-question-circle">About</i><% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to comments_path, class: "nav-link" do %><i class="fas fa-comments">Nobolog</i><% end %> 
-        </li>
-      <% if user_signed_in? %>
-        <% if current_user.admin? %>
+  <nav class="navbar fixed-top navbar-light navbar-expand-lg" style="background: rgba(230,231,232)">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><%= image_tag 'logo.png' %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#responsiveMenu" aria-controls="responsiveMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="responsiveMenu">
+        <ul class="navbar-nav ml-left">
           <li class="nav-item">
-            <%= link_to '全ユーザー一覧', users_path, class: "nav-link" %>
+            <%= link_to gyms_path, class: "nav-link" do %><i class="fas fa-warehouse">Gyms</i><% end %>
           </li>
           <li class="nav-item">
-            <%= link_to 'ジム登録', new_gym_path, class: "nav-link" %>
+            <%= link_to about_gyms_path, class: "nav-link" do %><i class="fas fa-question-circle">About</i><% end %>
           </li>
           <li class="nav-item">
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            <%= link_to comments_path, class: "nav-link" do %><i class="fas fa-comments">Nobolog</i><% end %> 
           </li>
-          <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
             <li class="nav-item">
-                <%= link_to "管理者権限", user_path(current_user), class: "nav-link"%>
+              <%= link_to '全ユーザー一覧', users_path, class: "nav-link" %>
             </li>
-            <li class="form-inline">
-                <%= search_form_for @search, url: search_gyms_path do |f| %>
-                  <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'form-control' %>
-                  <button class="btn btn-dark" type="submit"><i class="fas fa-search"></i></button>
-                <% end %>
+            <li class="nav-item">
+              <%= link_to 'ジム登録', new_gym_path, class: "nav-link" %>
             </li>
-          </ul>
-        <% else %>  
-        <li class="nav-item">
-          <%= link_to new_gym_path, class: "nav-link" do %><i class="fas fa-edit">ジム登録</i><% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %><i class="fas fa-sign-out-alt">Logout</i><% end %>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <%= link_to user_path(current_user), class: "nav-link" do %>
-              ようこそ<%= attachment_image_tag current_user, :profile_image, size:'40x40', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
-              <%= (current_user.name) %>さん
-            <% end %>
-        </li>
-        <li class="form-inline">
-            <%= search_form_for @search, url: search_gyms_path do |f| %>
-              <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'form-control' %>
-              <button class="btn btn-dark" type="submit"><i class="fas fa-search"></i></button>
-            <% end %>
-        </li>
-      </ul>
-        <% end %>
-      <% else %>
+            <li class="nav-item">
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <%= link_to "管理者権限", user_path(current_user), class: "nav-link"%>
+              </li>
+              <li class="form-inline">
+                <%= render "layouts/search_form", search:@search %>
+              </li>
+            </ul>
+          <% else %>  
           <li class="nav-item">
-              <%= link_to new_user_registration_path, class: "nav-link" do %><i class="fas fa-user-plus">SignUP</i><% end %>
+            <%= link_to new_gym_path, class: "nav-link" do %><i class="fas fa-edit">ジム登録</i><% end %>
           </li>
           <li class="nav-item">
-              <%= link_to new_user_session_path, class: "nav-link" do %><i class="fas fa-sign-in-alt">LogIn</i><% end %>
+            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %><i class="fas fa-sign-out-alt">Logout</i><% end %>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-          <li class="form-inline">
-              <%= search_form_for @search, url: search_gyms_path do |f| %>
-                <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、キーワード", class: 'form-control' %>
-                <button class="btn btn-dark" type="submit"><i class="fas fa-search"></i></button>
-            <% end %>
+          <li class="nav-item">
+              <%= link_to user_path(current_user), class: "nav-link" do %>
+                ようこそ<%= attachment_image_tag current_user, :profile_image, size:'40x40', format: 'jpeg', class: "rounded-circle", fallback: "default_user.jpg" %>
+                <%= (current_user.name) %>さん
+              <% end %>
           </li>
-      <% end %>
+          <li class="form-inline">
+            <%= render "layouts/search_form", search:@search %>
+          </li>
         </ul>
-    </div>
+          <% end %>
+        <% else %>
+            <li class="nav-item">
+                <%= link_to new_user_registration_path, class: "nav-link" do %><i class="fas fa-user-plus">SignUP</i><% end %>
+            </li>
+            <li class="nav-item">
+                <%= link_to new_user_session_path, class: "nav-link" do %><i class="fas fa-sign-in-alt">LogIn</i><% end %>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="form-inline">
+                <%= render "layouts/search_form", search:@search %>
+            </li>
+        <% end %>
+          </ul>
+      </div>
+    </div>  
   </nav>
 </header>

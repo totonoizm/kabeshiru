@@ -11,6 +11,14 @@
     orphans: 1;
     widows: 1;
   }
+  
+  .card-title{
+    font-size:30px;
+  }
+  
+  .card-text{
+    font-family: 'Noto Sans JP', sans-serif;
+  }
 
   .card-columns .card {
     display: inline-block;

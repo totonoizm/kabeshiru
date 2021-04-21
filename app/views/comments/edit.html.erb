@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-12">
-    <div class="jumbotron" style="background-color:#EBD9B9">
+    <div class="jumbotron" style="background: rgba(255,255,255,0.9)">
       <h1 class="display-4">ノボログ編集</h1>
       <hr class="my-4"><h1><%= @comment.gym.name %></h1>
       <a><%= @comment.comment_seq %>回目の訪問</a><!--コメントモデルでメソッドを定義-->
@@ -11,13 +11,13 @@
           <div><%= f.label :image, "投稿画像" %></div>
           <div><%= attachment_image_tag @comment, :comment_image, size:"400x400", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %>
           </div>
-                <div>新しい画像</div>
-                <div><img id="preview" style="width:40%;"></div>
-                  <div><%= f.attachment_field :comment_image %></div>
-              <div><%= f.label :comment, "ノボログ内容" %></div>
-              <div><%= f.text_area :comment, autofocus: true, autocomplete: 'ノボログ', class: "form-control" %></div>
+          <div>新しい画像</div>
+          <div><img id="preview" style="width:40%;"></div>
+          <div><%= f.attachment_field :comment_image %></div>
+          <div><%= f.label :comment, "ノボログ内容" %></div>
+          <div><%= f.text_area :comment, autofocus: true, autocomplete: 'ノボログ', class: "form-control" %></div>
           <div class="row justify-content-center">
-              <%= f.submit "編集を完了する", class:"btn btn-primary" %>
+              <%= f.submit "編集を完了する", class:"btn btn-raised btn-info" %>
               <% end %>
           </div>
           <div class="row justify-content-center">
