@@ -1,6 +1,6 @@
 <div class="row">    
   <div class="col-sm-12">
-    <div class="jumbotron" style="background-color:#EBD9B9">
+    <div class="jumbotron" style="background: rgba(255,255,255,0.9)">
       <div class="row justify-content-end">
         <div class="user_name">
           最新更新ユーザー：<%= link_to @gym.user.name, @gym.user %></br>
@@ -38,7 +38,7 @@
 </div>
 <div class="row"> 
   <div class="col-sm-6">
-    <div class="card" style="background-color:#EBD9B9">
+    <div class="card" style="background: rgba(255,255,255,0.9)">
       <div class="card-body">
         <div class="card-text text-center">
           <div class="embed-responsive"><%= attachment_image_tag @gym, :gym_image, size:"400x400", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %></div>
@@ -50,7 +50,7 @@
     </div>
   </div>
   <div class="col-sm-6">
-    <div class="card" style="background-color:#EBD9B9">
+    <div class="card" style="background: rgba(255,255,255,0.9)">
       <div class="card-body">
         <div class="card-title">Gym info</div>
           <div class="text-sm-right">
@@ -105,7 +105,7 @@
 <section id="nobolog">
 <div class="row">
   <div class="col-sm-12">
-    <div class="jumbotron" style="background-color:#EBD9B9">
+    <div class="jumbotron" style="background: rgba(255,255,255,0.9)">
     <div class="card-title">Photo</div>
     <hr class="my-4">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -135,7 +135,7 @@
 </div>
 <div class="row">
   <div class="col-sm-12">
-    <div class="card" style="background-color:#EBD9B9">
+    <div class="card" style="background: rgba(255,255,255,0.9)">
       <div class="card-body">
         <div class="card-title"><%= @gym.name %>のノボログ一覧</div>
         <hr size="10">

@@ -4,7 +4,7 @@
     <%= render 'users/clip_gyms', user: @user, clip_gyms: @clip_gyms %>
   </div>
   <div class="col-sm-7">
-    <div class="card" style="background-color:#EBD9B9">
+    <div class="card" style="background: rgba(255,255,255,0.9)">
       <div class="card-body">
         <h4 class="card-title"><%= @user.name %>さんのフォロワー　<%= @user.followed.count %>人</h4>
         <% if @user.follower_user.exists? %>
