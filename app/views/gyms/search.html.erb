@@ -3,8 +3,8 @@
         <div class="jumbotron" style="background: rgba(255,255,255,0.9)">
             <div class="row justify-content-center">
                 <%= search_form_for @search, url: search_gyms_path do |f| %>
-                <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、登ってみたい壁を入力してください...", size: "100x10", class: 'input form-control' %>
-                <button class="btn btn-success btn-lg btn-block" type="submit">検索</button>
+                <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "施設名、エリア、登ってみたい壁を入力してください...", size: "100x10", class: 'form-control' %>
+                <button class="btn btn-raised btn-info btn-lg btn-block" type="submit">検索</button>
                 <% end %>
             </div>
         <% if params[:q]['name_or_address_or_introduction_cont'] == "" %>

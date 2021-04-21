@@ -1,17 +1,17 @@
   <div class="col-sm-3">
     <%= link_to user_path(user) do %>
-      <i class="btn btn-secondary fas fa-mountain" aria-hidden="true">ノボログ<%= user.comments.count %></i>
+      <i class="btn btn-raised btn-secondary far fa-clipboard" aria-hidden="true"> ノボログ <%= user.comments.count %></i>
     <% end %>
   </div>
   <div class="col-sm-3">
     <%= link_to following_user_path(user) do %>
-      <i class="btn btn-secondary fa fa-user-circle" aria-hidden="true">
-        <span id="follower_count_<%= user.id %>">フォロー</span></i>
+      <i class="btn btn-raised btn-secondary fa fa-user-circle" aria-hidden="true">
+        <span id="follower_count_<%= user.id %>"> フォロー</span></i>
     <% end %>
   </div>
   <div class="col-sm-3">
     <%= link_to followers_user_path(user) do %>
-      <i class="btn btn-secondary fa fa-user-circle" aria-hidden="true">
-        <span id="followed_count_<%= user.id %>">フォロワー</span></i>
+      <i class="btn btn-raised btn-secondary fa fa-user-circle" aria-hidden="true">
+        <span id="followed_count_<%= user.id %>"> フォロワー</span></i>
     <% end %>
   </div>

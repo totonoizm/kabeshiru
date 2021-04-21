@@ -11,13 +11,13 @@
           <div><%= f.label :image, "投稿画像" %></div>
           <div><%= attachment_image_tag @comment, :comment_image, size:"400x400", format: 'jpeg', class: "rounded", fallback: "gym_default.jpg" %>
           </div>
-                <div>新しい画像</div>
-                <div><img id="preview" style="width:40%;"></div>
-                  <div><%= f.attachment_field :comment_image %></div>
-              <div><%= f.label :comment, "ノボログ内容" %></div>
-              <div><%= f.text_area :comment, autofocus: true, autocomplete: 'ノボログ', class: "form-control" %></div>
+          <div>新しい画像</div>
+          <div><img id="preview" style="width:40%;"></div>
+          <div><%= f.attachment_field :comment_image %></div>
+          <div><%= f.label :comment, "ノボログ内容" %></div>
+          <div><%= f.text_area :comment, autofocus: true, autocomplete: 'ノボログ', class: "form-control" %></div>
           <div class="row justify-content-center">
-              <%= f.submit "編集を完了する", class:"btn btn-primary" %>
+              <%= f.submit "編集を完了する", class:"btn btn-raised btn-info" %>
               <% end %>
           </div>
           <div class="row justify-content-center">
