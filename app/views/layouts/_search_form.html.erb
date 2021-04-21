@@ -1,0 +1,4 @@
+<%= search_form_for search, url: search_gyms_path do |f| %>
+  <%= f.text_field :name_or_address_or_introduction_cont, placeholder: "検索ワードをどうぞ...", class: 'input form-control' %>
+  <button class="btn btn-raised btn-info" type="submit"><i class="fas fa-search"></i></button>
+<% end %>

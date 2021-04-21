@@ -1,4 +1,4 @@
-<div class="jumbotron" style="background-color:#EBD9B9">
+<div class="jumbotron" style="background: rgba(255,255,255,0.9)">
   <div class="row">
     <div class="col-sm-2">
       <%= link_to user_path(user) do %>
@@ -6,18 +6,6 @@
       <% end %>
     </div>
     <div class="col-sm-8 display-4"><%= user.name %></div>
-    <div class="col-sm-2">
-        <% if user.id == current_user.id %>
-          <%= link_to edit_user_path(user), data: {"turbolinks" => false}, class: 'btn btn-dark btn-sm' do %>
-            <i class="fa fa-tools fa-sm"></i>
-            <span>登録情報編集</span>
-          <% end %>
-        <% else user.id != current_user.id %>
-          <div id="follow_btn">
-            <%= render 'relationships/follow', user: user %>
-          </div>
-        <% end %>
-    </div>
   </div>
   <div class="row">
     <div class="user_profile col-sm-2">プロフィール</div>

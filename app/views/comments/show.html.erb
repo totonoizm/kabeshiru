@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-sm-12">
-    <div class="jumbotron" style="background-color:#EBD9B9">
+    <div class="jumbotron" style="background: rgba(255,255,255,0.9)">
       <% if @user.id == current_user.id %>
       <div class="row justify-content-end">
-          <%= link_to edit_comment_path(@comment), class: 'btn btn-dark' do %>
+          <%= link_to edit_comment_path(@comment), class: 'btn btn-raised btn-dark' do %>
             <i class="fa fa-tools fa-sm"></i>
             <span>ノボログ編集</span>
           <% end %>
@@ -16,7 +16,7 @@
       </div>
       <div class="row"><p><%= @comment.gym.address.truncate(20) %></p></div>
       <div class="row">
-        <%= link_to "施設情報", gym_path(@gym), class:"btn btn-primary" %>
+        <%= link_to "施設情報", gym_path(@gym), class:"btn btn-raised btn-primary" %>
       </div>
       <hr size="10">
       <div class="row">
