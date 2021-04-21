@@ -1,10 +1,10 @@
 <% if current_user.following?(user) %>
-    <%= link_to unfollow_path(user.id), method: :POST, remote: true, class: "btn btn-danger btn-sm" do %>
+    <%= link_to unfollow_path(user.id), method: :POST, remote: true, class: "btn btn-raised btn-danger btn-sm" do %>
         <i class="fa fa-user-circle"></i>
         <span>フォロー解除</span>
     <% end %>
 <% else %>
-    <%= link_to follow_path(user.id), method: :POST, remote: true, class: "btn btn-primary btn-sm" do %>
+    <%= link_to follow_path(user.id), method: :POST, remote: true, class: "btn btn-raised btn-info btn-sm" do %>
         <i class="fa fa-user-circle"></i>
         <span>フォローする</span>
     <% end %>
