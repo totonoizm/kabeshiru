@@ -51,8 +51,6 @@ KABESHIRUはクライマーライフをちょっぴり豊かにするサイト�
 ・ユーザー間のフォロー、フォロワー機能
 ・画像投稿機能
 
-https://docs.google.com/spreadsheets/d/11c-3oiSjkGZnU5FRC_Zv4oIA_uMa5Geq6-eNhcV56os/edit?usp=sharing
-
 ## 環境・使用技術
 
 ### 開発環境
